@@ -317,3 +317,83 @@
 		<td>A role should be unassigned from an account</td>
 	</tr>
 </table>
+
+### Table 9:
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>ُEnable permission</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>In this function, admins can enable a single permission for any created role</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Critical</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>Should be aware of enabling wrong permissions</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>Should already be signed in as an admin</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>The permission should be enabled for the selected role</td>
+	</tr>
+</table>
+
+### Table 10:
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Disable permission</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>In this function, admins can disable a single permission for any created role</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Critical</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>Should already be signed in as an admin</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>The permission should be disabled for the selected role</td>
+	</tr>
+</table>
