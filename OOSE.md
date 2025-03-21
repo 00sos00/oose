@@ -1,20 +1,25 @@
-# **2.5 User Objectives**
-This section explains the client's needs and goals. It includes an important list of features that help the company achieve its goals.
+## 2.6 General Constraints
 
-## **2.5.1 Main Objectives**
- ### - Buying and Renting Process.
- - Allow employees to post property listings in an organized list
-- Help our company  manage property by handling search and listings
-
-## 2.5.2 **Required Features** 
-- **Database Management** – Store  property and client data.  
-- **Employee Roles & Permissions** – Control access based on roles (only admins can acess).  
-- **Property Listings** – Add, update, and track properties.    
-- **Notifications** – Send updates to clients.  
-- **Search** – Quickly find properties.  
-
-  
-  
-  
+### 1. Performance Requirements
+The system must retrieve data quickly and minimize redundancy by using a relational database model.
+### 2. Security
+- All financial transactions and sensitive data must be encrypted .
 
 
+### 3. Data Management Constraints
+- A (cloud backup system) must be available and use it to avoid data loss.
+ - The system should be able to store and retrieve previous client data and units  for marketing and follow-up purposes.
+- Media files (such as property images and documents) should be stored .
+### 4. Operational Constraints
+
+- Must support automated notifications for updates and rental status changes.
+
+### 5. Scalability 
+- Help clients with a step-by-step process.
+### 6. Maintainability
+ -  The design should support updates and feature additions without major failure.
+
+### 7. Hardware Platforms 
+ - The system must work with the hardware platforms such as tablets, smartphones, laptops, and desktop computers.
+ - it should support Windows, macOS, iOS, and Android.
+   
