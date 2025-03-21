@@ -1,25 +1,17 @@
-## 2.6 General Constraints
+## 6. Design Constraints
 
-### 1. Performance Requirements
-The system must retrieve data quickly and minimize redundancy by using a relational database model.
-### 2. Security
-- All financial transactions and sensitive data must be encrypted .
+### 6.1   Standards Compliance
+The system must follow the requirements to ensure functionality, security, usability and best  practice .
+#### **1. Data protection and Privacy Laws**
+- All clients and owners data must be protected by privacy and data protection laws.
+- Financial data must be encrypted during transmission .
 
+#### **2. Database Standards**
+- The database design must follow (relational database normalization principles) to avoid redundancy and ensure data consistency.
 
-### 3. Data Management Constraints
-- A (cloud backup system) must be available and use it to avoid data loss.
- - The system should be able to store and retrieve previous client data and units  for marketing and follow-up purposes.
-- Media files (such as property images and documents) should be stored .
-### 4. Operational Constraints
-
-- Must support automated notifications for updates and rental status changes.
-
-### 5. Scalability 
-- Help clients with a step-by-step process.
-### 6. Maintainability
- -  The design should support updates and feature additions without major failure.
-
-### 7. Hardware Platforms 
- - The system must work with the hardware platforms such as tablets, smartphones, laptops, and desktop computers.
- - it should support Windows, macOS, iOS, and Android.
-   
+#### **3. Cloud Storage Standards**
+- Documents and files must be stored, encrypted, and linked to entities such as( Units and Employees)
+#### **4. Communication Protocols**
+- Email and WhatsApp integration messages need to follow API standards .
+#### **5. Usability Standards**
+- The website must be responsive and optimized for desktop while following modern UI/UX design principles. 
