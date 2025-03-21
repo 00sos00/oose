@@ -133,7 +133,7 @@ The system relies on multiple connections to ensure security and efficieny in da
   add, edit or delete data about a client ( except ratings are only calculated through deals ) or even delete the client himself.
 - **Propety-Owners**
   add, edit or delete data about a property-owner ( except ratings are only calculated through deals ) or even delete the owner himself and his properties.
-  *Deleting the owner results in deleting the property he currently owns, so make sure the property is assigned to the right owner before deletion.*
+  *<blockquote>Deleting the owner results in deleting the property he currently owns, so make sure the property is assigned to the right owner before deletion.</blockquote>*
 - **Deals**
   add, edit or delete data about the deal or even delete the deal itself.
   edit and delete functions are only available to admin and the roles he picks to have access.
