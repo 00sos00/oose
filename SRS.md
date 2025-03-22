@@ -162,3 +162,339 @@ The system relies on multiple connections to ensure security and efficieny in da
   show percentage of deal completions.
 - **Coverage Area** ( additional feature )
   visualize properties on the maps with heatmap indicating coverage area of each property.
+
+  ---
+
+  ## 8. Preliminary Object-Oriented Domain Analysis
+  ### 8.1. Inheritance Relationships
+  
+  <table border="3">
+    <tr>
+      <th></th>
+      <th>User Class</th>
+      <th>Permission Class</th>
+      <th>Property Class</th>
+      <th>Deal Class</th>
+      <th>Transaction Class</th>
+    </tr>
+    <tr>
+      <th>Diagram</th>
+      <td><img src="UserClassDiagram.jpg" width="600"></td>
+      <td><img src="PermissionClassDiagram.jpg" width="600"></td>
+      <td><img src="PropertyClassDiagram.jpg" width="600"></td>
+      <td><img src="DealClassDiagram.jpg" width="600"></td>
+      <td><img src="TransactionClassDiagram.jpg" width="600"></td>
+    </tr>
+    <tr>
+      <th>Parent Classes</th>
+      <td>User</td>
+      <td>Permission</td>
+      <td>Property</td>
+      <td>Deal</td>
+      <td>Transaction</td>
+    </tr>
+    <tr>
+      <th>Inhereted Classes</th>
+      <td>
+        <ul>
+          <li>SystemUser</li>
+          <li>
+            ExternalUser
+            <ul>
+              <li>Buyer</li>
+              <li>Seller</li>
+              <li>Owner</li>
+              <li>Client</li>
+            </ul>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>GeneralPermissions</li>
+          <li>OperationalPermissions</li>
+          <li>AdministrativePermissions</li>
+          <li>FinancialPermissions</li>
+          <li>MarketingPermissions</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>House</li>
+          <li>Apartment</li>
+          <li>Studio</li>
+          <li>Office</li>
+          <li>Land</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>RentingDeal</li>
+          <li>SellingDeal</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Revenue</li>
+          <li>Expense</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  ### 8.2. Class descriptions
+  #### 8.2.1. Class Name
+
+  - **User** 
+    > an **abstract** class that represents anyone using the system.
+
+  - **ExternalUser** 
+    > is-a **User** that has **no-permissions** to view, modify, or update anything on the system.
+
+  - **Buyer**
+    > is-a **ExternalUser** who has already purchased or rented a property.
+
+  - **Seller** 
+    > is-a **ExternalUser** who owns(or transferred the ownership in case of selling not renting) a property and has already sold it or rented it.
+
+  - **Client** 
+    > is-a either **Seller** or **Buyer** or possibly both.
+
+  - **Owner**
+    > is-a either **Seller** or **Buyer** or possibly both. 
+    > has-a **Property**.
+
+  - **SystemUser** 
+    > is-a **User** who has-a **Role**(s) and has rights to modify or update specific parts of the system or to perform operations.
+
+  - **Role** 
+    > has-a set of **Permissions** assigned to a **SystemUser**.
+
+  - **Permissions** 
+    > an **abstract** class that specifies a set of operational rights assigned to **SystemUser**.
+
+  - **GeneralPermissions** 
+    > is-a set of **privileges** that allows **User** accessing fundemental system features.
+
+  - **OperationalPermissions** 
+    > is-a set of **privileges** that defines permissions related to business operations.
+
+  - **AdminstrativePermissions**
+    > is-a set of **privileges** for system administrators and managers.
+
+  - **FinancialPermissions**
+    > is-a set **privileges** that defines access to financial transactions, and  reporting within the system.
+
+  - **MarketingPermissions**
+    > is-a set of **privileges** that defines access to message generation and alerts configurations.
+
+  - **Property** 
+    > an **abstract** class represents a real estate 
+    asset that can be bought, sold, or rented.
+  
+  - **House** 
+    > is-a **Property** representing a residential building designed for living.
+
+  - **Apartment** 
+    > is-a **Property** that is a unit within a larger residential complex.
+ 
+  - **Office** 
+    > is-a **Property** that is used for commercial and business purposes.
+  
+  - **Studio** 
+    > is-a Property representing a small, self-contained living space typically designed for a single occupant.
+  
+
+  - **Deal** 
+    > an **abstract** representing a contractual agreement between a buyer and seller.
+ 
+  - **RentingDeal** 
+    >  is-a **Deal** that involves leasing a Property for a specific duration
+  
+  - **SellingDeal** 
+    > is-a **Deal** where ownership of a Property is transferred.
+
+  - **Transaction**
+    > an **abstract** class representing financial activities related to deals and payments.    
+ 
+  - **Revenue**
+    > is-a **Transaction** that records incoming financial gains.    
+    
+  - **Expense**
+    > is-a **Transaction** that tracks outgoing costs.   
+
+  - **StatisticalAnalysis**
+    > has-a **Deal** and **Transaction**, analyzing financial transactions.
+
+  - **Report**
+    > a **stand-alone** class used for generating insights from **StatisticalAnalysis** class.
+  
+  - **AuditLog**
+    > a **stand-alone** class records system activities and tracks modifications for security.
+  
+  - **Message**
+    > a **stand-alone** class used for communication between **SystemUser** and **ExternalUser**.
+  
+  - **Notification**
+    > a **stand-alone** class used to notify **SystemUsers** with alerts.
+
+  
+  #### 8.2.2. List of Standalone Classes
+  - **Role**
+  - **Notification**
+  - **Appointment**
+  - **Messages**
+  - **StatisticalAnalysis**
+  - **Report**
+  - **AuditLog**
+  - **GUI**
+  - **Query**
+  - **JSONCoder**
+  
+  #### 8.2.3. List of Superclasses
+  - **User**
+  - **Permission**
+  - **Property**
+  - **Deal**
+  - **Transaction**
+  
+  #### 8.2.4. List of Subclasses
+    ###### User 
+    - **ExternalUser**
+    - **Buyer**
+    - **Seller**
+    - **Client**
+    - **Owner**
+    - **SystemUser**
+ 
+    ###### Permission 
+    - **GeneralPermissions**
+    - **OperationalPermissions**
+    - **AdministrativePermissions**
+    - **FinancialPermissions**
+    - **MarketingPermissions**
+  
+    ###### Property 
+    - **House**
+    - **Apartment**
+    - **Studio**
+    - **Office**
+    - **Land**
+
+    ###### Deal 
+    - **RentingDeal**
+    - **SellingDeal**
+
+    ###### Transaction
+    - **Revenue**
+    - **Expense**
+  
+  #### 8.2.5. Purpose
+  
+  - **User** 
+    > Defines the base entity for all internal/external users and provides authentication and identity management for system users.
+
+  - **ExternalUser** 
+    > Represents Users who do not have internal system permissions or viewing access i.e. Clients, Property-Owners, Buyers, and Sellers.
+
+  - **Authentication**
+    > Ensures secure access to the system with valid database authentication and manages user sessions throughout the system lifespan.
+
+  - **Buyer** 
+    > The buyer/renter side of the deal that contributes in the **deal** completion. In case of Selling Deal, the ownership of the property transfers **to** him.
+  
+  - **Seller**
+    > The current owner of the property that contributes in the **deal** completion. In case of Selling Deal, the ownership of the property is transferred **from** him.
+
+  - **Client** 
+    > An **ExternalUser** who is seeking help to find the appropriate unit (property) either for linving or invve
+
+  - **Owner**
+    > The current owner/seller of a property who is looking for an **ExternalUser** who is intersted in buying/renting a property. He seeks help to market for his properties.
+
+    - **SystemUser** 
+    > represents the active **User** who can view, interact, and perform operations based on an assigned role.
+
+  - **Role** 
+    > represents set of permissions assigned to **SystemUsers** to perform specific operations.
+
+  - **Permissions** 
+    > Specifies **User** privileges within the system that limits his access to certain operations which eventually boosts confidentiality of the Company and enhances security by preventing unauthorized access.
+
+  - **GeneralPermissions** 
+    > define basic privileges available to all active **Users** using the system i.e. viewing dashboards, profile management.
+
+  - **OperationalPermissions** 
+    > is-a set of **privileges** that defines permissions related to business operations and step-by-step approach of completing the deals. These privialges include: Set Commission Rates, Negotiate Deals, Finalize Deals, Cancel Deals, Generate Invoices, Process Payments, Upload Documents, View Document, and Manage Media Files
+
+  - **AdminstrativePermissions**
+    > provides system administrators with **privileges** to manage **Users**, **Roles**, and **Permissions**. These privielges provide the following: Configure System Settings, Backup & Restore Data, Monitor User Activity, Disable Features, Delete Account, Delete Property Listings, View Users, Ban Clients, Assign Roles, Modify User Permissions, Edit Documents, and Delete Documents.
+
+  - **FinancialPermissions**
+    > is-a set **privileges** that defines access to financial transactions, and  reporting within the system. These permissions enables the ability to View Financial Reports, View Payment History, View Deals, and Export Reports.
+
+  - **MarketingPermissions**
+    > is-a set of **privileges** that defines access to generate automated messages and notifications.
+
+  - **Property** 
+    > is the main object in the business which deals and all operations relies upon. It's also referred to as **Unit**. Property defines every physical or legal asset that can be owned, rented, or sold. It includes, Land, House, Apartment, Studio, and Office. Properties are stored in the system only if documents are proven to be legal and valid. Each property has its own pricing that is given from the owner to market it for.
+  
+  - **House** 
+    > is-a type of **property** that is a building with one owner and has no more than one family living in it.
+
+  - **Apartment** 
+    > is-a type of **property** that is a part of a building and has only one owner to it.
+ 
+  - **Office** 
+    > is-a type of **property** that is smaller than a studio and is mostly used for commercial use.
+  
+  - **Studio** 
+    > is-a type of **property** that can be shared and is usually rented and not sold.
+  
+  - **Land**
+    > is-a type of **property** that refers to a wide land area that is used for constructions and building needs. 
+  
+  - **Deal** 
+    > Ensures structured excution of transactions when agreement is reached between the **Buyer** & **Seller**. 
+-
+  - **RentingDeal** 
+    >  is-a **Deal** that involves leasing a Property for a specific duration
+  
+  - **SellingDeal** 
+    > is-a **Deal** where ownership of a Property is transferred.
+
+  - **Transaction**
+    > an **abstract** class representing financial activities related to deals and payments.    
+ 
+  - **Revenue & Expense**
+    > Categorizes financial transactions into income and costs.   
+    
+  - **StatisticalAnalysis**
+    > has-a **Deal** and **Transaction**, analyzing financial transactions.
+
+  - **Report**
+    > a **stand-alone** class used for generating insights from **StatisticalAnalysis** class.
+  
+  - **AuditLog**
+    > Maintains a detailed record of all system modifications, tracking changes made by **Users**. This helps in maintaing transparency within the system.
+  
+  - **Message**
+    > a **stand-alone** class used for communication between **SystemUser** and **ExternalUser**.
+  
+  - **Notification**
+    > a **stand-alone** class used to notify **SystemUsers** with alerts.
+  
+  - **Appointment**
+    > Manages property visit schedules for potential buyers and **SystemUsers**.
+  
+  #### 8.2.6. Collaborations
+  
+  #### 8.2.7. Attributes
+
+  #### 8.2.8. Operations
+  
+  #### 8.2.9. Constraints
+
+
+
+  
