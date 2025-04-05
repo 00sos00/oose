@@ -1,384 +1,158 @@
-### Table 1:
-<table>
-	<tr>
-		<td>Function Name</td>
-		<td>Sign in</td>
-	</tr>
-	<tr>
-		<td>Description</td>
-		<td>In this function, any broker or admin will be able to sign in with a username and password that were previously stored in the database by the developers</td>
-	</tr>
-	<tr>
-		<td>Critically</td>
-		<td>Critical</td>
-	</tr>
-	<tr>
-		<td>Technical issues</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Cost and schedule</td>
-		<td>2 days</td>
-	</tr>
-	<tr>
-		<td>Risks</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Dependencies with other requirements</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Pre-Condition</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Post-Condition</td>
-		<td>A session should be created for the user to stay logged in for at most 1 hour</td>
-	</tr>
-</table>
+1. Login (any)
+2. Logout (any)
+3. Create Account (admin)
+4. Delete Account (admin)
+5. Modify Account (any)
+6. View Accounts (admin)
+7.  Reset Password (any)
 
-### Table 2:
-<table>
-	<tr>
-		<td>Function Name</td>
-		<td>ِAdd Property</td>
-	</tr>
-	<tr>
-		<td>Description</td>
-		<td>In this function, only admins are able to add properties to the database through a GUI</td>
-	</tr>
-	<tr>
-		<td>Critically</td>
-		<td>Critical</td>
-	</tr>
-	<tr>
-		<td>Technical issues</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Cost and schedule</td>
-		<td>1 day</td>
-	</tr>
-	<tr>
-		<td>Risks</td>
-		<td>Should be aware of enter correct property information like price and location</td>
-	</tr>
-	<tr>
-		<td>Dependencies with other requirements</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Pre-Condition</td>
-		<td>Should already be signed in</td>
-	</tr>
-	<tr>
-		<td>Post-Condition</td>
-		<td>A property entity should be created and added to the database</td>
-	</tr>
-</table>
+8. Add property (admin)
+9.  Delete property (admin)
+10. Modify properties (admin)
+11. View properties (any)
 
-### Table 3:
+12. Create role (admin)
+13. Delete role (admin)
+14. Modify roles (admin)
+15. View all existing roles (admin)
+   
 <table>
 	<tr>
 		<td>Function Name</td>
-		<td>Remove Property</td>
+		<td>Login (any)</td>
 	</tr>
 	<tr>
 		<td>Description</td>
-		<td>In this function, only admins are able to remove properties from the database through a GUI</td>
+		<td>
+		In this function, any user with an account is allowed to login into the system using a username and a password
 	</tr>
 	<tr>
 		<td>Critically</td>
-		<td>Critical</td>
+		<td>High</td>
 	</tr>
 	<tr>
 		<td>Technical issues</td>
-		<td>None</td>
+		<td>
+		- First login requires a password reset<br>
+		- Username and password must be validated<br>
+		- After a successful login, a session must be created<br>
+		- A login session must be destroyed after 1 hour of inactivity<br>
+		- Login time should be logged in the database</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>1 day</td>
+		<td>0EGP & 3 days</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
-		<td>Should be aware of accidently removing important properties</td>
+		<td>
+		- System could be prone to SQL injection<br>
+		- Incorrectly validating username and password<br>
+		- Spam login to slow down the system<br>
+		- Scripts or bots trying to login</td>
 	</tr>
 	<tr>
 		<td>Dependencies with other requirements</td>
-		<td>None</td>
+		<td>
+		- This requirment depends on the Password Reset requirment</td>
 	</tr>
 	<tr>
 		<td>Pre-Condition</td>
-		<td>Should already be signed in</td>
+		<td>
+		- User already has an account created for him<br>
+		- User has already reset his password atleast once</td>
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>A property entity should be removed from the database</td>
+		<td>
+		- A session is created for the user and a timer for it is set<br>
+		- User is redirected to the home page</td>
 	</tr>
 </table>
+<br><br><br><br><br>
 
-### Table 4:
-<table>
-	<tr>
-		<td>Function Name</td>
-		<td>Logout</td>
-	</tr>
-	<tr>
-		<td>Description</td>
-		<td>In this function, brokers or admins can log out of their account</td>
-	</tr>
-	<tr>
-		<td>Critically</td>
-		<td>Critical</td>
-	</tr>
-	<tr>
-		<td>Technical issues</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Cost and schedule</td>
-		<td>1 day</td>
-	</tr>
-	<tr>
-		<td>Risks</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Dependencies with other requirements</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Pre-Condition</td>
-		<td>Should already be signed in</td>
-	</tr>
-	<tr>
-		<td>Post-Condition</td>
-		<td>The session that was created when signing in should be destroyed</td>
-	</tr>
-</table>
 
-### Table 5:
-<table>
-	<tr>
-		<td>Function Name</td>
-		<td>Add role</td>
-	</tr>
-	<tr>
-		<td>Description</td>
-		<td>In this function, admins can create roles and assign permissions to them</td>
-	</tr>
-	<tr>
-		<td>Critically</td>
-		<td>Critical</td>
-	</tr>
-	<tr>
-		<td>Technical issues</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Cost and schedule</td>
-		<td>2 day</td>
-	</tr>
-	<tr>
-		<td>Risks</td>
-		<td>Should be aware of assigning wrong permissions</td>
-	</tr>
-	<tr>
-		<td>Dependencies with other requirements</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Pre-Condition</td>
-		<td>Should already be signed in as an admin</td>
-	</tr>
-	<tr>
-		<td>Post-Condition</td>
-		<td>A role should be created and added to the database</td>
-	</tr>
-</table>
 
-### Table 6:
-<table>
-	<tr>
-		<td>Function Name</td>
-		<td>Remove role</td>
-	</tr>
-	<tr>
-		<td>Description</td>
-		<td>In this function, admins can remove roles from the database</td>
-	</tr>
-	<tr>
-		<td>Critically</td>
-		<td>Critical</td>
-	</tr>
-	<tr>
-		<td>Technical issues</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Cost and schedule</td>
-		<td>1 day</td>
-	</tr>
-	<tr>
-		<td>Risks</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Dependencies with other requirements</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Pre-Condition</td>
-		<td>Should already be signed in as an admin</td>
-	</tr>
-	<tr>
-		<td>Post-Condition</td>
-		<td>The role should be removed from the database</td>
-	</tr>
-</table>
 
-### Table 7:
-<table>
-	<tr>
-		<td>Function Name</td>
-		<td>Assign role</td>
-	</tr>
-	<tr>
-		<td>Description</td>
-		<td>In this function, admins can assign roles to any account</td>
-	</tr>
-	<tr>
-		<td>Critically</td>
-		<td>Critical</td>
-	</tr>
-	<tr>
-		<td>Technical issues</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Cost and schedule</td>
-		<td>1 day</td>
-	</tr>
-	<tr>
-		<td>Risks</td>
-		<td>Should be aware of assigning the role to wrong accounts</td>
-	</tr>
-	<tr>
-		<td>Dependencies with other requirements</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Pre-Condition</td>
-		<td>Should already be signed in as an admin</td>
-	</tr>
-	<tr>
-		<td>Post-Condition</td>
-		<td>A role should be assigned to an account</td>
-	</tr>
-</table>
 
-### Table 8:
 <table>
 	<tr>
 		<td>Function Name</td>
-		<td>Unassign role</td>
+		<td>Logout (any)</td>
 	</tr>
 	<tr>
 		<td>Description</td>
-		<td>In this function, admins can unassign roles from any account</td>
+		<td>
+		In this function, any logged-in user is allowed to logout of the system
 	</tr>
 	<tr>
 		<td>Critically</td>
-		<td>Critical</td>
+		<td>Medium</td>
 	</tr>
 	<tr>
 		<td>Technical issues</td>
-		<td>None</td>
+		<td>
+		- Session must be destroyed after logging out<br>
+		- Logout time should be logged in the database</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>1 day</td>
+		<td>0EGP & 1 day</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
-		<td>None</td>
+		<td>
+		- If session is not correctly destroyed, there will be a possibility of a breach into the system<br>
+		- For example, if an admin tries to logout at home and leaves his laptop open, his children could come playing and easily gain access into the system without having to login again due to the sessions still being alive</td>
 	</tr>
 	<tr>
 		<td>Dependencies with other requirements</td>
-		<td>None</td>
+		<td>
+		- This requirment depends on the Login requirment</td>
 	</tr>
 	<tr>
 		<td>Pre-Condition</td>
-		<td>Should already be signed in as an admin</td>
+		<td>
+		- User is already logged in with a session created for him</td>
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>A role should be unassigned from an account</td>
+		<td>
+		- The session is destroyed for the user<br>
+		- User is redirected to the login page</td>
 	</tr>
 </table>
+<br><br><br><br><br>
 
-### Table 9:
-<table>
-	<tr>
-		<td>Function Name</td>
-		<td>ُEnable permission</td>
-	</tr>
-	<tr>
-		<td>Description</td>
-		<td>In this function, admins can enable a single permission for any created role</td>
-	</tr>
-	<tr>
-		<td>Critically</td>
-		<td>Critical</td>
-	</tr>
-	<tr>
-		<td>Technical issues</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Cost and schedule</td>
-		<td>1 day</td>
-	</tr>
-	<tr>
-		<td>Risks</td>
-		<td>Should be aware of enabling wrong permissions</td>
-	</tr>
-	<tr>
-		<td>Dependencies with other requirements</td>
-		<td>None</td>
-	</tr>
-	<tr>
-		<td>Pre-Condition</td>
-		<td>Should already be signed in as an admin</td>
-	</tr>
-	<tr>
-		<td>Post-Condition</td>
-		<td>The permission should be enabled for the selected role</td>
-	</tr>
-</table>
 
-### Table 10:
+
+
+
 <table>
 	<tr>
 		<td>Function Name</td>
-		<td>Disable permission</td>
+		<td>Create Account (admin)</td>
 	</tr>
 	<tr>
 		<td>Description</td>
-		<td>In this function, admins can disable a single permission for any created role</td>
+		<td>
+		In this function, any logged-in admin should be able to create accounts for fellow users
 	</tr>
 	<tr>
 		<td>Critically</td>
-		<td>Critical</td>
+		<td>High</td>
 	</tr>
 	<tr>
 		<td>Technical issues</td>
-		<td>None</td>
+		<td>
+		- The admin should ask the user what his preferred username would look like<br>
+		- An account should be created with the requested username and a randomly generated password<br>
+		- Password must be hashed using a secure hashing algorithm<br>
+		- Account creation with relevant info should be logged in the database</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>1 day</td>
+		<td>0EGP & 2 days</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
@@ -386,14 +160,231 @@
 	</tr>
 	<tr>
 		<td>Dependencies with other requirements</td>
-		<td>None</td>
+		<td>
+		- This requirment depends on the Login requirment</td>
 	</tr>
 	<tr>
 		<td>Pre-Condition</td>
-		<td>Should already be signed in as an admin</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User has permission to create accounts</td>
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>The permission should be disabled for the selected role</td>
+		<td>
+		- An account is created and stored in database<br>
+		- Page is refreshed</td>
 	</tr>
 </table>
+<br><br><br><br><br>
+
+
+
+
+
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Delete Account (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin should be able to delete accounts for fellow users
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Confirmation is to be asked for before deletion of any account<br>
+		- An account must be permenantly deleted</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>0EGP & 1 day </td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>
+		- Deleting wrong accounts</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & Create Account requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User has permission to delete accounts</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- An account is deleted from the database<br>
+		- Page is refreshed<br>
+		- Account deletion should be logged in the database</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Modify Account (any)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in user can modify his account info such as username, password, phone number etc...
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Low</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Changes on the client side must appear in the database as well</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>0EGP & 2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & Create Account requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in profile page</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Changes applied in database<br>
+		- Page is refreshed<br></td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>View Accounts (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can view a list of all the registered accounts in the system
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- View a list of accounts<br>
+		- Ability to select one or more accounts and delete them<br>
+		- Clicking on an account redirects to that account's profile page</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>0EGP & 2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & Create Account & Delete Account requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in accounts page</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>- List of accounts appears</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Reset Password (any)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in user can request a password reset
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Upon requesting a reset, an email should be sent to continue the operation<br>
+		- Validate new password<br>
+		- Hash new password and apply changes in the database</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>0EGP & 3 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>
+		- Forgetting to validate or hash new password<br>
+		- Email service is down (send error back)</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirment</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is on login page<br>
+		- Hasn't reset password in the last hour unless first time</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Success message appears<br>
+		- User is redirected to login page again</td>
+	</tr>
+</table>
+<br><br><br><br><br>
