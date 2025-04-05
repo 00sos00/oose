@@ -1,21 +1,39 @@
-1. Login (any)
-2. Logout (any)
-3. Create Account (admin)
-4. Delete Account (admin)
-5. Modify Account (any)
-6. View Accounts (admin)
-7.  Reset Password (any)
+1. Login (any) ✅
+2. Logout (any) ✅
+3. Create Account (admin) ✅
+4. Delete Account (admin) ✅
+5. Modify Account (any) ✅
+6. View Accounts (admin) ✅
+7. Filter Accounts (admin) ✅
+8. Sort Accounts (admin) ✅
+9. Reset Password (any) ✅
 
-8. Add property (admin)
-9.  Delete property (admin)
-10. Modify properties (admin)
-11. View properties (any)
+10. Add Property (admin) ✅
+11. Delete Property (admin) ✅
+12. Modify Property (admin) ✅
+13. View Properties (any) ✅
+14. Filter Properties (admin) ✅
+15. Sort Properties (admin) ✅
 
-12. Create role (admin)
-13. Delete role (admin)
-14. Modify roles (admin)
-15. View all existing roles (admin)
-   
+16. Create Role (admin)
+17. Delete Role (admin)
+18. Modify Role (admin)
+19. View Roles (admin)
+20. Filter Roles (admin)
+21. Sort Roles (admin)
+
+22. Create Deal (marketing team)
+23. Delete Deal (marketing team)
+24. Modify Deal (marketing team)
+25. View Deals (marketing team)
+26. Filter Deals (marketing team)
+27. Sort Deals (marketing team)
+
+28. View System Logs (admin)
+29. Filter System Logs (admin)
+30. Sort System Logs (admin)
+
+## Table 1: Functional Requirement FR001
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -41,7 +59,7 @@
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>0EGP & 3 days</td>
+		<td>3 days</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
@@ -74,7 +92,7 @@
 
 
 
-
+## Table 2: Functional Requirement FR002
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -97,7 +115,7 @@
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>0EGP & 1 day</td>
+		<td>1 day</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
@@ -127,7 +145,7 @@
 
 
 
-
+## Table 3: Functional Requirement FR003
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -152,7 +170,7 @@
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>0EGP & 2 days</td>
+		<td>2 days</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
@@ -181,7 +199,7 @@
 
 
 
-
+## Table 4: Functional Requirement FR004
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -204,7 +222,7 @@
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>0EGP & 1 day </td>
+		<td>1 day </td>
 	</tr>
 	<tr>
 		<td>Risks</td>
@@ -235,7 +253,7 @@
 
 
 
-
+## Table 5: Functional Requirement FR005
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -257,7 +275,7 @@
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>0EGP & 2 days</td>
+		<td>2 days</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
@@ -286,7 +304,7 @@
 
 
 
-
+## Table 6: Functional Requirement FR006
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -310,7 +328,7 @@
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>0EGP & 2 days</td>
+		<td>2 days</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
@@ -329,7 +347,60 @@
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>- List of accounts appears</td>
+		<td>None</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+## Table 7: Functional Requirement FR007
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Filter accounts (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can filter the list of accounts by multiple criteria
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Low</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Filter by name<br>
+		- Filter by last login date<br>
+		- Filter by phone number<br>
+		- Filter by email</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>
+		- SQL injection</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in accounts page</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>- List of accounts gets updated on the client side</td>
 	</tr>
 </table>
 <br><br><br><br><br>
@@ -338,6 +409,59 @@
 
 
 
+## Table 8: Functional Requirement FR008
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Sort Accounts (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can sort the list of accounts by multiplie criteria
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Low</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Sort by name<br>
+		- Sort by last login</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirment</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is on logged-in and is in the accounts page<br>
+		- Has permission to view accounts</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Execute query again<br>
+		- Accounts page is refreshed and updated</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+## Table 9: Functional Requirement FR009
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -361,13 +485,14 @@
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
-		<td>0EGP & 3 days</td>
+		<td>3 days</td>
 	</tr>
 	<tr>
 		<td>Risks</td>
 		<td>
 		- Forgetting to validate or hash new password<br>
-		- Email service is down (send error back)</td>
+		- Email service is down (send error back)<br>
+		- SQL injection</td>
 	</tr>
 	<tr>
 		<td>Dependencies with other requirements</td>
@@ -385,6 +510,325 @@
 		<td>
 		- Success message appears<br>
 		- User is redirected to login page again</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 10: Functional Requirement FR010
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Add Property (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can register a property into the system
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Property coordinates should be supplied<br>
+		- Should register owner info as well<br>
+		- Handle property image & video storing</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>3 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>
+		- SQL injection</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Properties requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in properties page<br>
+		- User has permission to add properties</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Property is registered into the system<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 11: Functional Requirement FR011
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Delete Property (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can delete a property from the system
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Should ask for confirmation first<br>
+		- Permenantly delete</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Properties requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in properties page<br>
+		- User has permission to delete properties</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Property is deleted from the system<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 12: Functional Requirement FR012
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Modify Property (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can modify property information
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Clicking on an edit button next to property opens a pop up<br>
+		- After changing needed information, click save to update the database</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Properties requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in properties page<br>
+		- User has permission to modify properties</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Property is updated in the database<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 13: Functional Requirement FR013
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>View Properties (any)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can view properties as a list
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Each property has an edit and a delete button<br>
+		- Display in grid-like form where columns represent specific property information like price for example</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in properties page<br>
+		- User has permission to view properties</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>None</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 14: Functional Requirement FR014
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Filter Properties (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can filter properties based on multiple criteria
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Medium</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Filter by property location<br>
+		- Filter by property price</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in properties page<br>
+		- User has permission to view properties</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>Properties list is updated</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 15: Functional Requirement FR015
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Sort Properties (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can sort properties based on multiple criteria
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Low</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Sort by property price</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in properties page<br>
+		- User has permission to view properties</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>Properties list is updated</td>
 	</tr>
 </table>
 <br><br><br><br><br>
