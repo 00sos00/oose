@@ -15,23 +15,24 @@
 14. Filter Properties (admin) ✅
 15. Sort Properties (admin) ✅
 
-16. Create Role (admin)
-17. Delete Role (admin)
-18. Modify Role (admin)
-19. View Roles (admin)
-20. Filter Roles (admin)
-21. Sort Roles (admin)
+16. Create Role (admin) ✅
+17. Delete Role (admin) ✅
+18. Modify Role Name (admin) ✅
+19. Modify Role Permission (admin) ✅
+20. View Roles (admin) ✅
+21. Filter Roles (admin) ✅
+22. Sort Roles (admin) ✅
 
-22. Create Deal (marketing team)
-23. Delete Deal (marketing team)
-24. Modify Deal (marketing team)
-25. View Deals (marketing team)
-26. Filter Deals (marketing team)
-27. Sort Deals (marketing team)
+23. Create Deal (broker) ✅
+25. Delete Deal (broke5) ✅
+25. Modify Deal (broker) ✅
+26. View Deals (broker) ✅
+27. Filter Deals (broker) ✅
+28. Sort Deals (broker) ✅
 
-28. View System Logs (admin)
-29. Filter System Logs (admin)
-30. Sort System Logs (admin)
+29. View System Logs (admin) ✅
+30. Filter System Logs (admin) ✅
+31. Sort System Logs (admin) ✅
 
 ## Table 1: Functional Requirement FR001
 <table>
@@ -42,7 +43,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any user with an account is allowed to login into the system using a username and a password
+		In this function, any user with an account is allowed to login into the system using a username and a password</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -55,7 +56,8 @@
 		- Username and password must be validated<br>
 		- After a successful login, a session must be created<br>
 		- A login session must be destroyed after 1 hour of inactivity<br>
-		- Login time should be logged in the database</td>
+		- Login time should be logged in the database<br>
+		- Log action</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
@@ -101,7 +103,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in user is allowed to logout of the system
+		In this function, any logged-in user is allowed to logout of the system</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -111,7 +113,8 @@
 		<td>Technical issues</td>
 		<td>
 		- Session must be destroyed after logging out<br>
-		- Logout time should be logged in the database</td>
+		- Logout time should be logged in the database<br>
+		- Log action</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
@@ -154,7 +157,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin should be able to create accounts for fellow users
+		In this function, any logged-in admin should be able to create accounts for fellow users</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -166,7 +169,7 @@
 		- The admin should ask the user what his preferred username would look like<br>
 		- An account should be created with the requested username and a randomly generated password<br>
 		- Password must be hashed using a secure hashing algorithm<br>
-		- Account creation with relevant info should be logged in the database</td>
+		- Log action</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
@@ -208,7 +211,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin should be able to delete accounts for fellow users
+		In this function, any logged-in admin should be able to delete accounts for fellow users</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -218,7 +221,8 @@
 		<td>Technical issues</td>
 		<td>
 		- Confirmation is to be asked for before deletion of any account<br>
-		- An account must be permenantly deleted</td>
+		- An account must be permenantly deleted<br>
+		- Log action</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
@@ -262,7 +266,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in user can modify his account info such as username, password, phone number etc...
+		In this function, any logged-in user can modify his account info such as username, password, phone number etc...</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -313,7 +317,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can view a list of all the registered accounts in the system
+		In this function, any logged-in admin can view a list of all the registered accounts in the system</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -347,7 +351,7 @@
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>None</td>
+		<td>List of accounts is queried from the database</td>
 	</tr>
 </table>
 <br><br><br><br><br>
@@ -364,7 +368,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can filter the list of accounts by multiple criteria
+		In this function, any logged-in admin can filter the list of accounts by multiple criteria</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -400,7 +404,7 @@
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>- List of accounts gets updated on the client side</td>
+		<td>List of accounts is queried using a conditioned query</td>
 	</tr>
 </table>
 <br><br><br><br><br>
@@ -418,7 +422,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can sort the list of accounts by multiplie criteria
+		In this function, any logged-in admin can sort the list of accounts by multiplie criteria</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -452,8 +456,7 @@
 	<tr>
 		<td>Post-Condition</td>
 		<td>
-		- Execute query again<br>
-		- Accounts page is refreshed and updated</td>
+		- List of accounts is queried using an ordered query</td>
 	</tr>
 </table>
 <br><br><br><br><br>
@@ -470,7 +473,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in user can request a password reset
+		In this function, any logged-in user can request a password reset</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -527,7 +530,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can register a property into the system
+		In this function, any logged-in admin can register a property into the system</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -538,7 +541,8 @@
 		<td>
 		- Property coordinates should be supplied<br>
 		- Should register owner info as well<br>
-		- Handle property image & video storing</td>
+		- Handle property image & video storing<br>
+		- Log action</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
@@ -583,7 +587,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can delete a property from the system
+		In this function, any logged-in admin can delete a property from the system</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -593,7 +597,8 @@
 		<td>Technical issues</td>
 		<td>
 		- Should ask for confirmation first<br>
-		- Permenantly delete</td>
+		- Permenantly delete<br>
+		- Log action</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
@@ -637,7 +642,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can modify property information
+		In this function, any logged-in admin can modify property information</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -647,7 +652,8 @@
 		<td>Technical issues</td>
 		<td>
 		- Clicking on an edit button next to property opens a pop up<br>
-		- After changing needed information, click save to update the database</td>
+		- After changing needed information, click save to update the database<br>
+		- Log action</td>
 	</tr>
 	<tr>
 		<td>Cost and schedule</td>
@@ -691,7 +697,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can view properties as a list
+		In this function, any logged-in admin can view properties as a list</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -725,7 +731,7 @@
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>None</td>
+		<td>List of properties is queried from the database</td>
 	</tr>
 </table>
 <br><br><br><br><br>
@@ -743,7 +749,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can filter properties based on multiple criteria
+		In this function, any logged-in admin can filter properties based on multiple criteria</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -777,7 +783,7 @@
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>Properties list is updated</td>
+		<td>Properties list is queried using a conditioned query</td>
 	</tr>
 </table>
 <br><br><br><br><br>
@@ -795,7 +801,7 @@
 	<tr>
 		<td>Description</td>
 		<td>
-		In this function, any logged-in admin can sort properties based on multiple criteria
+		In this function, any logged-in admin can sort properties based on multiple criteria</td>
 	</tr>
 	<tr>
 		<td>Critically</td>
@@ -828,7 +834,861 @@
 	</tr>
 	<tr>
 		<td>Post-Condition</td>
-		<td>Properties list is updated</td>
+		<td>List of properties is queryied using an ordered query</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 16: Functional Requirement FR016
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Create Role (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can create and register a role into the system</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Click on create button to create role<br>
+		- Log action</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>2 days</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Roles requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in roles page<br>
+		- User has permission to create roles</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Role is registered into the database<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 17: Functional Requirement FR017
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Delete Role (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can delete a role from the system</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Click on delete button to create role<br>
+		- Ask for confirmation before deletion<br>
+		- Log action</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Roles requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in roles page<br>
+		- User has permission to delete roles</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Role is deleted from the database<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 18: Functional Requirement FR018
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Modify Role Name (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can modify a role name and save changes</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Low</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Change role name in a text input<br>
+		- After doing changes, click save to update database<br>
+		- Log action</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Roles requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in roles page<br>
+		- User has permission to modify roles</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Role name is modifed and updated in the database<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 19: Functional Requirement FR019
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Modify Role Permission (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can enable/disable a single permission for any selected role</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Changes to the permission checkboxes apply changes to the database right away<br>
+		- Log action</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Roles requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in roles page<br>
+		- User has permission to modify roles</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- Role permission is modifed and updated in the database<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 20: Functional Requirement FR020
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>View Roles (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can view a list of all the registered roles in the system</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Show roles in a row form</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in roles page<br>
+		- User has permission to view roles</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- List of roles is queried from the database</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 21: Functional Requirement FR021
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Filter Roles (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can filter the list of roles by multiple criteria</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Low</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Filter by name<br>
+		- Filter by permissions</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Roles requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in roles page<br>
+		- User has permission to view roles</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- List of roles is queried using a conditioned query</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 22: Functional Requirement FR022
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Sort Roles (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can sort the list of roles by name</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Low</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Sort by name</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Roles requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in roles page<br>
+		- User has permission to view roles</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- List of roles is queried using an ordered query</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 23: Functional Requirement FR023
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Create Deal (broker)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in broker can create a deal between two external users and register it into the system database</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Supply information about buyer and owner<br>
+		- Specify payment type and status<br>
+		- Log action</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Deals requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in deals page<br>
+		- User has permission to create deals</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A deal is established and registered into the system's database<br>
+        - Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 24: Functional Requirement FR024
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Delete Deal (broker)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in broker can delete a deal from the system</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- ASk for confirmation before deletion<br>
+		- Log action</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Deals requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in deals page<br>
+		- User has permission to delete deals</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A deal is deleted from the system's database<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 25: Functional Requirement FR025
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Modify Deal (broker)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in broker can modify a deal</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Modify all deal details<br>
+		- Log action</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Deals requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in deals page<br>
+		- User has permission to modify deals</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A deal is modified and updated in the system's database<br>
+		- Page is refreshed</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 26: Functional Requirement FR026
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>View Deals (broker)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in broker can view a list of all the registered deals in the system</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- View in tabular form</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in deals page<br>
+		- User has permission to view deals</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A list of deals is queried from the database</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 27: Functional Requirement FR027
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Filter Deals (broker)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in broker can filter the list of deals based on multiple criteria</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Medium</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Filter by date<br>
+		- Filter by payment type<br>
+		- Filter by payment status</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Deals requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in deals page<br>
+		- User has permission to view deals</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A list of deals is queried from the database using a filtered query</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 28: Functional Requirement FR028
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Sort Deals (broker)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in broker can sort the list of deals based on multiple criteria</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Medium</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Sort by date<br>
+		- Sort by price</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View Deals requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in deals page<br>
+		- User has permission to view deals</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A list of deals is queried from the database using an ordered query</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 29: Functional Requirement FR029
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>View System Logs (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can view a list of all logged actions in the system</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>High</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- View in row form</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in system logs page<br>
+		- User has permission to view system logs</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A list of logs is queried from the database</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+## Table 30: Functional Requirement FR030
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Filter System Logs (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can filter the list of logs based on multiple criteria</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Medium</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Filter by action name<br>
+		- Filter by action date</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View System Logs requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in system logs page<br>
+		- User has permission to view system logs</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A list of logs is queried from the database using a filtered query</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+
+
+
+
+
+## Table 31: Functional Requirement FR031
+<table>
+	<tr>
+		<td>Function Name</td>
+		<td>Sort System Logs (admin)</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>
+		In this function, any logged-in admin can sort the list of logs based on multiple criteria</td>
+	</tr>
+	<tr>
+		<td>Critically</td>
+		<td>Medium</td>
+	</tr>
+	<tr>
+		<td>Technical issues</td>
+		<td>
+		- Sort by action name<br>
+		- Sort by action date</td>
+	</tr>
+	<tr>
+		<td>Cost and schedule</td>
+		<td>1 day</td>
+	</tr>
+	<tr>
+		<td>Risks</td>
+		<td>None</td>
+	</tr>
+	<tr>
+		<td>Dependencies with other requirements</td>
+		<td>
+		- This requirment depends on the Login & View System Logs requirments</td>
+	</tr>
+	<tr>
+		<td>Pre-Condition</td>
+		<td>
+		- User is already logged in with a session created for him<br>
+		- User is in system logs page<br>
+		- User has permission to view system logs</td>
+	</tr>
+	<tr>
+		<td>Post-Condition</td>
+		<td>
+		- A list of logs is queried from the database using an ordered query</td>
 	</tr>
 </table>
 <br><br><br><br><br>
