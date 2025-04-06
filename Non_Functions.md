@@ -1,4 +1,4 @@
-### Table 5:
+### Table 1:
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -40,7 +40,7 @@
 
 
 
-### Table 6:
+### Table 2:
 
 
 
