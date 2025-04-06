@@ -269,7 +269,9 @@ The system relies on multiple connections to ensure security and efficieny in da
 
   ### 7.6 **Extensibility**
 
-  > @safa
+> The system is designed to support future improvements and updates  without requiring important changes to the existing code.Additionlly
+ The goal is the possibility of adding new features  or editing features easily such as Modify accounts , Add property , Modify properties , Modify roles. Also,
+  The database is also designed in an organized and scalable manner, allowing for the addition of new tables such as "ratings" without affecting the existing tables.
 
   ### 7.7 **Reusability**
 
