@@ -98,15 +98,13 @@ This system is designed as a **stand-alone** real estate management platform, of
 > 19. Modify Role Permission (admin) 
 > 20. View Roles (admin) 
 > 21. Filter Roles (admin) 
-> 22. Sort Roles (admin) 
-> 
+> 22. Sort Roles (admin)
 > 23. Create Deal (broker) 
 > 25. Delete Deal (broke5) 
 > 25. Modify Deal (broker) 
 > 26. View Deals (broker) 
 > 27. Filter Deals (broker) 
-> 28. Sort Deals (broker) 
-> 
+> 28. Sort Deals (broker)
 > 29. View System Logs (admin) 
 > 30. Filter System Logs (admin) 
 > 31. Sort System Logs (admin) 
@@ -2375,6 +2373,143 @@ The system relies on multiple connections to ensure security and efficieny in da
   #### 8.2.6. Collaborations
 
   #### 8.2.7. Attributes
+  ##### User
+  - First name
+  - Last name
+  - Country_Code
+  - Phone_number
+  ##### System User
+  - Email
+  - Password
+  - ID
+  - Role
+  ##### External User
+  - Rating
+  ##### Buyer
+  - ID
+  - SSN
+  - Area
+  - Category
+  - PropertyID
+  - DealID
+  ##### Seller
+  - ID
+  - SSN
+  - Area
+  - PropertyID
+  - DealID
+  ##### Client
+  - NeedPropertyFeatures
+  - ProvidePropertyFeatures
+  ##### Owner
+  - ID
+  - PropertyIDs
+  ##### Property
+  - forRent
+  - forSale
+  - ID
+  - price
+  - paidAmount
+  - remainingAmount
+  - myCut
+  - status
+  - latitude
+  - longitude
+  - AreaCoverage
+  - area
+  - address
+  - listingDate
+  - mediaLink
+  - is_installment_available (bool)
+  - installment_duration_months
+  - down_payment
+  - monthly_payment
+  - interest_rate
+  - payment_start_date
+  ##### House
+  - number_of_bedrooms
+  - number_of_bathrooms
+  - has_garage (bool)
+  - has_garden (bool)
+  - number_of_floors
+  - year_built
+  - heating_type (central, gas, electric)
+  - cooling_type
+  - furnished (bool)
+  - backyard_size
+  - flooring_type
+  - roof_type
+  - has_landline
+  - network_infrastructure
+  ##### Apartment
+  - unit_number
+  - floor_number
+  - number_of_bedrooms
+  - number_of_bathrooms
+  - building_name
+  - has_elevator
+  - monthly_maintenance_fee
+  - is_furnished
+  - has_balcony
+  - view_type
+  - network_infrastructure
+  - has_landline
+  ##### Studio
+  - floor_number
+  - is_furnished
+  - has_kitchenette (bool)
+  - has_balcony
+  - apartment_name
+  - monthly_maintenance_fee
+  - network_infrastructure
+  - has_landline
+  ##### Office
+  - floor_number
+  - building_name
+  - number_of_rooms
+  - meeting_rooms
+  - has_reception_area
+  - has_parking
+  - monthly_service_fee
+  - is_furnished
+  - network_infrastructure (bool)
+  - has_landline
+  ##### Land
+  - land_type (e.g., residential, commercial, agricultural)
+  - zoning_information
+  - is_serviced (utilities available)
+  - buildable_area
+  - plot_number
+  - topography (flat, slope, etc.)
+  - road_access
+
+  ##### Deal
+  - ID
+  - PropertyID
+  - SellerID
+  - BuyerID
+  - SysUserID
+  - Date
+  ##### RentingDeal
+  - startDate
+  - endDate
+  - securityAmount
+  - monthlyRent
+  - paymentFrequency
+  - leaseDuration
+  - utilitiesIncluded(Electricity, Water, Gas)
+  - rentalConditions
+  ##### SellingDeal
+  - askingPrice
+  - valuationPrice
+  - finalPrice
+  - negotiable
+  - paid
+  - commissionRate
+  - paymentType
+  - ownershipType
+  - legalClearance
+  - propertyTitleDeed
 
   #### 8.2.8. Operations
 
