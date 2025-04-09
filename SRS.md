@@ -1991,23 +1991,20 @@ The system relies on multiple connections to ensure security and efficieny in da
     <tr>
       <th></th>
       <th>User Class</th>
-      <th>Permission Class</th>
       <th>Property Class</th>
       <th>Deal Class</th>
       <th>Transaction Class</th>
     </tr>
     <tr>
       <th>Diagram</th>
-      <td><img src="UML/UserClassDiagram.jpg" width="600"></td>
-      <td><img src="UML/PermissionClassDiagram.jpg" width="600"></td>
-      <td><img src="UML/PropertyClassDiagram.jpg" width="600"></td>
-      <td><img src="UML/DealClassDiagram.jpg" width="600"></td>
+      <td><img src="UML/ClassDiagram_user.svg" width="600"></td>
+      <td><img src="UML/ClassDiagram_property.svg" width="600"></td>
+      <td><img src="UML/ClassDiagram_Deal.svg" width="600"></td>
       <td><img src="UML/TransactionClassDiagram.jpg" width="600"></td>
     </tr>
     <tr>
       <th>Parent Classes</th>
       <td>User</td>
-      <td>Permission</td>
       <td>Property</td>
       <td>Deal</td>
       <td>Transaction</td>
@@ -2018,15 +2015,6 @@ The system relies on multiple connections to ensure security and efficieny in da
         <ul>
           <li>SystemUser</li>
           <li>ExternalUser</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>GeneralPermissions</li>
-          <li>OperationalPermissions</li>
-          <li>AdministrativePermissions</li>
-          <li>FinancialPermissions</li>
-          <li>MarketingPermissions</li>
         </ul>
       </td>
       <td>
@@ -2316,6 +2304,54 @@ The system relies on multiple connections to ensure security and efficieny in da
     > Manages property visit schedules for potential buyers and **SystemUsers**.
 
   #### 8.2.6. Collaborations
+- 1.
+  <img src="UML/ClassDiagram-full.svg">
+
+---
+- 2.
+  <img src="UML/ClassDiagram_User.svg">
+
+---
+- 3.
+  <img src="UML/ClassDiagram_Role.svg">
+
+---
+- 4.
+  <img src="UML/ClassDiagram_property.svg">
+
+---
+<font dir="rtl">
+
+- 5.
+
+</font>
+  <img src="UML/ClassDiagram_owner.svg">
+
+---
+- 6.
+  <img src="UML/ClassDiagram_Deal.svg">
+
+---
+<font dir="rtl">
+
+- 7.
+
+</font>
+  <img src="UML/ClassDiagram_Appointmrnt.svg">
+
+---
+- 8.
+  <img src="UML/ClassDiagramSystemUser.svg">
+
+---
+<font dir="rtl">
+
+- 9.
+
+</font>
+  <img src="UML/ClassDiagram_standalone.svg">
+
+---
 
   #### 8.2.7. Attributes
   ##### User
@@ -2468,8 +2504,155 @@ The system relies on multiple connections to ensure security and efficieny in da
   - can_delete..
   - can_import..
   - can_export..
+  
+  ##### GUI
+  - isVisible
+  - height
+  - width
+  - color
+  - order
+  - isPinned
+  
+  ##### Query
+  - operation
+  - realtionType
+  - relationName
+  - values
+  - constraints
+  - result
+  
+    ##### Notification
+  - date
+  - title
+  - body
+  - isRead
+  - isPinned
+  
+    ##### Appointment
+  - date
+  - broker
+  - client
+  - property
+  - location
+  - scheduledTime
+  - status
+  
+    ##### StatisticalAnalysis
+  - ID
+  - type
+  - targetEntity
+  - metrics
+  - filtersApplied
+  - startDate
+  - endDate
+  - summary
+  - chartType
+  
+    ##### Messages
+  - ID
+  - title
+  - body
+  - messagingPlatform
+  - scheduledTime
+  - sender
+  
+    ##### AuditLog
+  - time
+  - user
+  - action
+  
+    ##### Report
+  - ID
+  - title
+  - description
+  - generatedBy
+  - generatedAt
+  - type
+  - format
+  - filePath
+  - status
+  - reviewedAt
 
   #### 8.2.8. Operations
+  #####  User
+  - login()
+  - logout()
+  - updateProfile()
+
+  ##### System User
+  - assignRole()
+  - createExternalUser()
+  - createProperty()
+  - scheduleAppointment()
+  - viewAuditLog()
+
+  ##### External User
+  - viewProfile()
+  - viewDeals()
+  - viewOwnedProperties()
+  - banUser()
+  - requestVisit()
+
+  ##### Buyer
+  - requestVisit()
+  - viewPurchaseHistory
+
+  ##### Seller
+  - viewListedProperties()
+  - viewSalesHistory()
+
+  ##### Client
+  - matchWithAvailableProperties()
+
+  ##### Owner
+  - updateOwnership()
+  - viewOwnedProperties()
+
+  ##### Property
+  - getPropertyFeatures()
+  - isAvailable()
+  - markAsSold()
+  - markAsRented()
+  - getOwnerDetails()
+  - assignToOwner()
+  - attachDocuments()
+
+  ##### Deal
+  - validateDeal()
+  - finalizeDeal()
+  - cancelDeal()
+
+
+  ##### RentingDeal
+  - calculateTotalRent()
+  - extendLease()
+  - terminateLease()
+  - setRentalTerms()
+
+  ##### SellingDeal
+  - finalizePayment()
+
+  ##### Role
+  - assignPermissions()
+  - updatePermissions()
+  - listAssignedUsers()
+  - removeRole()
+  - createRole()
+  
+  #### Appointment
+  - scheduleVisit()
+  - rescheduleVisit()
+  - cancelVisit()
+  - assignToSystemUser()
+
+  #### Notifiction
+  - createNotification()
+  - sendToUser()
+  - markAsRead()
+
+  #### Message
+  - createMessage()
+  - sendMessage()
 
   #### 8.2.9. Constraints
 
