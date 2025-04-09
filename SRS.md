@@ -2472,3 +2472,299 @@ The system relies on multiple connections to ensure security and efficieny in da
   #### 8.2.8. Operations
 
   #### 8.2.9. Constraints
+
+---
+
+  ## 12. Appendices
+
+  ### 12.1 Definitions, Acronyms, and Abbreviations
+
+>	This section provides the definitions of terms, acronyms, and abbreviations used throughout this Software Requirements Specification (SRS) document to ensure clarity and understanding.
+
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SRS</td>
+      <td>Software Requirements Specification</td>
+      <td>This document itself</td>
+    </tr>
+    <tr>
+      <td>UI</td>
+      <td>User Interface</td>
+      <td>The graphical interface users interact with</td>
+    </tr>
+    <tr>
+      <td>DB</td>
+      <td>Database</td>
+      <td>Stores system data such as users, properties, and transactions</td>
+    </tr>
+    <tr>
+      <td>CRUD</td>
+      <td>Create, Read, Update, Delete</td>
+      <td>Basic operations on system data</td>
+    </tr>
+    <tr>
+      <td>Admin</td>
+      <td>Administrator</td>
+      <td>Full access and control over system functions</td>
+    </tr>
+    <tr>
+      <td>Broker</td>
+      <td>Real Estate Agent</td>
+      <td>Handles deals and connects owners with buyers</td>
+    </tr>
+    <tr>
+      <td>Client</td>
+      <td>System User (Buyer or Renter)</td>
+      <td>Interested in renting or buying properties</td>
+    </tr>
+    <tr>
+      <td>ID</td>
+      <td>Identifier</td>
+      <td>Unique value for entities like users or properties</td>
+    </tr>
+    <tr>
+      <td>AWS</td>
+      <td>Amazon Web Services</td>
+      <td>Used for hosting or document storage</td>
+    </tr>
+    <tr>
+      <td>MySQL</td>
+      <td>Structured Query Language-based Database</td>
+      <td>Used to store and manage system records</td>
+    </tr>
+    <tr>
+      <td>API</td>
+      <td>Application Programming Interface</td>
+      <td>Facilitates integration with other platforms</td>
+    </tr>
+    <tr>
+      <td>Luxville</td>
+      <td>Real Estate Company</td>
+      <td>The business entity that owns the system</td>
+    </tr>
+    <tr>
+      <td>CRUD</td>
+      <td>Create, Read, Update, Delete – the four basic functions of persistent storage</td>
+      <td>Common operations in database and system management</td>
+    </tr>
+    <tr>
+      <td>Excel</td>
+      <td>A spreadsheet software by Microsoft used for data management</td>
+      <td>Often used to prepare/import bulk data into the system</td>
+    </tr>
+    <tr>
+      <td>Accounts</td>
+      <td>Registered user profiles in the system</td>
+      <td>Represents system users with login credentials</td>
+    </tr>
+    <tr>
+      <td>Permissions</td>
+      <td>System access rights based on the user's role</td>
+      <td>Controls what a user is allowed to do in the system</td>
+    </tr>
+    <tr>
+      <td>System</td>
+      <td>The software platform defined by this requirements document</td>
+      <td>Refers to the real estate management solution as a whole</td>
+    </tr>
+    <tr>
+      <td>User Interface</td>
+      <td>The visual component of the system that users interact with</td>
+      <td>Includes screens, forms, buttons, and navigations</td>
+    </tr>
+    <tr>
+      <td>GUI</td>
+      <td>Graphical User Interface</td>
+      <td>The interface users interact with visually</td>
+    </tr>
+    <tr>
+      <td>API</td>
+      <td>Application Programming Interface</td>
+      <td>Used to integrate with external services and tools</td>
+    </tr>
+    <tr>
+      <td>Google Places API</td>
+      <td>Location Data API</td>
+      <td>Used to convert locations into coordinates</td>
+    </tr>
+    <tr>
+      <td>Google Cloud Storage</td>
+      <td>Cloud File Storage Service</td>
+      <td>Stores media and documents</td>
+    </tr>
+    <tr>
+      <td>Firebase</td>
+      <td>Google Backend Platform</td>
+      <td>Handles login and authentication</td>
+    </tr>
+    <tr>
+      <td>Google Cloud Audit Logging</td>
+      <td>Monitoring and Audit Service</td>
+      <td>Used to track user activity affecting data</td>
+    </tr>
+    <tr>
+      <td>Twilio API</td>
+      <td>Messaging API</td>
+      <td>Used to send automated messages via SMS or WhatsApp</td>
+    </tr>
+    <tr>
+      <td>Google Sheets API</td>
+      <td>Spreadsheet API</td>
+      <td>Used to generate/export reports</td>
+    </tr>
+    <tr>
+      <td>HTTP/HTTPS</td>
+      <td>Hypertext Transfer Protocol / Secure</td>
+      <td>Ensures secure data exchange</td>
+    </tr>
+    <tr>
+      <td>Logs</td>
+      <td>Activity Records</td>
+      <td>Track actions performed by users in the system</td>
+    </tr>
+    <tr>
+      <td>Cloud</td>
+      <td>Remote Server-Based Services</td>
+      <td>Used for media/document storage and authentication</td>
+    </tr>
+    <tr>
+      <td>User</td>
+      <td>An abstract class that represents anyone using the system.</td>
+      <td>Superclass for all user types</td>
+    </tr>
+    <tr>
+      <td>ExternalUser</td>
+      <td>User with no system permissions.</td>
+      <td>Can be a Buyer or Seller</td>
+    </tr>
+    <tr>
+      <td>Buyer</td>
+      <td>An ExternalUser who has purchased/rented a property.</td>
+      <td>Subclass of ExternalUser</td>
+    </tr>
+    <tr>
+      <td>Seller</td>
+      <td>An ExternalUser who owns or has sold/rented a property.</td>
+      <td>Subclass of ExternalUser</td>
+    </tr>
+    <tr>
+      <td>Owner</td>
+      <td>Buyer/Seller who has property(ies).</td>
+      <td>Has-a Property</td>
+    </tr>
+    <tr>
+      <td>SystemUser</td>
+      <td>User with assigned Role(s).</td>
+      <td>Can perform system operations</td>
+    </tr>
+    <tr>
+      <td>Role</td>
+      <td>A set of permissions assigned to SystemUser.</td>
+      <td>Used to control access</td>
+    </tr>
+    <tr>
+      <td>GeneralPermissions</td>
+      <td>Basic privileges for Users.</td>
+      <td>Like viewing dashboards</td>
+    </tr>
+    <tr>
+      <td>OperationalPermissions</td>
+      <td>Business-related operation privileges.</td>
+      <td>Includes negotiation and document actions</td>
+    </tr>
+    <tr>
+      <td>AdminstrativePermissions</td>
+      <td>Privileges for managing system settings and users.</td>
+      <td>Only for Admins/Managers</td>
+    </tr>
+    <tr>
+      <td>FinancialPermissions</td>
+      <td>Access to financial operations and reports.</td>
+      <td>Includes viewing/exporting reports</td>
+    </tr>
+    <tr>
+      <td>MarketingPermissions</td>
+      <td>Privileges for alerts and automated messaging.</td>
+      <td>Used for client communication</td>
+    </tr>
+    <tr>
+      <td>Apartment</td>
+      <td>Unit in a residential building.</td>
+      <td>Owned individually</td>
+    </tr>
+    <tr>
+      <td>Studio</td>
+      <td>Self-contained small living unit.</td>
+      <td>Typically for renting</td>
+    </tr>
+    <tr>
+      <td>Office</td>
+      <td>Property used for business/commercial purposes.</td>
+      <td>Includes meeting rooms, reception</td>
+    </tr>
+    <tr>
+      <td>Deal</td>
+      <td>Abstract class for agreements between buyer & seller.</td>
+      <td>Superclass of Renting/Selling Deal</td>
+    </tr>
+    <tr>
+      <td>RentingDeal</td>
+      <td>Lease agreement for a Property.</td>
+      <td>Includes rental terms</td>
+    </tr>
+    <tr>
+      <td>SellingDeal</td>
+      <td>Ownership transfer deal for a Property.</td>
+      <td>Includes legal documents</td>
+    </tr>
+    <tr>
+      <td>Transaction</td>
+      <td>Abstract class for financial activities.</td>
+      <td>Superclass for Revenue and Expense</td>
+    </tr>
+    <tr>
+      <td>Revenue</td>
+      <td>Incoming financial gain.</td>
+      <td>Subclass of Transaction</td>
+    </tr>
+    <tr>
+      <td>Expense</td>
+      <td>Outgoing cost.</td>
+      <td>Subclass of Transaction</td>
+    </tr>
+    <tr>
+      <td>StatisticalAnalysis</td>
+      <td>Analyzes Deal and Transaction data.</td>
+      <td>Used for performance insights</td>
+    </tr>
+    <tr>
+      <td>AuditLog</td>
+      <td>Tracks system activity and changes.</td>
+      <td>Used for transparency and security</td>
+    </tr>
+    <tr>
+      <td>Appointment</td>
+      <td>Manages property visit schedules.</td>
+      <td>Standalone class</td>
+    </tr>
+    <tr>
+    <td>Query</td>
+    <td>Handles data retrieval based on filters and search inputs.</td>
+    <td>Used internally to perform database operations efficiently.</td>
+  </tr>
+  <tr>
+    <td>JSONCoder</td>
+    <td>Responsible for encoding and decoding data in JSON format.</td>
+    <td>Utility class used for serialization and data transfer.</td>
+  </tr>
+  </tbody>
+</table>
