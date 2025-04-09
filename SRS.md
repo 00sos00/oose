@@ -2017,15 +2017,7 @@ The system relies on multiple connections to ensure security and efficieny in da
       <td>
         <ul>
           <li>SystemUser</li>
-          <li>
-            ExternalUser
-            <ul>
-              <li>Buyer</li>
-              <li>Seller</li>
-              <li>Owner</li>
-              <li>Client</li>
-            </ul>
-          </li>
+          <li>ExternalUser</li>
         </ul>
       </td>
       <td>
@@ -2072,6 +2064,7 @@ The system relies on multiple connections to ensure security and efficieny in da
   - **ExternalUser**
 
     > is-a **User** that has **no-permissions** to view, modify, or update anything on the system.
+	> has-a **Buyer**, **Seller**, **Client**, or **Owner** profile.
 
   - **Buyer**
 
@@ -2100,27 +2093,7 @@ The system relies on multiple connections to ensure security and efficieny in da
 
   - **Permissions**
 
-    > an **abstract** class that specifies a set of operational rights assigned to **SystemUser**.
-
-  - **GeneralPermissions**
-
-    > is-a set of **privileges** that allows **User** accessing fundemental system features.
-
-  - **OperationalPermissions**
-
-    > is-a set of **privileges** that defines permissions related to business operations.
-
-  - **AdminstrativePermissions**
-
-    > is-a set of **privileges** for system administrators and managers.
-
-  - **FinancialPermissions**
-
-    > is-a set **privileges** that defines access to financial transactions, and reporting within the system.
-
-  - **MarketingPermissions**
-
-    > is-a set of **privileges** that defines access to message generation and alerts configurations.
+    > an **stand-alone** class that specifies a set of operational rights assigned to **SystemUser**.
 
   - **Property**
 
@@ -2186,7 +2159,12 @@ The system relies on multiple connections to ensure security and efficieny in da
 
   #### 8.2.2. List of Standalone Classes
 
+  - **Buyer**
+  - **Seller**
+  - **Client**
+  - **Owner**
   - **Role**
+  - **Permission**
   - **Notification**
   - **Appointment**
   - **Messages**
@@ -2200,7 +2178,6 @@ The system relies on multiple connections to ensure security and efficieny in da
   #### 8.2.3. List of Superclasses
 
   - **User**
-  - **Permission**
   - **Property**
   - **Deal**
   - **Transaction**
@@ -2210,19 +2187,7 @@ The system relies on multiple connections to ensure security and efficieny in da
   ###### User
 
   - **ExternalUser**
-  - **Buyer**
-  - **Seller**
-  - **Client**
-  - **Owner**
   - **SystemUser**
-
-  ###### Permission
-
-  - **GeneralPermissions**
-  - **OperationalPermissions**
-  - **AdministrativePermissions**
-  - **FinancialPermissions**
-  - **MarketingPermissions**
 
   ###### Property
 
@@ -2283,26 +2248,6 @@ The system relies on multiple connections to ensure security and efficieny in da
   - **Permissions**
 
     > Specifies **User** privileges within the system that limits his access to certain operations which eventually boosts confidentiality of the Company and enhances security by preventing unauthorized access.
-
-  - **GeneralPermissions**
-
-    > define basic privileges available to all active **Users** using the system i.e. viewing dashboards, profile management.
-
-  - **OperationalPermissions**
-
-    > is-a set of **privileges** that defines permissions related to business operations and step-by-step approach of completing the deals. These privialges include: Set Commission Rates, Negotiate Deals, Finalize Deals, Cancel Deals, Generate Invoices, Process Payments, Upload Documents, View Document, and Manage Media Files
-
-  - **AdminstrativePermissions**
-
-    > provides system administrators with **privileges** to manage **Users**, **Roles**, and **Permissions**. These privielges provide the following: Configure System Settings, Backup & Restore Data, Monitor User Activity, Disable Features, Delete Account, Delete Property Listings, View Users, Ban Clients, Assign Roles, Modify User Permissions, Edit Documents, and Delete Documents.
-
-  - **FinancialPermissions**
-
-    > is-a set **privileges** that defines access to financial transactions, and reporting within the system. These permissions enables the ability to View Financial Reports, View Payment History, View Deals, and Export Reports.
-
-  - **MarketingPermissions**
-
-    > is-a set of **privileges** that defines access to generate automated messages and notifications.
 
   - **Property**
 
@@ -2510,6 +2455,19 @@ The system relies on multiple connections to ensure security and efficieny in da
   - ownershipType
   - legalClearance
   - propertyTitleDeed
+  ##### Role
+  - name
+  - ID
+  - permissions
+  ##### Permissions
+  - ID
+- ###### The following is to be discussed with the client
+  - can_view..
+  - can_edit..
+  - can_create..
+  - can_delete..
+  - can_import..
+  - can_export..
 
   #### 8.2.8. Operations
 
