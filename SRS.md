@@ -1773,6 +1773,33 @@ This system is designed as a **stand-alone** real estate management platform, of
 ## 4. Interface Requirements
 
 ### 4.1. User Interfaces
+<center>
+<img src="GUI/figmaScreen.png" height="350">
+
+---
+<img src="GUI/Sidebar.png" height="700">
+<img src="GUI/Dashboard.png" height="800">
+
+---
+
+<img src="GUI/CashFlow Page.png" height="700">
+
+---
+
+<img src="GUI/Units Page.png" height="700">
+
+---
+
+<img src="GUI/AddUnit PopUp.png" height="200">
+
+---
+
+<img src="GUI/HeatMap.jpeg">
+
+---
+
+</center>
+
 
 #### 4.1.1. GUI
 
