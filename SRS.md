@@ -1998,11 +1998,11 @@ The system relies on multiple connections to ensure security and efficieny in da
     </tr>
     <tr>
       <th>Diagram</th>
-      <td><img src="UserClassDiagram.jpg" width="600"></td>
-      <td><img src="PermissionClassDiagram.jpg" width="600"></td>
-      <td><img src="PropertyClassDiagram.jpg" width="600"></td>
-      <td><img src="DealClassDiagram.jpg" width="600"></td>
-      <td><img src="TransactionClassDiagram.jpg" width="600"></td>
+      <td><img src="UML/UserClassDiagram.jpg" width="600"></td>
+      <td><img src="UML/PermissionClassDiagram.jpg" width="600"></td>
+      <td><img src="UML/PropertyClassDiagram.jpg" width="600"></td>
+      <td><img src="UML/DealClassDiagram.jpg" width="600"></td>
+      <td><img src="UML/TransactionClassDiagram.jpg" width="600"></td>
     </tr>
     <tr>
       <th>Parent Classes</th>
