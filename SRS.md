@@ -61,6 +61,24 @@ This system is designed as a **stand-alone** real estate management platform, of
     3ayz a rephrase 
       -->
 
+### 2.3 **User Characteristics**
+
+The Real Estate Management System was created specifically for organization's internal use at **Luxville**. No external or public users interact with the system.
+
+#### 1. **Administration**
+
+- Manage financial transactions.
+- Control employee access, roles, permissions and system operations.
+- Ensure overall system integrity, audit logging.
+
+#### 2. **Property Management Team**
+
+- Utilize tools to manage property listings, track client leads, and finalize rental or sales deals.
+- Receive automated notifications for client inquiries, and follow-up actions.
+- Access reports detailing property usage, rental income, pending payments, and service history.
+
+- Stay updated on deal progress, system alerts, and property status changes through internal notifications.
+
 ### 2.4 User Problem Statement
 
 **Luxville** faces several challenges due to the absence of a structured management system, **including**:
@@ -71,45 +89,61 @@ This system is designed as a **stand-alone** real estate management platform, of
 - **Lack of Updates** - Outdated information affecting decision-making and operations.
 - **Difficult Follow-Ups** - Lack of an automated system to track operations
 
-  <!-- Difficult Follow-Ups - Unknown market range ???????????? -->
+### 2.5 User Objectives
+
+- Manage property listings and availability.
+- Handle client interactions and follow-ups.
+- Create and track deals (selling or renting).
+- Maintain secure and role-based system access.
+- Monitor financial transactions.
+- Create and track selling and renting deals.
+- Generate reports for analysis and decision-making.
+
+### 2.6 General Constraints
+
+- **Time Constraints :** the system must deliver fast and responsive performance for all SystemUsers.
+- **Maintainability:** The system should be designed for easy updates and maintenance.
+- **Security :** The system must keep data safe and protect against unauthorized access.
+- **Platform:** The system must be web-based and accessible on desktops running Mac or Windows.
 
 ---
 
 ## 3. Functional Requiremtns
 
-> 1. Login (any) 
-> 2. Logout (any) 
-> 3. Create Account (admin) 
-> 4. Delete Account (admin) 
-> 5. Modify Account (any) 
-> 6. View Accounts (admin) 
-> 7. Filter Accounts (admin) 
-> 8. Sort Accounts (admin) 
-> 9. Reset Password (any) 
-> 10. Add Property (admin) 
-> 11. Delete Property (admin) 
-> 12. Modify Property (admin) 
-> 13. View Properties (any) 
-> 14. Filter Properties (admin) 
-> 15. Sort Properties (admin)  
-> 16. Create Role (admin) 
-> 17. Delete Role (admin) 
-> 18. Modify Role Name (admin) 
-> 19. Modify Role Permission (admin) 
-> 20. View Roles (admin) 
-> 21. Filter Roles (admin) 
+> 1. Login (any)
+> 2. Logout (any)
+> 3. Create Account (admin)
+> 4. Delete Account (admin)
+> 5. Modify Account (any)
+> 6. View Accounts (admin)
+> 7. Filter Accounts (admin)
+> 8. Sort Accounts (admin)
+> 9. Reset Password (any)
+> 10. Add Property (admin)
+> 11. Delete Property (admin)
+> 12. Modify Property (admin)
+> 13. View Properties (any)
+> 14. Filter Properties (admin)
+> 15. Sort Properties (admin)
+> 16. Create Role (admin)
+> 17. Delete Role (admin)
+> 18. Modify Role Name (admin)
+> 19. Modify Role Permission (admin)
+> 20. View Roles (admin)
+> 21. Filter Roles (admin)
 > 22. Sort Roles (admin)
-> 23. Create Deal (broker) 
-> 25. Delete Deal (broke5) 
-> 25. Modify Deal (broker) 
-> 26. View Deals (broker) 
-> 27. Filter Deals (broker) 
+> 23. Create Deal (broker)
+> 24. Delete Deal (broke5)
+> 25. Modify Deal (broker)
+> 26. View Deals (broker)
+> 27. Filter Deals (broker)
 > 28. Sort Deals (broker)
-> 29. View System Logs (admin) 
-> 30. Filter System Logs (admin) 
-> 31. Sort System Logs (admin) 
+> 29. View System Logs (admin)
+> 30. Filter System Logs (admin)
+> 31. Sort System Logs (admin)
 
 ## Table 1: Functional Requirement FR001
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -166,10 +200,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
 ## Table 2: Functional Requirement FR002
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -220,10 +252,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
 ## Table 3: Functional Requirement FR003
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -274,10 +304,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
 ## Table 4: Functional Requirement FR004
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -329,10 +357,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
 ## Table 5: Functional Requirement FR005
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -380,10 +406,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
 ## Table 6: Functional Requirement FR006
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -431,10 +455,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
 ## Table 7: Functional Requirement FR007
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -484,11 +506,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 8: Functional Requirement FR008
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -536,10 +555,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
 ## Table 9: Functional Requirement FR009
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -592,11 +609,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 10: Functional Requirement FR010
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -649,11 +663,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 11: Functional Requirement FR011
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -704,11 +715,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 12: Functional Requirement FR012
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -759,11 +767,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 13: Functional Requirement FR013
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -811,11 +816,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 14: Functional Requirement FR014
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -863,11 +865,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 15: Functional Requirement FR015
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -914,11 +913,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 16: Functional Requirement FR016
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -968,11 +964,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 17: Functional Requirement FR017
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1023,11 +1016,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 18: Functional Requirement FR018
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1078,11 +1068,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 19: Functional Requirement FR019
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1132,11 +1119,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 20: Functional Requirement FR020
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1184,11 +1168,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 21: Functional Requirement FR021
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1237,11 +1218,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 22: Functional Requirement FR022
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1289,11 +1267,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 23: Functional Requirement FR023
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1344,11 +1319,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 24: Functional Requirement FR024
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1398,11 +1370,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 25: Functional Requirement FR025
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1452,11 +1421,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 26: Functional Requirement FR026
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1504,11 +1470,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 27: Functional Requirement FR027
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1558,11 +1521,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 28: Functional Requirement FR028
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1611,11 +1571,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 29: Functional Requirement FR029
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1663,10 +1620,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
 ## Table 30: Functional Requirement FR030
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1715,11 +1670,8 @@ This system is designed as a **stand-alone** real estate management platform, of
 </table>
 <br><br><br><br><br>
 
-
-
-
-
 ## Table 31: Functional Requirement FR031
+
 <table>
 	<tr>
 		<td>Function Name</td>
@@ -1800,7 +1752,6 @@ This system is designed as a **stand-alone** real estate management platform, of
 
 </center>
 
-
 #### 4.1.1. GUI
 
 - **Agent Performance Dashboard** – track agent success metrics like closed deals & response time.
@@ -1820,7 +1771,11 @@ This system is designed as a **stand-alone** real estate management platform, of
 
 Visual designs/diagrams are to be added..
 
-#### 4.1.2. API
+#### 4.1.2. CLI
+
+- Not applicable
+
+#### 4.1.3. API
 
 - **Google Maps API**
   Used to display properties on map, show streets, and calculate distances. It's for a additional features that will be published soon. One of which is the Heatmap and area coverage visualizer.
@@ -1837,7 +1792,7 @@ Visual designs/diagrams are to be added..
 - **Google Sheets API**
   Used for auto report generation and exportation.
 
-#### 4.1.3. Diagnostics or ROM
+#### 4.1.4. Diagnostics or ROM
 
 not specified yet.
 
@@ -1944,9 +1899,15 @@ The system relies on multiple connections to ensure security and efficieny in da
 - **Coverage Area** ( additional feature )
   visualize properties on the maps with heatmap indicating coverage area of each property.
 
-  ---
+  ***
+
+  ## 5. Performance Requirements
+
+  ***
 
   ## 6. Design Constraints
+
+  ### 6.1 Standard Compliance
 
   ### 6.2 Hardware Limitations
 
@@ -1959,19 +1920,20 @@ The system relies on multiple connections to ensure security and efficieny in da
     Increasing Data Over time -- instead of data growing
     Scalability – As operations expand, hardware upgrades may be needed to maintain efficiency. -->
 
-  ---
+  ***
 
   ## 7 Other non-functional attributes
 
   ### 7.1 Security
 
+  > Only authorized SystemUsers should be able to access the system using secure login info.
+  > Role-based access control which allows users to view and perform actions based on their role.
+  > System must automatically log all user activites for tracking and secuirty purpose.
+  > Passwords ans sensitive data must be encrypted.
+
   ### 7.2 **Binary Compatibility**
 
   > Not applicable, as the system is a web-based application and does not rely on compiled program or library.
-
-  <!--
-  Binary Compatibility refers to the ability of software (a compiled program or library) to run on different versions of an operating system, platform, or runtime environment without requiring recompilation or modification.
-  -->
 
   ### 7.3 **Reliability**
 
@@ -1991,7 +1953,8 @@ The system relies on multiple connections to ensure security and efficieny in da
 
   ### 7.6 **Extensibility**
 
-  > @safa
+  > The system is designed to support future improvements and updates without requiring important changes to the existing code.
+  > The database is also designed in an organized and scalable manner, allowing for the addition of new tables without affecting the existing tables.
 
   ### 7.7 **Reusability**
 
@@ -2004,13 +1967,15 @@ The system relies on multiple connections to ensure security and efficieny in da
 
   ### 7.9 **Resource Utilization**
 
+  > Not specified yet.
+
   ### 7.10 **Serviceability**
 
   > Not applicable, as troubleshooting is performed manually throughout the code without dedicated serviceability features such as automated alert and diagnostic tools.
 
   ***
 
-  ## 8. Preliminary Object-Oriented Domain Analysis
+## 8. Preliminary Object-Oriented Domain Analysis
 
   ### 8.1. Inheritance Relationships
 
@@ -2681,16 +2646,202 @@ The system relies on multiple connections to ensure security and efficieny in da
   - createMessage()
   - sendMessage()
 
-  #### 8.2.9. Constraints
+  ### 8.2.9. Constraints
+
+  #### User
+
+  > **Must** be associated with at least one subclass (SystemUser or ExternalUser).
+  > **Cannot** exist without first and last name.
+  > **Must** have a unique phone number and country code combination.
+
+  #### SystemUser
+
+  > **Must** have a unique username and password.
+  > **Must** be assigned at least one **Role**.
+
+  #### ExternalUser
+
+  > **Can only** be created or updated by a **SystemUser**
+  > Cannot log in or access the system
+  > **Must** be associated with at least one profile type : **Buyer**, **Seller**, **Client** or **Owner**
+
+  #### Buyer
+
+  > **Can only** be assigned properties through a valid **Deal**.
+  > SSN **must** be unique.
+
+  #### Seller
+
+  > **Must** have a **Property** ownership before initiating a sale
+
+  #### Owner
+
+  > **Must** be linked to at least one **Property**
+
+  #### Client
+
+  > **Must** provide at least one **NeedPropertyFeatures** entry
+
+  #### Property ( all types )
+
+  > **Must** have a unique ID
+  > **Cannot** be marked as for sale and for rent at the same time.
+  > **Must** have valid legal documents uploaded before being listed.
+  > Latitude and longitude must be **valid** coordinates.
+  > **Cannot** have negative area or coverage.
+  > Price **must** be greater than 0.
+
+  #### Deal
+
+  > **Buyer** and **Seller** **must** be distinct
+  > **Property** can only be involved in one active **Deal** at a time
+
+  #### Renting Deal
+
+  > Lease duration **must** be ≥ 1 month
+  > Monthly rent **must** be > 0.
+  > Start date **must precede** end date
+
+  #### Selling Deal
+
+  > Asking price, valuation price, and final price **must** all be > 0
+  > Ownership cannot transfer **without** legal clearance
+
+  #### Transaction
+
+  > **Must** be linked to a valid deal
+
+  #### Role
+
+  > **Must** have at least one permission assigned.
+  > Name **must** be unique
+
+  #### Notification
+
+  > **Must** have a **valid** recipient
+
+  #### Appointment
+
+  > **Cannot overlap** with another appointment for the same **Property**.
+  > **Must** be linked to a _SystemUser_, **Client** and a **Property**.
+
+  #### AuditLog
+
+  > Cannot be modified after creation
+  > **Must** include a timestamp, actor, and action
 
 ---
 
-  ## 12. Appendices
+## 9. Operational Scenarios
+ 
+ This section describes different  scenarios for how the broker system will work in different situations. Each scenario is presented in both use case and script  .
+ 
+ ---
+ ### Use Case 1 – A customer buys a property
+ *ID:* MBS-001  
+ *Title:* Buying a property  
+ *Actors:*  Customer ,Broker, Owner  
+ *Required:* The customer is registered and has selected a property.  
+ *Description:* Once the customer has chosen a property, the broker works with the owner to process the purchase request. The broker schedules a meeting and follows all necessary .  
+ *Result:* The purchase is confirmed and recorded in the system.
+ <!-- el owner hena = someone wants to sell his property-->
+ 
+ ### Script
+ | Step | Action                               | Agent        |
+ |------|--------------------------------------|--------------|
+ | 1    | Broker reviews and selects the property | Broker       |
+ | 2    | Broker starts the purchase request   | Broker       |
+ | 3    | A meeting is scheduled with the owner | Broker       |
+ | 4    | Broker ensures the owner accepts and attends the meeting | Broker |
+ | 5    | The owner attends the meeting and agrees | Owner        |
+ | 6    | Broker manages the signing of the digital agreement | Broker |
+ | 7    | Broker records the transaction           | Broker       |
+ | 8    |  The system sent the confirmation.      | System       |
+ 
+ 
+ ---
+ 
+ ## Use Case 2 – Client Rents a Property
+ 
+ *ID:* MBS-002  
+ *Title:* Property Rental  
+ *Actors:* Customer, Broker, Owner  
+ *Required:* The unit is available for rent.  
+ *Description:* The client selects a rental property, deals with the owner through a broker, and signs a digital rental contract.  
+ *Rrsult* The rental agreement is saved, and follow-up notifications are scheduled.
+ <!-- el owner hena = someone wants to sell his property-->
+ 
+ ### Script
+ 
+ | Step | Action                                  | Agent        |
+ |------|-----------------------------------------|--------------|
+ | 1    |   Broker selects available rental properties for the client  | Broker       |
+ | 2    | Broker reviews details  and price | Broker    |
+ | 3    | Broker arranges rental request and schedules a meeting | Broker |
+ | 4    | Broker contacts the owner to confirm agreement | Broker |
+ | 5    | Broker prepares the digital rental contract | Broker    |
+ | 6    | Broker ensures that both client and owner sign the agreement| Broker |
+ | 7    | System stores the agreements             | System       |
+ | 8    | System sends rent reminders             | System       |
+ 
+ 
+ ---
+ 
+ ## Use Case 3 – Owner (Admin) Registers a New Property
+ 
+ *ID:* MBS-003  
+ *Title:* Property Registration  
+ *Actors:* Owner, Broker (employee)
+ *Required:* The owner or broker(employee) records the data and ditails of property in the sysytem.  
+ *Description:* The owner or broker submits property details and required documents, which are reviewed by the broker .  
+ *Result:* The property appears in search results.
+ 
+ ### Script
+ 
+ | Step | Action                                                              | Agent         |
+ |------|---------------------------------------------------------------------|---------------|
+ | 1    | Owner or employee logs in to the platform                           | Owner/Employee|
+ | 2    | Fill in property information                                        | Owner/Employee|
+ | 3    | Upload documents that include information about the property        | Owner         |
+ | 4    | Broker makes the list of properties                          | Broker        |
+ | 5    | Property becomes available for rent or sale                        | System        |
+ 
+ 
+ ## Use Case 4 – Maintenance and Follow-up for Rented Unit
+ 
+ *ID:* MBS-004  
+ *Title:* Rental Maintenance  
+ *Actors:* Client, Broker, Owner  
+ *Required:* Problems are reported once the property is rented
+ 
+ *Description:* The broker works with the owner to resolve maintenance issues that are reported by the client .  
+ *Result:* Issues are resolved and tracked.
+ 
+ ### Script
+ 
+ | Step | Action                                          | Agent        |
+ |------|-------------------------------------------------|--------------|
+ | 1    | Client calls or reports the problem             | Client       |
+ | 2    | Broker reviews the issue and contacts the owner | Broker       |
+ | 3    | Owner tries to solve the problem                | Owner        |
+ | 4    | Broker confirms the issue resolution with client| Broker       |
+ | 5    | Broker marks the issue as resolved              | Broker       |
+ <!-- i don't know if i should to make use case 5 , it will be about rating-->
 
-  ### 12.1 Definitions, Acronyms, and Abbreviations
 
->	This section provides the definitions of terms, acronyms, and abbreviations used throughout this Software Requirements Specification (SRS) document to ensure clarity and understanding.
+## 10. Preliminary Schedule Adjusted
 
+ The detailed project schedule is yet to be finalized.
+
+## 11. Preliminary Budget Adjusted
+
+No Budget has been allocated.
+
+## 12. Appendices
+
+### 12.1 Definitions, Acronyms, and Abbreviations
+
+>     This section provides the definitions of terms, acronyms, and abbreviations used throughout this Software Requirements Specification (SRS) document to ensure clarity and understanding.
 
 <table border="1" cellpadding="8" cellspacing="0">
   <thead>
