@@ -2736,6 +2736,17 @@ The system relies on multiple connections to ensure security and efficieny in da
  
  This section describes different  scenarios for how the broker system will work in different situations. Each scenario is presented in both use case and script  .
  
+ <center>
+	<img src="UML/UCD/AccountManagement.png" width="40%">
+	<img src="UML/UCD/LogSystem.png" width="40%">
+	<img src="UML/UCD/AdminstrationSystem.jpeg" width="40%">
+	<img src="UML/UCD/RolesManagement.png" width="40%">
+	<img src="UML/UCD/PropertySystem.png" width="40%">
+	<img src="UML/UCD/DealManagement.jpeg" width="40%">
+ </center>
+ 
+
+
  ---
  ### Use Case 1 – A customer buys a property
  *ID:* MBS-001  
