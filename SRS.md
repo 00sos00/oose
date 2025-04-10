@@ -1902,12 +1902,39 @@ The system relies on multiple connections to ensure security and efficieny in da
   ***
 
   ## 5. Performance Requirements
+  The system should be designed for **high reliability** and **real-time responsiveness**. It must support simultaneous data updates from multiple users, such as agents adding new listings, brokers processing deals, and admins modifying records **without data conflicts or performance issues**.
+
+  The system should provide live updates across all connected users. For example, when a new property is added, updated, or removed, all relevant users should see the changes immediately, without needing to refresh the page.
+  Key operations, such as property search, filtering, scheduling appointments, and user authentication, must respond fast under normal load. Complex calculations—such as price valuation or deal updates be computed and displayed instantly and efficiently.
+  The development process will incorporate **complexity analysis** to ensure optimal performance of algorithms handling large datasets. Additionally, the system will proceed into performance testing using industry-standard tools to test the following:
+
+  - **Website responsiveness** across various devices and browsers
+  - **Scalability** under increased user traffic
+  - **User interface** simplicity, efficiency, and usability
+  
+  The system should be able to handle at least 100 concurrent users while maintaining smooth performance and without significant delay.
 
   ***
 
   ## 6. Design Constraints
 
   ### 6.1 Standard Compliance
+  The system should comply with all applicable software engineering, security, and web development standards to ensure reliability, maintainability, and user trust. The following standards and guidelines will be considered during development:
+
+  - **Web Standards Compliance**
+	>The system will adhere to **the World Wide Web Consortium (W3C)** standards for **HTML5, CSS3, and JavaScript** to ensure compatibility and proper rendering across all modern web browsers.
+
+  - **Security Standards**
+	>The application will follow **OWASP** Top 10 security practices to mitigate common vulnerabilities such as SQL injection, cross-site scripting (XSS), and broken authentication.
+
+  - **Data Privacy and Protection**
+	>All user data will be handled in accordance with applicable **data protection** regulations to ensure confidentiality and user consent when collecting, storing, or processing personal information.
+
+  - **Coding Standards**
+	>The development team will follow industry-recognized clean code practices and naming conventions to ensure code readability, maintainability, and ease of collaboration.
+
+  - **Testing Standards**
+	>Unit, integration, and system testing will follow **IEEE** standards, ensuring structured and well-documented testing procedures
 
   ### 6.2 Hardware Limitations
 
@@ -1916,9 +1943,6 @@ The system relies on multiple connections to ensure security and efficieny in da
   - **Network Dependence** - System performance maybe affected by unstable internet connections.
   - **Device Compatibility** - System requires compatible hardware for proper functioning, as mentioned in **"Section 5: Performance Requirements".**
   - **Storage Constraints** - Data growing over time may require additional cloud storage
-    <!--
-    Increasing Data Over time -- instead of data growing
-    Scalability – As operations expand, hardware upgrades may be needed to maintain efficiency. -->
 
   ***
 
@@ -2742,11 +2766,10 @@ The system relies on multiple connections to ensure security and efficieny in da
 	<img src="UML/UCD/AdminstrationSystem.jpeg" width="40%">
 	<img src="UML/UCD/RolesManagement.png" width="40%">
 	<img src="UML/UCD/PropertySystem.png" width="40%">
+	<img src="UML/UCD/AppointmentSystem.png" width="40%">
 	<img src="UML/UCD/DealManagement.jpeg" width="40%">
  </center>
  
-
-
  ---
  ### Use Case 1 – A customer buys a property
  *ID:* MBS-001  
@@ -2755,7 +2778,7 @@ The system relies on multiple connections to ensure security and efficieny in da
  *Required:* The customer is registered and has selected a property.  
  *Description:* Once the customer has chosen a property, the broker works with the owner to process the purchase request. The broker schedules a meeting and follows all necessary .  
  *Result:* The purchase is confirmed and recorded in the system.
- <!-- el owner hena = someone wants to sell his property-->
+ 
  
  ### Script
  | Step | Action                               | Agent        |
