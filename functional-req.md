@@ -2375,5 +2375,610 @@ The system relies on multiple connections to ensure security and efficieny in da
   #### 8.2.7. Attributes
 
   #### 8.2.8. Operations
+  #####  User
+  - login()
+  - logout()
+  - updateProfile()
 
-  #### 8.2.9. Constraints
+  ##### System User
+  - assignRole()
+  - createExternalUser()
+  - createProperty()
+  - scheduleAppointment()
+  - viewAuditLog()
+
+  ##### External User
+  - viewProfile()
+  - viewDeals()
+  - viewOwnedProperties()
+  - banUser()
+  - requestVisit()
+
+  ##### Buyer
+  - requestVisit()
+  - viewPurchaseHistory
+
+  ##### Seller
+  - viewListedProperties()
+  - viewSalesHistory()
+
+  ##### Client
+  - matchWithAvailableProperties()
+
+  ##### Owner
+  - updateOwnership()
+  - viewOwnedProperties()
+
+  ##### Property
+  - getPropertyFeatures()
+  - isAvailable()
+  - markAsSold()
+  - markAsRented()
+  - getOwnerDetails()
+  - assignToOwner()
+  - attachDocuments()
+
+  ##### Deal
+  - validateDeal()
+  - finalizeDeal()
+  - cancelDeal()
+
+
+  ##### RentingDeal
+  - calculateTotalRent()
+  - extendLease()
+  - terminateLease()
+  - setRentalTerms()
+
+  ##### SellingDeal
+  - finalizePayment()
+
+  ##### Role
+  - assignPermissions()
+  - updatePermissions()
+  - listAssignedUsers()
+  - removeRole()
+  - createRole()
+  
+  #### Appointment
+  - scheduleVisit()
+  - rescheduleVisit()
+  - cancelVisit()
+  - assignToSystemUser()
+
+  #### Notifiction
+  - createNotification()
+  - sendToUser()
+  - markAsRead()
+
+  #### Message
+  - createMessage()
+  - sendMessage()
+
+  ### 8.2.9. Constraints
+
+  #### User
+
+  > **Must** be associated with at least one subclass (SystemUser or ExternalUser).
+  > **Cannot** exist without first and last name.
+  > **Must** have a unique phone number and country code combination.
+
+  #### SystemUser
+
+  > **Must** have a unique username and password.
+  > **Must** be assigned at least one **Role**.
+
+  #### ExternalUser
+
+  > **Can only** be created or updated by a **SystemUser**
+  > Cannot log in or access the system
+  > **Must** be associated with at least one profile type : **Buyer**, **Seller**, **Client** or **Owner**
+
+  #### Buyer
+
+  > **Can only** be assigned properties through a valid **Deal**.
+  > SSN **must** be unique.
+
+  #### Seller
+
+  > **Must** have a **Property** ownership before initiating a sale
+
+  #### Owner
+
+  > **Must** be linked to at least one **Property**
+
+  #### Client
+
+  > **Must** provide at least one **NeedPropertyFeatures** entry
+
+  #### Property ( all types )
+
+  > **Must** have a unique ID
+  > **Cannot** be marked as for sale and for rent at the same time.
+  > **Must** have valid legal documents uploaded before being listed.
+  > Latitude and longitude must be **valid** coordinates.
+  > **Cannot** have negative area or coverage.
+  > Price **must** be greater than 0.
+
+  #### Deal
+
+  > **Buyer** and **Seller** **must** be distinct
+  > **Property** can only be involved in one active **Deal** at a time
+
+  #### Renting Deal
+
+  > Lease duration **must** be ≥ 1 month
+  > Monthly rent **must** be > 0.
+  > Start date **must precede** end date
+
+  #### Selling Deal
+
+  > Asking price, valuation price, and final price **must** all be > 0
+  > Ownership cannot transfer **without** legal clearance
+
+  #### Transaction
+
+  > **Must** be linked to a valid deal
+
+  #### Role
+
+  > **Must** have at least one permission assigned.
+  > Name **must** be unique
+
+  #### Notification
+
+  > **Must** have a **valid** recipient
+
+  #### Appointment
+
+  > **Cannot overlap** with another appointment for the same **Property**.
+  > **Must** be linked to a _SystemUser_, **Client** and a **Property**.
+
+  #### AuditLog
+
+  > Cannot be modified after creation
+  > **Must** include a timestamp, actor, and action
+
+---
+
+## 9. Operational Scenarios
+ 
+ This section describes different  scenarios for how the broker system will work in different situations. Each scenario is presented in both use case and script  .
+ 
+ <center>
+	<img src="UML/UCD/AccountManagement.png" width="40%">
+	<img src="UML/UCD/LogSystem.png" width="40%">
+	<img src="UML/UCD/AdminstrationSystem.jpeg" width="40%">
+	<img src="UML/UCD/RolesManagement.png" width="40%">
+	<img src="UML/UCD/PropertySystem.png" width="40%">
+	<img src="UML/UCD/DealManagement.jpeg" width="40%">
+ </center>
+ 
+
+
+ ---
+ ## Use Case 1 – A **Client** buys a **Property**
+ **ID : MBS-001**  
+ **Title :** Buying a **Property**<br> 
+ **Actors:** 
+ - Client 
+ - SystemUser 
+ - Owner.<br>
+  
+ **Required**
+
+ - The **Client** (ExternalUser) info is valid and stored in the system, **Property** is available and registered and the **Owner** is verified as a legal owner of the **Property**.
+  
+ **Description:** 
+ - The **Client** contacts the **SystemUser**, then after the **Client** has selected a property he likes. An appointment is set. If the **Client** and the **Owner** reach an agreement, then a **SellingDeal** is created and stored in the database. Finally, ownership is transferred to the **Client**.
+
+ **Result:** 
+ - A **SellingDeal** is created and stored in the database
+ 
+ 
+ ### Script
+ | Step | Action                                                  | Agent      |
+ | ---- | ------------------------------------------------------- | ---------- |
+ | 1    | Clients contacts a SystemUser                           | Client     |
+ | 2    | Client selects a property                               | Client     |
+ | 3    | A meeting is scheduled with the owner                   | SystemUser |
+ | 4    | If meeting is accepted, ch                              | SystemUser |
+ | 5    | The owner attends the meeting and agrees                | Owner      |
+ | 6    | SystemUser manages the signing of the digital agreement | SystemUser |
+ | 7    | SystemUser records the transaction                      | SystemUser |
+ | 8    | The system sent the confirmation.                       | System     |
+ 
+ 
+ ---
+ 
+ ## Use Case 2 – Client Rents a Property
+ **ID : MBS-002**  
+ **Title :** Renting a **Property**<br> 
+ **Actors:** 
+ - Custmer 
+ - SystemUser 
+ - Owner<br>
+  
+ **Required**
+
+ - The **Client** (ExternalUser) info is valid and stored in the database, **Property** is available and registered and the **Owner** is verified as a legal owner of the **Property**.
+  
+ **Description:**
+ - The **Client** contacts the **SystemUser**, then after the **Client** has selected a property he likes. An appointment is set. If the **Client** and the **Owner** reach an agreement, then a **RentingDeal** is created and stored in the database. Finally, ownership is temporarily transferred to the **Client**.
+
+ **Result:**
+ - A **RentingDeal** is created and stored in the database
+ 
+ ### Script
+ 
+ | Step | Action                                                       | Agent  |
+ | ---- | ------------------------------------------------------------ | ------ |
+ | 1    | Broker selects available rental properties for the client    | Broker |
+ | 2    | Broker reviews details  and price                            | Broker |
+ | 3    | Broker arranges rental request and schedules a meeting       | Broker |
+ | 4    | Broker contacts the owner to confirm agreement               | Broker |
+ | 5    | Broker prepares the digital rental contract                  | Broker |
+ | 6    | Broker ensures that both client and owner sign the agreement | Broker |
+ | 7    | System stores the agreements                                 | System |
+ | 8    | System sends rent reminders                                  | System |
+ 
+ 
+ ---
+ 
+ ## Use Case 3 – SystemUser Registers a New Property
+ **ID : MBS-003**  
+ **Title :** Registering a **Property**<br> 
+ **Actors:** 
+ - SystemUser 
+ - Owner<br>
+  
+ **Required**
+
+ - The **Owner** has verified ownership of the property. The **SystemUser** has necessary information from the **Owner**. The **SystemUser** has necessary permissions.
+  
+ **Description:**
+ - An **Owner** contacts a **SystemUser** to offer to register a property in the system. The **SystemUser** validates ownership. If everything is validated, the property is registered in the system. 
+
+ **Result:**
+ - A **Property** is registered into the system
+ 
+ ### Script
+ 
+ | Step | Action                                                       | Agent          |
+ | ---- | ------------------------------------------------------------ | -------------- |
+ | 1    | Owner or employee logs in to the platform                    | Owner/Employee |
+ | 2    | Fill in property information                                 | Owner/Employee |
+ | 3    | Upload documents that include information about the property | Owner          |
+ | 4    | Broker makes the list of properties                          | Broker         |
+ | 5    | Property becomes available for rent or sale                  | System         |
+ 
+ 
+## Use Case 4 – Maintenance and Follow-up for Rented Unit
+ **ID : MBS-004**  
+ **Title :** Rental Maintenance<br> 
+ **Actors:** 
+ - SystemUser 
+ - Owner<br>
+  
+ **Required**
+
+ - The **Owner** has verified ownership of the property. The **SystemUser** has necessary information from the **Owner**. The **SystemUser** has necessary permissions.
+  
+ **Description:**
+ - An **Owner** contacts a **SystemUser** to offer to register a property in the system. The **SystemUser** validates ownership. If everything is validated, the property is registered in the system. 
+
+ **Result:**
+ - A **Property** is registered into the system
+ 
+ ### Script
+ 
+ | Step | Action                                           | Agent  |
+ | ---- | ------------------------------------------------ | ------ |
+ | 1    | Client calls or reports the problem              | Client |
+ | 2    | Broker reviews the issue and contacts the owner  | Broker |
+ | 3    | Owner tries to solve the problem                 | Owner  |
+ | 4    | Broker confirms the issue resolution with client | Broker |
+ | 5    | Broker marks the issue as resolved               | Broker |
+ <!-- i don't know if i should to make use case 5 , it will be about rating-->
+
+
+## 10. Preliminary Schedule Adjusted
+
+ The detailed project schedule is yet to be finalized.
+
+## 11. Preliminary Budget Adjusted
+
+No Budget has been allocated.
+
+## 12. Appendices
+
+### 12.1 Definitions, Acronyms, and Abbreviations
+
+>     This section provides the definitions of terms, acronyms, and abbreviations used throughout this Software Requirements Specification (SRS) document to ensure clarity and understanding.
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SRS</td>
+      <td>Software Requirements Specification</td>
+      <td>This document itself</td>
+    </tr>
+    <tr>
+      <td>UI</td>
+      <td>User Interface</td>
+      <td>The graphical interface users interact with</td>
+    </tr>
+    <tr>
+      <td>DB</td>
+      <td>Database</td>
+      <td>Stores system data such as users, properties, and transactions</td>
+    </tr>
+    <tr>
+      <td>CRUD</td>
+      <td>Create, Read, Update, Delete</td>
+      <td>Basic operations on system data</td>
+    </tr>
+    <tr>
+      <td>Admin</td>
+      <td>Administrator</td>
+      <td>Full access and control over system functions</td>
+    </tr>
+    <tr>
+      <td>Broker</td>
+      <td>Real Estate Agent</td>
+      <td>Handles deals and connects owners with buyers</td>
+    </tr>
+    <tr>
+      <td>Client</td>
+      <td>System User (Buyer or Renter)</td>
+      <td>Interested in renting or buying properties</td>
+    </tr>
+    <tr>
+      <td>ID</td>
+      <td>Identifier</td>
+      <td>Unique value for entities like users or properties</td>
+    </tr>
+    <tr>
+      <td>AWS</td>
+      <td>Amazon Web Services</td>
+      <td>Used for hosting or document storage</td>
+    </tr>
+    <tr>
+      <td>MySQL</td>
+      <td>Structured Query Language-based Database</td>
+      <td>Used to store and manage system records</td>
+    </tr>
+    <tr>
+      <td>API</td>
+      <td>Application Programming Interface</td>
+      <td>Facilitates integration with other platforms</td>
+    </tr>
+    <tr>
+      <td>Luxville</td>
+      <td>Real Estate Company</td>
+      <td>The business entity that owns the system</td>
+    </tr>
+    <tr>
+      <td>CRUD</td>
+      <td>Create, Read, Update, Delete – the four basic functions of persistent storage</td>
+      <td>Common operations in database and system management</td>
+    </tr>
+    <tr>
+      <td>Excel</td>
+      <td>A spreadsheet software by Microsoft used for data management</td>
+      <td>Often used to prepare/import bulk data into the system</td>
+    </tr>
+    <tr>
+      <td>Accounts</td>
+      <td>Registered user profiles in the system</td>
+      <td>Represents system users with login credentials</td>
+    </tr>
+    <tr>
+      <td>Permissions</td>
+      <td>System access rights based on the user's role</td>
+      <td>Controls what a user is allowed to do in the system</td>
+    </tr>
+    <tr>
+      <td>System</td>
+      <td>The software platform defined by this requirements document</td>
+      <td>Refers to the real estate management solution as a whole</td>
+    </tr>
+    <tr>
+      <td>User Interface</td>
+      <td>The visual component of the system that users interact with</td>
+      <td>Includes screens, forms, buttons, and navigations</td>
+    </tr>
+    <tr>
+      <td>GUI</td>
+      <td>Graphical User Interface</td>
+      <td>The interface users interact with visually</td>
+    </tr>
+    <tr>
+      <td>API</td>
+      <td>Application Programming Interface</td>
+      <td>Used to integrate with external services and tools</td>
+    </tr>
+    <tr>
+      <td>Google Places API</td>
+      <td>Location Data API</td>
+      <td>Used to convert locations into coordinates</td>
+    </tr>
+    <tr>
+      <td>Google Cloud Storage</td>
+      <td>Cloud File Storage Service</td>
+      <td>Stores media and documents</td>
+    </tr>
+    <tr>
+      <td>Firebase</td>
+      <td>Google Backend Platform</td>
+      <td>Handles login and authentication</td>
+    </tr>
+    <tr>
+      <td>Google Cloud Audit Logging</td>
+      <td>Monitoring and Audit Service</td>
+      <td>Used to track user activity affecting data</td>
+    </tr>
+    <tr>
+      <td>Twilio API</td>
+      <td>Messaging API</td>
+      <td>Used to send automated messages via SMS or WhatsApp</td>
+    </tr>
+    <tr>
+      <td>Google Sheets API</td>
+      <td>Spreadsheet API</td>
+      <td>Used to generate/export reports</td>
+    </tr>
+    <tr>
+      <td>HTTP/HTTPS</td>
+      <td>Hypertext Transfer Protocol / Secure</td>
+      <td>Ensures secure data exchange</td>
+    </tr>
+    <tr>
+      <td>Logs</td>
+      <td>Activity Records</td>
+      <td>Track actions performed by users in the system</td>
+    </tr>
+    <tr>
+      <td>Cloud</td>
+      <td>Remote Server-Based Services</td>
+      <td>Used for media/document storage and authentication</td>
+    </tr>
+    <tr>
+      <td>User</td>
+      <td>An abstract class that represents anyone using the system.</td>
+      <td>Superclass for all user types</td>
+    </tr>
+    <tr>
+      <td>ExternalUser</td>
+      <td>User with no system permissions.</td>
+      <td>Can be a Buyer or Seller</td>
+    </tr>
+    <tr>
+      <td>Buyer</td>
+      <td>An ExternalUser who has purchased/rented a property.</td>
+      <td>Subclass of ExternalUser</td>
+    </tr>
+    <tr>
+      <td>Seller</td>
+      <td>An ExternalUser who owns or has sold/rented a property.</td>
+      <td>Subclass of ExternalUser</td>
+    </tr>
+    <tr>
+      <td>Owner</td>
+      <td>Buyer/Seller who has property(ies).</td>
+      <td>Has-a Property</td>
+    </tr>
+    <tr>
+      <td>SystemUser</td>
+      <td>User with assigned Role(s).</td>
+      <td>Can perform system operations</td>
+    </tr>
+    <tr>
+      <td>Role</td>
+      <td>A set of permissions assigned to SystemUser.</td>
+      <td>Used to control access</td>
+    </tr>
+    <tr>
+      <td>GeneralPermissions</td>
+      <td>Basic privileges for Users.</td>
+      <td>Like viewing dashboards</td>
+    </tr>
+    <tr>
+      <td>OperationalPermissions</td>
+      <td>Business-related operation privileges.</td>
+      <td>Includes negotiation and document actions</td>
+    </tr>
+    <tr>
+      <td>AdminstrativePermissions</td>
+      <td>Privileges for managing system settings and users.</td>
+      <td>Only for Admins/Managers</td>
+    </tr>
+    <tr>
+      <td>FinancialPermissions</td>
+      <td>Access to financial operations and reports.</td>
+      <td>Includes viewing/exporting reports</td>
+    </tr>
+    <tr>
+      <td>MarketingPermissions</td>
+      <td>Privileges for alerts and automated messaging.</td>
+      <td>Used for client communication</td>
+    </tr>
+    <tr>
+      <td>Apartment</td>
+      <td>Unit in a residential building.</td>
+      <td>Owned individually</td>
+    </tr>
+    <tr>
+      <td>Studio</td>
+      <td>Self-contained small living unit.</td>
+      <td>Typically for renting</td>
+    </tr>
+    <tr>
+      <td>Office</td>
+      <td>Property used for business/commercial purposes.</td>
+      <td>Includes meeting rooms, reception</td>
+    </tr>
+    <tr>
+      <td>Deal</td>
+      <td>Abstract class for agreements between buyer & seller.</td>
+      <td>Superclass of Renting/Selling Deal</td>
+    </tr>
+    <tr>
+      <td>RentingDeal</td>
+      <td>Lease agreement for a Property.</td>
+      <td>Includes rental terms</td>
+    </tr>
+    <tr>
+      <td>SellingDeal</td>
+      <td>Ownership transfer deal for a Property.</td>
+      <td>Includes legal documents</td>
+    </tr>
+    <tr>
+      <td>Transaction</td>
+      <td>Abstract class for financial activities.</td>
+      <td>Superclass for Revenue and Expense</td>
+    </tr>
+    <tr>
+      <td>Revenue</td>
+      <td>Incoming financial gain.</td>
+      <td>Subclass of Transaction</td>
+    </tr>
+    <tr>
+      <td>Expense</td>
+      <td>Outgoing cost.</td>
+      <td>Subclass of Transaction</td>
+    </tr>
+    <tr>
+      <td>StatisticalAnalysis</td>
+      <td>Analyzes Deal and Transaction data.</td>
+      <td>Used for performance insights</td>
+    </tr>
+    <tr>
+      <td>AuditLog</td>
+      <td>Tracks system activity and changes.</td>
+      <td>Used for transparency and security</td>
+    </tr>
+    <tr>
+      <td>Appointment</td>
+      <td>Manages property visit schedules.</td>
+      <td>Standalone class</td>
+    </tr>
+    <tr>
+    <td>Query</td>
+    <td>Handles data retrieval based on filters and search inputs.</td>
+    <td>Used internally to perform database operations efficiently.</td>
+  </tr>
+  <tr>
+    <td>JSONCoder</td>
+    <td>Responsible for encoding and decoding data in JSON format.</td>
+    <td>Utility class used for serialization and data transfer.</td>
+  </tr>
+  </tbody>
+</table>
