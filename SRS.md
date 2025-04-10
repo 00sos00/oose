@@ -2765,104 +2765,131 @@ The system relies on multiple connections to ensure security and efficieny in da
 	<img src="UML/UCD/LogSystem.png" width="40%">
 	<img src="UML/UCD/AdminstrationSystem.jpeg" width="40%">
 	<img src="UML/UCD/RolesManagement.png" width="40%">
-	<img src="UML/UCD/PropertySystem.png" width="40%">
-	<img src="UML/UCD/AppointmentSystem.png" width="40%">
+	<img src="UML/UCD/PropertySystem.png" width="30%">
+	<img src="UML/UCD/AppointmentSystem.png" width="50%">
 	<img src="UML/UCD/DealManagement.jpeg" width="40%">
  </center>
  
- ---
- ### Use Case 1 – A customer buys a property
- *ID:* MBS-001  
- *Title:* Buying a property  
- *Actors:*  Customer ,Broker, Owner  
- *Required:* The customer is registered and has selected a property.  
- *Description:* Once the customer has chosen a property, the broker works with the owner to process the purchase request. The broker schedules a meeting and follows all necessary .  
- *Result:* The purchase is confirmed and recorded in the system.
- 
+## Use Case 1 – A **Client** buys a **Property**
+ **ID : MBS-001**  
+ **Title :** Buying a **Property**<br> 
+ **Actors:** 
+ - Client 
+ - SystemUser 
+ - Owner.<br>
+  
+ **Required**
+
+ - The **Client** (ExternalUser) info is valid and stored in the system, **Property** is available and registered and the **Owner** is verified as a legal owner of the **Property**.
+  
+ **Description:** 
+ - The **Client** contacts the **SystemUser**, **SystemUser** store the data and the needs of the **client**. **SystemUser** search the systems for the required needs. After **Client** approval on **property**, **SystemUser** schedule an **appointment**.  System notifies **clients** and **SystemUser** directly before the **appointment**. After the **appointment** **SystemUser** schedule another **appointment** with the **client** and the **owner**. If they reaches an agreement and the **SellingDeal** is done. Property Ownership is transfered from Owner to **Client** and the **client** becomes **Owner** **I**
+
+ **Result:** 
+ - A **SellingDeal** is documented and stored in the system
+ - **Property** Ownership is transfered from **owner** to **client**
+ - **Client** becomes an **Owner**
  
  ### Script
- | Step | Action                               | Agent        |
- |------|--------------------------------------|--------------|
- | 1    | Broker reviews and selects the property | Broker       |
- | 2    | Broker starts the purchase request   | Broker       |
- | 3    | A meeting is scheduled with the owner | Broker       |
- | 4    | Broker ensures the owner accepts and attends the meeting | Broker |
- | 5    | The owner attends the meeting and agrees | Owner        |
- | 6    | Broker manages the signing of the digital agreement | Broker |
- | 7    | Broker records the transaction           | Broker       |
- | 8    |  The system sent the confirmation.      | System       |
- 
- 
- ---
+
+
+| Step | Action                                                                 | Agent      |
+|------|------------------------------------------------------------------------|------------|
+| 1    | Client contacts a SystemUser                                           | Client     |
+| 2    | SystemUser stores Client's information and property needs              | SystemUser |
+| 3    | SystemUser searches available properties that match the needs          | SystemUser |
+| 4    | Client reviews and approves a selected property                        | Client     |
+| 5    | SystemUser schedules an appointment to view the property               | SystemUser |
+| 6    | System sends notifications to Client and SystemUser before the meeting| System     |
+| 7    | Client attends the appointment                                         | Client     |
+| 8    | SystemUser schedules another appointment with the Owner                | SystemUser |
+| 9    | Owner attends the meeting and discusses deal with Client               | Owner      |
+| 10   | SystemUser manages the signing of the digital selling agreement        | SystemUser |
+| 11   | SystemUser records the transaction                                     | SystemUser |
+| 12   | System confirms the completion of the deal                             | System     |
+| 13   | Property ownership is transferred to the Client                        | System     |
+| 14   | Client becomes the new Owner                                           | System     |
+
  
  ## Use Case 2 – Client Rents a Property
+ **ID : MBS-002**  
+ **Title :** Renting a **Property**<br> 
+ **Actors:** 
+ - Custmer 
+ - SystemUser 
+ - Owner<br>
+  
+ **Required**
+
+ - The **Client** (ExternalUser) info is valid and stored in the database, **Property** is available and registered and the **Owner** is verified as a legal owner of the **Property**.
+  
+ **Description:**
  
- *ID:* MBS-002  
- *Title:* Property Rental  
- *Actors:* Customer, Broker, Owner  
- *Required:* The unit is available for rent.  
- *Description:* The client selects a rental property, deals with the owner through a broker, and signs a digital rental contract.  
- *Rrsult* The rental agreement is saved, and follow-up notifications are scheduled.
- <!-- el owner hena = someone wants to sell his property-->
+- A **Client** shows interest in renting a **Property** by contacting a **SystemUser**. The **SystemUser** collects the **Client’s** rental preferences and searches the system for available matching **properties**. After the **Client** reviews and approves a suitable **property**, the **SystemUser** schedules an **appointment** for viewing. Once the **Client** confirms interest, a follow-up meeting is arranged with the **Owner** to finalize rental terms. Upon mutual agreement, the **SystemUser** facilitates the signing of a digital **rental** agreement. The system then records the **transaction**, updates the **property** status to "Rented".
+
+
+ **Result:**
+- A rental agreement is successfully signed between the Owner and the Client.
+- The property’s status is updated to “Rented” and removed from the available listings.
+- A record of the rental transaction is stored in the system for future reference.
+- Notifications and confirmations are sent to all involved parties (Client, Owner, SystemUser).
+- The Owner is linked to the rental agreement for that specific property.   
  
  ### Script
- 
- | Step | Action                                  | Agent        |
- |------|-----------------------------------------|--------------|
- | 1    |   Broker selects available rental properties for the client  | Broker       |
- | 2    | Broker reviews details  and price | Broker    |
- | 3    | Broker arranges rental request and schedules a meeting | Broker |
- | 4    | Broker contacts the owner to confirm agreement | Broker |
- | 5    | Broker prepares the digital rental contract | Broker    |
- | 6    | Broker ensures that both client and owner sign the agreement| Broker |
- | 7    | System stores the agreements             | System       |
- | 8    | System sends rent reminders             | System       |
- 
- 
+ ### Use Case 2 – Client Rents a Property
+
+| Step | Action                                                                 | Agent      |
+|------|------------------------------------------------------------------------|------------|
+| 1    | Client contacts a SystemUser                                           | Client     |
+| 2    | SystemUser stores Client's information and rental needs                | SystemUser |
+| 3    | SystemUser searches available properties that match the needs          | SystemUser |
+| 4    | Client reviews and approves a selected property                        | Client     |
+| 5    | SystemUser schedules an appointment to view the property               | SystemUser |
+| 6    | System sends notifications to Client and SystemUser before the meeting| System     |
+| 7    | Client attends the appointment                                         | Client     |
+| 8    | SystemUser schedules a confirmation meeting with the Owner             | SystemUser |
+| 9    | Owner attends the meeting and agrees to the rental terms               | Owner      |
+|10    | SystemUser manages the signing of the digital rental agreement         | SystemUser |
+|11    | SystemUser records the transaction                                     | SystemUser |
+|12    | System confirms the rental deal completion                             | System     |
+
  ---
  
- ## Use Case 3 – Owner (Admin) Registers a New Property
- 
- *ID:* MBS-003  
- *Title:* Property Registration  
- *Actors:* Owner, Broker (employee)
- *Required:* The owner or broker(employee) records the data and ditails of property in the sysytem.  
- *Description:* The owner or broker submits property details and required documents, which are reviewed by the broker .  
- *Result:* The property appears in search results.
- 
- ### Script
- 
- | Step | Action                                                              | Agent         |
- |------|---------------------------------------------------------------------|---------------|
- | 1    | Owner or employee logs in to the platform                           | Owner/Employee|
- | 2    | Fill in property information                                        | Owner/Employee|
- | 3    | Upload documents that include information about the property        | Owner         |
- | 4    | Broker makes the list of properties                          | Broker        |
- | 5    | Property becomes available for rent or sale                        | System        |
- 
- 
- ## Use Case 4 – Maintenance and Follow-up for Rented Unit
- 
- *ID:* MBS-004  
- *Title:* Rental Maintenance  
- *Actors:* Client, Broker, Owner  
- *Required:* Problems are reported once the property is rented
- 
- *Description:* The broker works with the owner to resolve maintenance issues that are reported by the client .  
- *Result:* Issues are resolved and tracked.
- 
- ### Script
- 
- | Step | Action                                          | Agent        |
- |------|-------------------------------------------------|--------------|
- | 1    | Client calls or reports the problem             | Client       |
- | 2    | Broker reviews the issue and contacts the owner | Broker       |
- | 3    | Owner tries to solve the problem                | Owner        |
- | 4    | Broker confirms the issue resolution with client| Broker       |
- | 5    | Broker marks the issue as resolved              | Broker       |
- <!-- i don't know if i should to make use case 5 , it will be about rating-->
+ ## Use Case 3 – SystemUser Registers a New Property
+ **ID : MBS-003**  
+ **Title :** Registering a **Property**<br> 
+ **Actors:** 
+ - SystemUser 
+ - Owner<br>
+  
+ **Required**
 
+ - The **Owner** has verified ownership of the property. The **SystemUser** has necessary information from the **Owner**. The **SystemUser** has necessary permissions.
+  
+ **Description:**
+ - An **Owner** contacts a **SystemUser** to offer to register a property in the system. The **SystemUser** validates ownership. If everything is validated, the property is registered in the system. 
 
+ **Result:**
+- The **property** ownership is successfully verified by the **SystemUser**.
+- The new **property** is registered and stored in the system.
+- The **Owner** is officially linked to the registered **property** in the system.
+- The **property** is now ready for **client** inquiries, viewings, or rental/purchase procedures. 
+ ### Script
+ | Step | Action                                                                  | Agent      |
+|------|-------------------------------------------------------------------------|------------|
+| 1    |  Owner contacts a SystemUser to offer the property for registration      | Owner      |
+| 2    | SystemUser collects the property details (location, type, price, etc.)  | SystemUser |
+| 3    | SystemUser requests proof of ownership from the Owner                    | SystemUser |
+| 4    | Owner provides necessary documents to verify ownership                  | Owner      |
+| 5    | SystemUser verifies the ownership and property details                   | SystemUser |
+| 6    | If ownership is valid, SystemUser proceeds with property registration   | SystemUser |
+| 7    | SystemUser enters the property information into the system              | SystemUser |
+| 8    | System stores the property details in the database                      | SystemUser     |
+| 9    | Property is added to the property listings           | SystemUser     |
+| 10   | Owner is officially linked to the registered property                   | SystemUser     |
+| 11   | System confirms that the property is successfully registered            | SystemUser     |
+
+ 
 ## 10. Preliminary Schedule Adjusted
 
  The detailed project schedule is yet to be finalized.
