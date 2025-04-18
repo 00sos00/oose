@@ -1,0 +1,79 @@
+:root {
+	--primary: #E3B04B;
+	--light: #F8F8F8;
+	--dark: #2B2B28;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin: 0;
+	background-color: var(--light);
+}
+
+#sign-holder {
+	background-color: var(--dark);
+	width: 540px;
+	height: 400px;
+	border-radius: 5px;
+	padding: 25px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#sign-holder h1 {
+	font-family: Roboto;
+	margin: 0;
+	color: var(--primary);
+}
+
+.sign-label {
+	color: var(--light);
+	font-family: Roboto;
+	display: block;
+}
+
+.sign-input {
+	border-radius: 5px;
+	height: 40px;
+	font-size: 1rem;
+	outline: none;
+	border: none;
+	padding-left: 10px;
+	color: var(--dark);
+	background-color: var(--light);
+}
+
+#sign-holder a {
+	font-family: Roboto;
+	color: white;
+	opacity: 0.5;
+	text-decoration: none;
+}
+
+#sign-holder a:hover {
+	opacity: 0.75;
+}
+
+#sign-holder button {
+	width: 85px;
+	align-self: center;
+	font-size: 1rem;
+	font-weight: 500;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	color: var(--dark);
+	background-color: var(--primary);
+	cursor: pointer;
+}
+
+#sign-holder button:hover {
+	opacity: 0.75;
+}
