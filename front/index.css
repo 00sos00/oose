@@ -15,11 +15,11 @@ body {
 	background-color: var(--light);
 }
 
-#sign-holder {
+.sign-holder {
 	background-color: var(--dark);
 	width: 540px;
 	height: 400px;
-	border-radius: 5px;
+	border-radius: 1.5pc;
 	margin: 0 1rem;
 	padding: 25px;
 	box-sizing: border-box;
@@ -28,20 +28,25 @@ body {
 	justify-content: space-between;
 }
 
-#sign-holder h1 {
+.sign-title {
 	font-family: Roboto;
 	margin: 0;
 	color: var(--primary);
 }
 
+.input-holder {
+	display: flex;
+	flex-direction: column;
+}
+
 .sign-label {
 	color: var(--light);
 	font-family: Roboto;
-	display: block;
+	margin-bottom: 10px;
 }
 
 .sign-input {
-	border-radius: 5px;
+	border-radius: 1.5pc;
 	height: 40px;
 	font-size: 1rem;
 	outline: none;
@@ -51,30 +56,30 @@ body {
 	background-color: var(--light);
 }
 
-#sign-holder a {
+.forgot-pass {
 	font-family: Roboto;
 	color: white;
 	opacity: 0.5;
 	text-decoration: none;
 }
 
-#sign-holder a:hover {
+.forgot-pass:hover {
 	opacity: 0.75;
 }
 
-#sign-holder button {
+.sign-btn {
 	width: 85px;
-	align-self: center;
 	font-size: 1rem;
 	font-weight: 500;
 	height: 40px;
 	border: none;
-	border-radius: 5px;
+	border-radius: 1.5pc;
 	color: var(--dark);
 	background-color: var(--primary);
+	align-self: center;
 	cursor: pointer;
 }
 
-#sign-holder button:hover {
+.sign-btn:hover {
 	opacity: 0.75;
 }
