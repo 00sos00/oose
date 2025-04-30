@@ -1,0 +1,11 @@
+{
+    "dataworkspace.excludedProjects": [
+        "Enter/Enter.sqlproj"
+    ],
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    }
+}
