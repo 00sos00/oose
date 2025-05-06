@@ -20,28 +20,41 @@ require_once "./database/db_connect.php";
 <body>
 	<form action="#" id="signForm">
 		<h1 class="title">Sign In</h1>
-		<div class="input-holder">
-			<label for="email">Email</label>
-			<input name="email" type="text">
-		</div>
-		<div class="input-holder">
-			<label for="password">Password</label>
-			<input name="password" type="password">
-		</div>
+		<?php
+		require_once "./components/InputHolder.php";
+		RenderInputHolder([
+			"label" => "Email",
+			"input-name" => "email",
+			"input-type" => "email"
+		]);
+		RenderInputHolder([
+			"label" => "Password",
+			"input-name" => "password",
+			"input-type" => "password"
+		]);
+		?>
 		<a id="forgot-pass">Forgot your password?</a>
 		<button type="submit" class="btn">Sign In</button>
 	</form>
 	<form action="#" id="forgotForm" style="display: none;">
 		<h1 class="title">Forgot your password?</h1>
-		<div class="input-holder">
-			<label for="email">Please enter your emaill address</label>
-			<input name="email" type="email">
-		</div>
+		<?php
+		require_once "./components/InputHolder.php";
+		RenderInputHolder([
+			"label" => "Please enter your emaill address",
+			"input-name" => "email",
+			"input-type" => "email"
+		]);
+		?>
 		<div class="btns-container">
 			<button type="submit" class="btn">Continue</button>
 			<button type="button" id="cancelBtn" class="btn">Cancel</button>
 		</div>
 	</form>
+	<?php
+	require_once "./components/GUIComponent.php";
+	renderCSS();
+	?>
 </body>
 
 </html>
