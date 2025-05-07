@@ -1,24 +1,24 @@
 <?php
-require_once "GUIComponent.php";
+require_once "GUI.php";
 
-function RenderInputHolder($props)
-{
+$gui = GUI::getInstance();
+
+$strippedFileName = basename(__FILE__, ".php");
+$gui->addComponentRenderFunction($strippedFileName, function ($props) {
 	ob_start();
 ?>
 
 	<div class="input-holder">
-		<label for=<?php echo $props["input-name"] ?>><?php echo $props["label"] ?></label>
-		<input name=<?php echo $props["input-name"] ?> type=<?php echo $props["input-type"] ?>>
+		<label for=<?= $props["input-name"] ?>><?= $props["label"] ?></label>
+		<input name=<?= $props["input-name"] ?> type=<?= $props["input-type"] ?>>
 	</div>
 
 <?php
 	$html = ob_get_clean();
+	echo $html;
+});
 
-	$component = new GUIComponent($html);
-	$component->render();
-}
-
-$css = "
+$gui->addComponentCSS("
 .input-holder {
 	display: flex;
 	flex-direction: column;
@@ -40,5 +40,4 @@ input {
 	color: var(--dark);
 	background-color: var(--light);
 }
-";
-addCSS($css);
+");
