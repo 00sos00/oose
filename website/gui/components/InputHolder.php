@@ -1,5 +1,5 @@
 <?php
-require_once "GUI.php";
+require_once "gui/GUI.php";
 
 $gui = GUI::getInstance();
 
@@ -15,7 +15,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 
 <?php
 	$html = ob_get_clean();
-	echo $html;
+	return $html;
 });
 
 $gui->addComponentCSS("
@@ -24,13 +24,13 @@ $gui->addComponentCSS("
 	flex-direction: column;
 }
 
-label {
+.input-holder label {
 	color: var(--light);
 	font-family: Roboto;
 	margin-bottom: 8px;
 }
 
-input {
+.input-holder input {
 	border-radius: 4px;
 	height: 40px;
 	font-size: 1rem;

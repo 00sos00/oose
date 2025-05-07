@@ -1,5 +1,5 @@
 <?php
-//require_once "./database/db_connect.php";
+require_once "database/db_connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +9,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sign In</title>
-	<?php
-	require_once "./components/GUI.php";
-	GUI::getInstance()->renderAllCSS();
-	?>
+	<style>
+		<?php
+		require_once "gui/GUI.php";
+		GUI::getInstance()->renderAllCSS();
+		?>
+	</style>
 	<link rel="stylesheet" href="index.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +27,7 @@
 	<form action="#" id="signForm">
 		<h1 class="title">Sign In</h1>
 		<?php
-		GUI::getInstance()->renderComponent(
+		echo GUI::getInstance()->getComponentHTML(
 			"InputHolder",
 			[
 				"label" => "Email",
@@ -33,7 +35,7 @@
 				"input-type" => "email"
 			]
 		);
-		GUI::getInstance()->renderComponent(
+		echo GUI::getInstance()->getComponentHTML(
 			"InputHolder",
 			[
 				"label" => "Password",
@@ -48,7 +50,7 @@
 	<form action="#" id="forgotForm" style="display: none;">
 		<h1 class="title">Forgot your password?</h1>
 		<?php
-		GUI::getInstance()->renderComponent(
+		echo GUI::getInstance()->getComponentHTML(
 			"InputHolder",
 			[
 				"label" => "Please enter your email address",

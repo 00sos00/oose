@@ -2,7 +2,7 @@
 class GUI
 {
 	private static $instance;
-	private $componentsRenderFunctions = [];
+	public $componentsRenderFunctions = [];
 	private $componentsCSS = [];
 
 	private function __construct() {}
@@ -27,23 +27,19 @@ class GUI
 		$this->componentsCSS[] = $css;
 	}
 
-	public function renderComponent($componentName, $props)
+	public function getComponentHTML($componentName, $props)
 	{
-		$this->componentsRenderFunctions[$componentName]($props);
+		return $this->componentsRenderFunctions[$componentName]($props);
 	}
 
 	public function renderAllCSS()
 	{
-		echo "<style>\n";
 		foreach ($this->componentsCSS as $cssText) {
 			echo $cssText . '\n';
 		}
-		echo "</style>";
 	}
 }
 
-foreach (glob("components/*.php") as $filename) {
-	if (basename($filename) != basename(__FILE__)) {
-		include_once $filename;
-	}
+foreach (glob("gui/components/*.php") as $filename) {
+	require_once $filename;
 }
