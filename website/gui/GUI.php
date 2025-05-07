@@ -4,6 +4,7 @@ class GUI
 	private static $instance;
 	public $componentsRenderFunctions = [];
 	private $componentsCSS = [];
+	private $componentsJS = [];
 
 	private function __construct() {}
 
@@ -21,21 +22,34 @@ class GUI
 		$this->componentsRenderFunctions[$componentName] = $renderFunction;
 	}
 
+	public function getComponentHTML($componentName, $props)
+	{
+		return $this->componentsRenderFunctions[$componentName]($props);
+	}
+
 	public function addComponentCSS($css)
 	{
 		if ($css == "") return;
 		$this->componentsCSS[] = $css;
 	}
 
-	public function getComponentHTML($componentName, $props)
-	{
-		return $this->componentsRenderFunctions[$componentName]($props);
-	}
-
-	public function renderAllCSS()
+	public function getAllCSSText()
 	{
 		foreach ($this->componentsCSS as $cssText) {
-			echo $cssText . '\n';
+			echo $cssText . "\n";
+		}
+	}
+
+	public function addComponentJS($js)
+	{
+		if ($js == "") return;
+		$this->componentsJS[] = $js;
+	}
+
+	public function getAllJSText()
+	{
+		foreach ($this->componentsJS as $jsText) {
+			echo $jsText . "\n";
 		}
 	}
 }

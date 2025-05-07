@@ -9,18 +9,23 @@ require_once "database/db_connect.php";
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sign In</title>
-	<style>
-		<?php
-		require_once "gui/GUI.php";
-		GUI::getInstance()->renderAllCSS();
-		?>
-	</style>
 	<link rel="stylesheet" href="index.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wdth,wght@62.5..100,100..900&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
 	<script src="jquery-3.7.1.js"></script>
 	<script src="index.js"></script>
+	<style>
+		<?php
+		require_once "gui/GUI.php";
+		GUI::getInstance()->getAllCSSText();
+		?>
+	</style>
+	<script>
+		<?php
+		GUI::getInstance()->getAllJSText();
+		?>
+	</script>
 </head>
 
 <body>
