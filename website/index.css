@@ -1,0 +1,78 @@
+:root {
+	--primary: #E3B04B;
+	--light: rgba(255, 255, 255, 0.75);
+	--dark: #161613;
+	--lighter-dark: #1D1D1B;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin: 0;
+	background-color: var(--dark);
+}
+
+form {
+	background-color: var(--lighter-dark);
+	width: 500px;
+	border-radius: 16px;
+	margin: 0 24px;
+	padding: 24px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 24px;
+	animation: display;
+}
+
+.title {
+	font-family: Roboto;
+	margin: 0;
+	color: var(--primary);
+}
+
+#forgot-pass {
+	font-family: Roboto;
+	color: white;
+	opacity: 0.5;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#forgot-pass:hover {
+	opacity: 0.75;
+}
+
+.btn {
+	font-size: 1rem;
+	font-weight: bold;
+	height: 40px;
+	padding: 0 16px;
+	border: none;
+	border-radius: 4px;
+	color: var(--dark);
+	background-color: var(--primary);
+	align-self: center;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.btn:hover {
+	opacity: 0.75;
+}
+
+.btns-container {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+
+#cancelBtn {
+	color: var(--light);
+	background-color: #9D4343;
+}
