@@ -57,5 +57,3 @@ class GUI
 foreach (glob("gui/components/*.php") as $filename) {
 	require_once $filename;
 }
-
-this is new text
