@@ -23,7 +23,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 		GUI::getInstance()->getAllCSSText();
 		?>
 	</style>
-	<script defer>
+	<script>
 		<?php
 		GUI::getInstance()->getAllJSText();
 		?>

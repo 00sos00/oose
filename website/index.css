@@ -9,7 +9,7 @@ body {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	align-items: center;
 	overflow: hidden;
 	margin: 0;

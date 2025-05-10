@@ -8,7 +8,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 	ob_start();
 ?>
 
-	<a href="#" class="sidebar-item sidebar-item-selected">
+	<a href=<?= $props["href"] ?> class="<?= "sidebar-item" . (isset($props["selected"]) ? " sidebar-item-selected" : "") ?>">
 		<object type="image/svg+xml" data=<?= "assets/" . $props["icon-name"] . ".svg" ?>></object>
 		<p><?= $props["item-text"] ?></p>
 	</a>
@@ -27,17 +27,21 @@ ob_start();
 		gap: 24px;
 		padding: 0 16px;
 		height: 48px;
-		box-shadow: 0 8px 4px rgba(0, 0, 0, 0.2);
+		margin-bottom: 8px;
 		text-decoration: none;
 	}
 
 	.sidebar-item:hover {
 		background-color: rgba(255, 255, 255, 0.1);
+		box-shadow: 0 8px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	.sidebar-item svg {
+		width: 24px;
+		height: 24px;
 	}
 
 	.sidebar-item svg * {
-		width: 24px;
-		height: 24px;
 		fill: rgba(255, 255, 255, 0.5);
 	}
 
@@ -51,6 +55,8 @@ ob_start();
 	.sidebar-item-selected {
 		background-color: rgba(255, 255, 255, 0.1);
 		border-left: 4px solid var(--primary);
+		box-shadow: 0 8px 4px rgba(0, 0, 0, 0.2);
+		pointer-events: none;
 	}
 
 	.sidebar-item-selected p {
@@ -76,9 +82,7 @@ ob_start();
 		$(".sidebar-item object").each((_, e1) => {
 			const svgDoc = e1.contentDocument;
 			const svg = svgDoc.getElementsByTagName("svg")[0];
-			$(".sidebar-item").each((_, e2) => {
-				e2.insertBefore(svg, e2.firstChild);
-			});
+			e1.parentElement.insertBefore(svg, e1.parentElement.firstChild);
 			e1.remove();
 		});
 	});
