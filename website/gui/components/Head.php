@@ -15,8 +15,8 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wdth,wght@62.5..100,100..900&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
-	<script src="index.js"></script>
 	<script src="jquery-3.7.1.js"></script>
+	<script src="index.js"></script>
 	<style>
 		<?php
 		require_once "gui/GUI.php";

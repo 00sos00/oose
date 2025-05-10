@@ -16,22 +16,16 @@ require_once "gui/GUI.php";
 	<form action="#" id="signForm">
 		<h1 class="title">Sign In</h1>
 		<?php
-		echo GUI::getInstance()->getComponentHTML(
-			"InputHolder",
-			[
-				"label" => "Email",
-				"input-name" => "email",
-				"input-type" => "email"
-			]
-		);
-		echo GUI::getInstance()->getComponentHTML(
-			"InputHolder",
-			[
-				"label" => "Password",
-				"input-name" => "password",
-				"input-type" => "password"
-			]
-		);
+		echo GUI::getInstance()->getComponentHTML("InputHolder", [
+			"label" => "Email",
+			"input-name" => "email",
+			"input-type" => "email"
+		]);
+		echo GUI::getInstance()->getComponentHTML("InputHolder", [
+			"label" => "Password",
+			"input-name" => "password",
+			"input-type" => "password"
+		]);
 		?>
 		<a id="forgot-pass">Forgot your password?</a>
 		<button type="submit" class="btn">Sign In</button>
@@ -39,14 +33,11 @@ require_once "gui/GUI.php";
 	<form action="#" id="forgotForm" style="display: none;">
 		<h1 class="title">Forgot your password?</h1>
 		<?php
-		echo GUI::getInstance()->getComponentHTML(
-			"InputHolder",
-			[
-				"label" => "Please enter your email address",
-				"input-name" => "email",
-				"input-type" => "email"
-			]
-		);
+		echo GUI::getInstance()->getComponentHTML("InputHolder", [
+			"label" => "Please enter your email address",
+			"input-name" => "email",
+			"input-type" => "email"
+		]);
 		?>
 		<div class="btns-container">
 			<button type="submit" class="btn">Continue</button>

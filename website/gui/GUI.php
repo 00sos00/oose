@@ -22,7 +22,7 @@ class GUI
 		$this->componentsRenderFunctions[$componentName] = $renderFunction;
 	}
 
-	public function getComponentHTML($componentName, $props)
+	public function getComponentHTML($componentName, $props = [])
 	{
 		return $this->componentsRenderFunctions[$componentName]($props);
 	}
