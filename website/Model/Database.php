@@ -66,16 +66,19 @@ class DataBase
 
     public function query($sql): ?mysqli_result
     {
+        // If connection is not established, reconnect
         if(!$this->conn){
             echo "Reconnecting...<br>";
             $this->connect();
         }
 
+        // Query the database
         $result = $this->conn->query($sql);
+
         if ($result === false) {
-            echo "Query Failed: " . $this->conn->error;
             return null;
         }
+        
         return $result;
     }
     
