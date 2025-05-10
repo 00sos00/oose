@@ -77,6 +77,8 @@ class DataBase
             return null;
         }
         return $result;
-    }   
+    }
+    
 }
+
 ?>
