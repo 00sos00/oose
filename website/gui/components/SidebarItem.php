@@ -5,10 +5,11 @@ $gui = GUI::getInstance();
 
 $strippedFileName = basename(__FILE__, ".php");
 $gui->addComponentRenderFunction($strippedFileName, function ($props) {
+	$selectedClass = (isset($props["selected"]) && $props["selected"] ? " sidebar-item-selected" : "");
 	ob_start();
 ?>
 
-	<a href=<?= $props["href"] ?> class="<?= "sidebar-item" . (isset($props["selected"]) ? " sidebar-item-selected" : "") ?>">
+	<a href=<?= $props["href"] ?> class="<?= "sidebar-item" . $selectedClass ?>">
 		<object type="image/svg+xml" data=<?= "assets/" . $props["icon-name"] . ".svg" ?>></object>
 		<p><?= $props["item-text"] ?></p>
 	</a>

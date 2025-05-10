@@ -13,6 +13,9 @@ require_once "gui/GUI.php";
 </head>
 
 <body>
+	<?php
+	echo GUI::getInstance()->getComponentHTML("Sidebar", ["selected-page" => "owners"]);
+	?>
 	<form action="#" id="signForm">
 		<h1 class="title">Sign In</h1>
 		<?php

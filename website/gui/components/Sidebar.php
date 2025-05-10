@@ -17,58 +17,68 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Dashboard",
 				"icon-name" => "dashboard-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "dashboard"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Reports",
 				"icon-name" => "reports-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "reports"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Deals",
 				"icon-name" => "deals-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "deals"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Properties",
 				"icon-name" => "properties-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "properties"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Accounts",
 				"icon-name" => "accounts-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "accounts"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Roles",
 				"icon-name" => "roles-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "roles"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Clients",
 				"icon-name" => "clients-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "clients"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Appointments",
 				"icon-name" => "appointments-icon",
-				"href" => ".."
+				"href" => "..",
+				"selected" => $props["selected-page"] == "appointments"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Owners",
 				"icon-name" => "owners-icon",
 				"href" => "#",
-				"selected" => true
+				"selected" => $props["selected-page"] == "owners"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Transactions",
 				"icon-name" => "transactions-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "transactions"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "System Logs",
 				"icon-name" => "Logs-icon",
-				"href" => "#"
+				"href" => "#",
+				"selected" => $props["selected-page"] == "logs"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Sign Out",
