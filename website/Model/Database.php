@@ -2,20 +2,20 @@
 class DataBase
 {
 
-    private static $instance = null; //data type: DataBase
-    private $servername;
-    private $user;
-    private $password;
-    private $dbName;
-    private $conn;  //data type: mysqli     connection object
+	private static $instance = null; //data type: DataBase
+	private $servername;
+	private $user;
+	private $password;
+	private $dbName;
+	private $conn;  //data type: mysqli     connection object
 
-    private function __construct($srvr, $usr, $pass, $db)
-    {
-        $this->servername = $srvr;
-        $this->user = $usr;
-        $this->password = $pass;
-        $this->dbName = $db;
-    }
+	private function __construct($srvr, $usr, $pass, $db)
+	{
+		$this->servername = $srvr;
+		$this->user = $usr;
+		$this->password = $pass;
+		$this->dbName = $db;
+	}
 
     private function connect()
     {
@@ -29,12 +29,12 @@ class DataBase
             $this->conn = new mysqli($this->servername, $this->user, $this->password, $this->dbName);
             $timeout *= 2;
 
-            // Timeout after 60 seconds
-            if ($timeout > 60) {
-                return;
-            }
-        }
-    }
+			// Timeout after 60 seconds
+			if ($timeout > 60) {
+				return;
+			}
+		}
+	}
 
     public static function getInstance(): DataBase
     {
@@ -47,18 +47,18 @@ class DataBase
             self::$instance = $currentInstance = new DataBase("localhost", "root", "", "Luxville");
         }
 
-        // Check if the connection is already established
-        // If it is, return the instance
-        // If it isn't, create a new connection
-        // and return the instance
-        if (!isset($currentInstance->conn)) {
-            $currentInstance->connect();
-        }
-        if ($currentInstance->conn->connect_error) {
-            echo "Connection failed: " . $currentInstance->conn->connect_error;
-            return null;
-        }
-        echo "Connected successfully\n";
+		// Check if the connection is already established
+		// If it is, return the instance
+		// If it isn't, create a new connection
+		// and return the instance
+		if (!isset($currentInstance->conn)) {
+			$currentInstance->connect();
+		}
+		if ($currentInstance->conn->connect_error) {
+			echo "Connection failed: " . $currentInstance->conn->connect_error;
+			return null;
+		}
+		echo "Connected successfully\n";
 
         // Return the Database instance
         return $currentInstance;
@@ -77,8 +77,6 @@ class DataBase
             return null;
         }
         return $result;
-    }
-    
+    }   
 }
-
 ?>
