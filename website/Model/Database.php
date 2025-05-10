@@ -20,14 +20,13 @@ class DataBase
     private function connect()
     {
         $timeout = 5;
+        $this->conn = new mysqli($this->servername, $this->user, $this->password, $this->dbName);
         // Keep trying to connect until successful or timeout
-        while($conn->connect_error) {
-            if ($timeout > 5) {
-                echo "Trying again in " . $timeout . " seconds...\n";
-                sleep($timeout);
-            }
+        while($this->conn->connect_error) {
+            echo "Trying again in " . $timeout . " seconds...\n";
+            sleep($timeout);
             // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbName);
+            $this->conn = new mysqli($this->servername, $this->user, $this->password, $this->dbName);
             $timeout *= 2;
 
             // Timeout after 60 seconds
@@ -45,7 +44,7 @@ class DataBase
         // and return it
         $currentInstance = self::$instance;
         if (!isset($currentInstance)) {
-            self::$instance = $currentInstance = new DataBase('localhost', 'root', '', 'Luxville');
+            self::$instance = $currentInstance = new DataBase("localhost", "root", "", "Luxville");
         }
 
         // Check if the connection is already established
@@ -64,5 +63,22 @@ class DataBase
         // Return the Database instance
         return $currentInstance;
     }
+
+    public function query($sql): ?mysqli_result
+    {
+        if(!$this->conn){
+            echo "Reconnecting...<br>";
+            $this->connect();
+        }
+
+        $result = $this->conn->query($sql);
+        if ($result === false) {
+            echo "Query Failed: " . $this->conn->error;
+            return null;
+        }
+        return $result;
+    }
+    
 }
+
 ?>
