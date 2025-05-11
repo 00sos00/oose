@@ -195,7 +195,6 @@ function LoadUser($className){
     $db = DataBase::getInstance();
 
     // Query the database for the class name
-    $className = strtoupper($className);
     $sql;
     if($className == "SYSTEM_USER") {
         $sql = "SELECT * FROM " . $className . ", USER WHERE " . $className . ".USER_ID = USER.USER_ID";
@@ -209,8 +208,6 @@ function LoadUser($className){
         exit();
     }
 
-    $className = strtolower($className);
-    $className[0] = strtoupper($className[0]);
     $i = 0;
 
     // Parse the result and create an object of the class

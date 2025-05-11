@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 class Property
 {
-    public $propertyId;
+    private $propertyId;
     private $forRent;
     private $forSale;
     private $price;
@@ -52,6 +52,84 @@ class Property
     {
         return new Property($result);
     }
+
+    // Getters for Property Class
+    public function getPropertyId()
+    {
+        return $this->propertyId;
+    }
+    public function getForRent()
+    {
+        return $this->forRent;
+    }
+    public function getForSale()
+    {
+        return $this->forSale;
+    }
+    public function getPrice()
+    {
+        return $this->price;
+    }
+    public function getPaidAmount()
+    {
+        return $this->paidAmount;
+    }
+    public function getMyCut()
+    {
+        return $this->myCut;
+    }
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    public function getArea()
+    {
+        return $this->area;
+    }
+    public function getListingDate()
+    {
+        return $this->listingDate;
+    }
+    public function getMediaLink()
+    {
+        return $this->mediaLink;
+    }
+    public function getIsInstallmentAvailable()
+    {
+        return $this->isInstallmentAvailable;
+    }
+    public function getInstallmentDurationMonths()
+    {
+        return $this->installmentDurationMonths;
+    }
+    public function getDownPayment()
+    {
+        return $this->downPayment;
+    }
+    public function getMonthlyPayment()
+    {
+        return $this->monthlyPayment;
+    }
+    public function getInterestRate()
+    {
+        return $this->interestRate;
+    }
+    public function getPaymentStartDate()
+    {
+        return $this->paymentStartDate;
+    }
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+    public function getAddressLink()
+    {
+        return $this->addressLink;
+    }
 }
 
 
@@ -92,6 +170,64 @@ class House extends Property
     public static function parseResult($result): House
     {
         return new House($result);
+    }
+
+    // Getters for House Class
+    public function getNumberOfBathrooms()
+    {
+        return $this->numberOfBathrooms;
+    }
+    public function getNumberOfBedrooms()
+    {
+        return $this->numberOfBedrooms;
+    }
+    public function getNumberOfFloors()
+    {
+        return $this->numberOfFloors;
+    }
+    public function getHasGarage()
+    {
+        return $this->hasGarage;
+    }
+    public function getHasGarden()
+    {
+        return $this->hasGarden;
+    }
+    public function getYearBuilt()
+    {
+        return $this->yearBuilt;
+    }
+    public function getHeatingType()
+    {
+        return $this->heatingType;
+    }
+    public function getCoolingType()
+    {
+        return $this->coolingType;
+    }
+    public function getIsFurnished()
+    {
+        return $this->isFurnished;
+    }
+    public function getBackyardArea()
+    {
+        return $this->backyardArea;
+    }
+    public function getFlooringType()
+    {
+        return $this->flooringType;
+    }
+    public function getRoofType()
+    {
+        return $this->roofType;
+    }
+    public function getNetworkInfrastructure()
+    {
+        return $this->networkInfrastructure;
+    }
+    public function getHasLandline()
+    {
+        return $this->hasLandline;
     }
 }
 
@@ -155,6 +291,36 @@ class Studio extends Property
     {
         return new Studio($result);
     }
+
+    // Getters for Studio Class
+    public function getFloorNumber()
+    {
+        return $this->floorNumber;
+    }
+    public function getApartmentName()
+    {
+        return $this->apartmentName;
+    }
+    public function getIsFurnished()
+    {
+        return $this->isFurnished;
+    }
+    public function getHasKitchenette()
+    {
+        return $this->hasKitchenette;
+    }
+    public function getHasBalcony()
+    {
+        return $this->hasBalcony;
+    }
+    public function getMonthlyMaintenanceFee()
+    {
+        return $this->monthlyMaintenanceFee;
+    }
+    public function getHasLandline()
+    {
+        return $this->hasLandline;
+    }
 }
 
 class Office extends Property
@@ -189,6 +355,48 @@ class Office extends Property
     {
         return new Office($result);
     }
+
+    // Getters for Office Class
+    public function getFloorNumber()
+    {
+        return $this->floorNumber;
+    }
+    public function getBuildingName()
+    {
+        return $this->buildingName;
+    }
+    public function getNumberOfRooms()
+    {
+        return $this->numberOfRooms;
+    }
+    public function getMeetingRooms()
+    {
+        return $this->meetingRooms;
+    }
+    public function getIsFurnished()
+    {
+        return $this->isFurnished;
+    }
+    public function getHasReceptionArea()
+    {
+        return $this->hasReceptionArea;
+    }
+    public function getHasParking()
+    {
+        return $this->hasParking;
+    }
+    public function getMonthlyMaintenanceFee()
+    {
+        return $this->monthlyMaintenanceFee;
+    }
+    public function getNetworkInfrastructure()
+    {
+        return $this->networkInfrastructure;
+    }
+    public function getHasLandline()
+    {
+        return $this->hasLandline;
+    }
 }
 
 class Land extends Property
@@ -215,6 +423,32 @@ class Land extends Property
     {
         return new Land($result);
     }
+
+    // Getters for Land Class
+    public function getLandType()
+    {
+        return $this->landType;
+    }
+    public function getZoningInfo()
+    {
+        return $this->zoningInfo;
+    }
+    public function getBuildableArea()
+    {
+        return $this->buildableArea;
+    }
+    public function getPlotNumber()
+    {
+        return $this->plotNumber;
+    }
+    public function getTopography()
+    {
+        return $this->topography;
+    }
+    public function getRoadAccess()
+    {
+        return $this->roadAccess;
+    }
 }
 
 function LoadClass($className)
@@ -229,7 +463,6 @@ function LoadClass($className)
   $db = DataBase::getInstance();
 
   // Query the database for the class name
-  $className = strtoupper($className);
   $sql = "SELECT * FROM " . $className . ", PROPERTY WHERE " . $className . ".PROPERTY_ID = PROPERTY.PROPERTY_ID";
   $result = $db->query($sql);
 
@@ -238,8 +471,6 @@ function LoadClass($className)
       exit();
   }
 
-  $className = strtolower($className);
-  $className[0] = strtoupper($className[0]);
   $i = 0;
 
   // Parse the result and create an object of the class
