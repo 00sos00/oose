@@ -17,9 +17,16 @@ $gui = GUI::getInstance();
 	<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "accounts"]) ?>
 	<div class="right-content">
 		<?php
-		$queryResult = $db->query("select concat('#', user_id), first_name, last_name, country_code, phone_number from user limit 10;");
+		$queryResult = $db->query("
+		select
+			concat('#', USER.USER_ID), first_name, last_name, email, country_code, phone_number
+		from USER
+		join SYSTEM_USER
+		on USER.USER_ID = SYSTEM_USER.USER_ID
+		limit 10;
+		");
 		echo $gui->getComponentHTML("Table", [
-			"columns" => ["User ID", "First Name", "Last Name", "Country Code", "Phone Number"],
+			"columns" => ["User ID", "First Name", "Last Name", "Email", "Country Code", "Phone Number"],
 			"queryResult" => $queryResult,
 			"hasActionColumn" => true
 		]);
