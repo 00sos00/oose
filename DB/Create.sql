@@ -260,3 +260,10 @@ VALUES
 ('User deleted', 4),
 ('Role assigned', 3),
 ('Permission granted', 5);
+
+-- REPORTS
+INSERT INTO REPORT (
+    REPORT_TITLE, REPORT_DESCRIPTION, REPORT_TYPE, REPORT_FORMAT, FILE_PATH, STATUS, GENERATED_AT, REVIEWED_AT, USER_ID
+)
+VALUES 
+("Test Report", "This report is a test for database", "Transactions", ".pdf", "C:\\Sample\\Reports\\", 0, NOW(), NULL, 4);
