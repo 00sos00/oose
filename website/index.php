@@ -28,11 +28,6 @@ require_once "gui/GUI.php";
 			"input-name" => "password",
 			"input-type" => "password"
 		]);
-		echo GUI::getInstance()->getComponentHTML("Topbar", [
-    "user-name" => "Gunnar Hajderi",
-    "user-role" => "Admin",
-    "profile-img" => "assets/user-profile.jpg" 
-]);
 		?>
 		<a id="forgot-pass">Forgot your password?</a>
 		<button type="submit" class="btn">Sign In</button>
