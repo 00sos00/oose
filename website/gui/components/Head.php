@@ -1,31 +1,28 @@
 <?php
-require_once "gui/GUI.php";
-
+require_once __DIR__ . "/../GUI.php";
 $gui = GUI::getInstance();
 
 $strippedFileName = basename(__FILE__, ".php");
-$gui->addComponentRenderFunction($strippedFileName, function ($props) {
+$gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui) {
 	ob_start();
 ?>
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?= $props["page-title"] ?></title>
-	<link rel="stylesheet" href="index.css">
+	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wdth,wght@62.5..100,100..900&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
-	<script src="jquery-3.7.1.js"></script>
-	<script src="index.js"></script>
+	<script src="/jquery-3.7.1.js"></script>
 	<style>
 		<?php
-		require_once "gui/GUI.php";
-		GUI::getInstance()->getAllCSSText();
+		$gui->getAllCSSText();
 		?>
 	</style>
 	<script>
 		<?php
-		GUI::getInstance()->getAllJSText();
+		$gui->getAllJSText();
 		?>
 	</script>
 
@@ -45,11 +42,11 @@ ob_start();
 	}
 
 	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 100vw;
 		height: 100vh;
-		display: flex;
-		justify-content: left;
-		align-items: center;
 		overflow: hidden;
 		margin: 0;
 		background-color: var(--dark);

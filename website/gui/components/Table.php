@@ -1,5 +1,5 @@
 <?php
-require_once "gui/GUI.php";
+require_once __DIR__ . "/../GUI.php";
 
 $gui = GUI::getInstance();
 
@@ -29,8 +29,8 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 				}
 				if (isset($props["hasActionColumn"])) {
 					echo "<td class='table-cell action-cell'>";
-					echo "<object type='image/svg+xml' data='assets/pen-icon.svg'></object>";
-					echo "<object type='image/svg+xml' data='assets/trash-icon.svg'></object>";
+					echo "<object type='image/svg+xml' data='/assets/pen-icon.svg'></object>";
+					echo "<object type='image/svg+xml' data='/assets/trash-icon.svg'></object>";
 					echo "</td>";
 				}
 				echo "</tr>";
@@ -49,10 +49,7 @@ ob_start();
 <style>
 	.table-container {
 		box-sizing: border-box;
-		width: 100%;
-		height: 80%;
 		padding: 16px;
-		margin: 100px;
 		border-radius: 16px;
 		background-color: var(--lighter-dark);
 		text-align: left;

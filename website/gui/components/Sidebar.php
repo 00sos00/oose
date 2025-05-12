@@ -1,6 +1,5 @@
 <?php
-require_once "gui/GUI.php";
-
+require_once __DIR__ . "/../GUI.php";
 $gui = GUI::getInstance();
 
 $strippedFileName = basename(__FILE__, ".php");
@@ -10,7 +9,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 
 	<div class="sidebar-container">
 		<div class="logo-container">
-			<img src="assets/logo.png" alt="logo">
+			<img src="/assets/logo.png" alt="logo">
 		</div>
 		<div class="items-container">
 			<?php
@@ -100,7 +99,7 @@ ob_start();
 	.sidebar-container {
 		display: flex;
 		flex-direction: column;
-		gap: 36px;
+		gap: 12px;
 		width: 316px;
 		height: 100%;
 		padding: 36px 0;
