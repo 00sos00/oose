@@ -58,7 +58,6 @@ class DataBase
 			echo "Connection failed: " . $currentInstance->conn->connect_error;
 			return null;
 		}
-		echo "Connected successfully\n";
 
 		// Return the Database instance
 		return $currentInstance;
@@ -68,7 +67,6 @@ class DataBase
 	{
 		// If connection is not established, reconnect
 		if (!$this->conn) {
-			echo "Reconnecting...<br>";
 			$this->connect();
 		}
 

@@ -15,8 +15,12 @@ require_once "gui/GUI.php";
 	<?php
 	require_once "Model/Database.php";
 	$db = DataBase::getInstance();
-	$result = $db->query("select * from user");
-	echo GUI::getInstance()->getComponentHTML("Table", ["query-result" => $result]);
+	$result = $db->query("select user_id, first_name, last_name, country_code, phone_number from user limit 10");
+	echo GUI::getInstance()->getComponentHTML("Table", [
+		"columns" => ["User ID", "First Name", "Last Name", "Country Code", "Phone Number"],
+		"queryResult" => $result,
+		"hasActionColumn" => true
+	]);
 	?>
 	<!-- <?php
 			echo GUI::getInstance()->getComponentHTML("Sidebar", ["selected-page" => "owners"]);

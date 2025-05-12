@@ -5,7 +5,7 @@ $gui = GUI::getInstance();
 
 $strippedFileName = basename(__FILE__, ".php");
 $gui->addComponentRenderFunction($strippedFileName, function ($props) {
-	if (!isset($props["query-result"])) return;
+	if (!isset($props["queryResult"])) return;
 	ob_start();
 ?>
 
@@ -13,16 +13,25 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 		<table>
 			<tr>
 				<?php
-				foreach ($props["query-result"]->fetch_assoc() as $columnName => $_) {
+				foreach ($props["columns"] as $columnName) {
 					echo "<th class='table-cell'>$columnName</th>";
+				}
+				if (isset($props["hasActionColumn"])) {
+					echo "<th class='table-cell action-cell'>Action</th>";
 				}
 				?>
 			</tr>
 			<?php
-			while ($row = $props["query-result"]->fetch_assoc()) {
+			while ($row = $props["queryResult"]->fetch_assoc()) {
 				echo "<tr>";
 				foreach ($row as $_ => $cellValue) {
 					echo "<td class='table-cell'>$cellValue</td>";
+				}
+				if (isset($props["hasActionColumn"])) {
+					echo "<td class='table-cell action-cell'>";
+					echo "<object type='image/svg+xml' data='assets/pen-icon.svg'></object>";
+					echo "<object type='image/svg+xml' data='assets/trash-icon.svg'></object>";
+					echo "</td>";
 				}
 				echo "</tr>";
 			}
@@ -47,7 +56,8 @@ ob_start();
 		border-radius: 16px;
 		background-color: var(--lighter-dark);
 		text-align: left;
-		overflow-y: scroll;
+		overflow-y: hidden;
+		box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
 	}
 
 	.table-container table {
@@ -62,8 +72,22 @@ ob_start();
 
 	.table-cell {
 		flex: 1;
-		padding: 8px 0;
+		padding: 8px 16px;
 		vertical-align: middle;
+	}
+
+	.action-cell {
+		display: flex;
+		gap: 12px;
+		flex: 0;
+	}
+
+	.action-cell svg {
+		cursor: pointer;
+	}
+
+	.action-cell svg:hover {
+		opacity: 0.75;
 	}
 
 	.table-container th {
