@@ -44,7 +44,7 @@ class DataBase
 		// and return it
 		$currentInstance = self::$instance;
 		if (!isset($currentInstance)) {
-			self::$instance = $currentInstance = new DataBase("localhost", "root", "", "luxville");
+			self::$instance = $currentInstance = new DataBase("localhost", "root", "", "Luxville");
 		}
 
 		// Check if the connection is already established
