@@ -23,7 +23,6 @@ class DataBase
 		$this->conn = new mysqli($this->servername, $this->user, $this->password, $this->dbName);
 		// Keep trying to connect until successful or timeout
 		while ($this->conn->connect_error) {
-			echo "Trying again in " . $timeout . " seconds...\n";
 			sleep($timeout);
 			// Create connection
 			$this->conn = new mysqli($this->servername, $this->user, $this->password, $this->dbName);
@@ -55,7 +54,6 @@ class DataBase
 			$currentInstance->connect();
 		}
 		if ($currentInstance->conn->connect_error) {
-			echo "Connection failed: " . $currentInstance->conn->connect_error;
 			return null;
 		}
 
