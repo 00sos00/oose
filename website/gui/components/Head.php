@@ -36,7 +36,25 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 
 ob_start();
 ?>
-<style></style>
+<style>
+	:root {
+		--primary: #E3B04B;
+		--light: rgba(255, 255, 255, 0.75);
+		--dark: #161613;
+		--lighter-dark: #1D1D1B;
+	}
+
+	body {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: left;
+		align-items: center;
+		overflow: hidden;
+		margin: 0;
+		background-color: var(--dark);
+	}
+</style>
 <?php
 $css = ob_get_clean();
 $css = str_replace("<style>", "", $css);

@@ -13,8 +13,14 @@ require_once "gui/GUI.php";
 
 <body>
 	<?php
-	echo GUI::getInstance()->getComponentHTML("Sidebar", ["selected-page" => "owners"]);
+	require_once "Model/Database.php";
+	$db = DataBase::getInstance();
+	$result = $db->query("select * from user");
+	echo GUI::getInstance()->getComponentHTML("Table", ["query-result" => $result]);
 	?>
+	<!-- <?php
+			echo GUI::getInstance()->getComponentHTML("Sidebar", ["selected-page" => "owners"]);
+			?>
 	<form action="#" id="signForm">
 		<h1 class="title">Sign In</h1>
 		<?php
@@ -29,14 +35,14 @@ require_once "gui/GUI.php";
 			"input-type" => "password"
 		]);
 		echo GUI::getInstance()->getComponentHTML("Topbar", [
-    "user-name" => "Gunnar Hajderi",
-    "user-role" => "Admin",
-    "profile-img" => "assets/user-profile.jpg" 
-]);
+			"user-name" => "Gunnar Hajderi",
+			"user-role" => "Admin",
+			"profile-img" => "assets/user-profile.jpg"
+		]);
 		?>
 		<a id="forgot-pass">Forgot your password?</a>
 		<button type="submit" class="btn">Sign In</button>
-	</form>
+	</form> -->
 	<form action="#" id="forgotForm" style="display: none;">
 		<h1 class="title">Forgot your password?</h1>
 		<?php
