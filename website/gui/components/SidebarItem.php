@@ -1,6 +1,5 @@
 <?php
-require_once "gui/GUI.php";
-
+require_once __DIR__ . "/../GUI.php";
 $gui = GUI::getInstance();
 
 $strippedFileName = basename(__FILE__, ".php");
@@ -10,7 +9,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ?>
 
 	<a href=<?= $props["href"] ?> class="<?= "sidebar-item" . $selectedClass ?>">
-		<object type="image/svg+xml" data=<?= "assets/" . $props["icon-name"] . ".svg" ?>></object>
+		<object type="image/svg+xml" data=<?= "/assets/" . $props["icon-name"] . ".svg" ?>></object>
 		<p><?= $props["item-text"] ?></p>
 	</a>
 
