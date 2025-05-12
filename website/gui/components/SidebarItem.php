@@ -1,6 +1,5 @@
 <?php
-require_once "gui/GUI.php";
-
+require_once __DIR__ . "/../GUI.php";
 $gui = GUI::getInstance();
 
 $strippedFileName = basename(__FILE__, ".php");
@@ -10,7 +9,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ?>
 
 	<a href=<?= $props["href"] ?> class="<?= "sidebar-item" . $selectedClass ?>">
-		<object type="image/svg+xml" data=<?= "assets/" . $props["icon-name"] . ".svg" ?>></object>
+		<object type="image/svg+xml" data=<?= "/assets/" . $props["icon-name"] . ".svg" ?>></object>
 		<p><?= $props["item-text"] ?></p>
 	</a>
 
@@ -79,14 +78,7 @@ $gui->addComponentCSS($css);
 ob_start();
 ?>
 <script>
-	$(window).on("load", () => {
-		$(".sidebar-item object").each((_, e1) => {
-			const svgDoc = e1.contentDocument;
-			const svg = svgDoc.getElementsByTagName("svg")[0];
-			e1.parentElement.insertBefore(svg, e1.parentElement.firstChild);
-			e1.remove();
-		});
-	});
+
 </script>
 <?php
 $js = ob_get_clean();

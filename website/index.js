@@ -1,5 +1,5 @@
 const fadeSpeed = 150;
-window.onload = function () {
+$(window).on("load", () => {
 	$("#forgot-pass").click(() => {
 		$("#signForm").fadeOut(fadeSpeed, "swing", () => {
 			$("#forgotForm").fadeIn(fadeSpeed, "swing");
@@ -10,4 +10,4 @@ window.onload = function () {
 			$("#signForm").fadeIn(fadeSpeed, "swing");
 		});
 	});
-}
+});
