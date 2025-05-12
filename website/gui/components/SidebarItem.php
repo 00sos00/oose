@@ -79,14 +79,7 @@ $gui->addComponentCSS($css);
 ob_start();
 ?>
 <script>
-	$(window).on("load", () => {
-		$(".sidebar-item object").each((_, e1) => {
-			const svgDoc = e1.contentDocument;
-			const svg = svgDoc.getElementsByTagName("svg")[0];
-			e1.parentElement.insertBefore(svg, e1.parentElement.firstChild);
-			e1.remove();
-		});
-	});
+
 </script>
 <?php
 $js = ob_get_clean();

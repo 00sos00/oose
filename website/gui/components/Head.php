@@ -36,7 +36,25 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 
 ob_start();
 ?>
-<style></style>
+<style>
+	:root {
+		--primary: #E3B04B;
+		--light: rgba(255, 255, 255, 0.75);
+		--dark: #161613;
+		--lighter-dark: #1D1D1B;
+	}
+
+	body {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: left;
+		align-items: center;
+		overflow: hidden;
+		margin: 0;
+		background-color: var(--dark);
+	}
+</style>
 <?php
 $css = ob_get_clean();
 $css = str_replace("<style>", "", $css);
@@ -46,7 +64,14 @@ $gui->addComponentCSS($css);
 ob_start();
 ?>
 <script>
-
+	$(window).on("load", () => {
+		$("object").each((_, e1) => {
+			const svgDoc = e1.contentDocument;
+			const svg = svgDoc.getElementsByTagName("svg")[0];
+			e1.parentElement.insertBefore(svg, e1);
+			e1.remove();
+		});
+	});
 </script>
 <?php
 $js = ob_get_clean();
