@@ -1,5 +1,5 @@
 <?php
-require_once "gui/GUI.php";
+require_once __DIR__ . "/../GUI.php";
 
 $gui = GUI::getInstance();
 
