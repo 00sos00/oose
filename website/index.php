@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (isset($_SESSION["user_id"])) {
+	header("Location: /accounts");
+	exit();
+}
+
 require_once "Model/Database.php";
 require_once "gui/GUI.php";
 $db = DataBase::getInstance();
@@ -15,8 +21,9 @@ $gui = GUI::getInstance();
 </head>
 
 <body>
-	<form action="#" id="signForm">
+	<form action="controllers/sign-in.php" method="post" id="signForm">
 		<h1 class="title">Sign In</h1>
+		<p class="error"><?= $_SESSION["error"] ?? "" ?></p>
 		<?php
 		echo $gui->getComponentHTML("InputHolder", [
 			"label" => "Email",

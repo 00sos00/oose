@@ -1,3 +1,10 @@
+.error {
+	color: var(--red);
+	font-family: Roboto;
+	font-weight: bold;
+	margin: 0;
+}
+
 form {
 	background-color: var(--lighter-dark);
 	width: 500px;
