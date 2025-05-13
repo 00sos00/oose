@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../controllers/check-signed.php";
 require_once __DIR__ . "/../Model/Database.php";
 require_once __DIR__ . "/../gui/GUI.php";
 $db = DataBase::getInstance();
