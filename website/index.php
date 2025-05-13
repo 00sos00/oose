@@ -56,3 +56,5 @@ $gui = GUI::getInstance();
 </body>
 
 </html>
+
+<?php unset($_SESSION["error"]) ?>
