@@ -36,5 +36,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		header("Location: /");
 	}
 } else {
-	echo "Get out no one likes you.";
+	header("Location: /");
 }
