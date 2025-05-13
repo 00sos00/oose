@@ -82,7 +82,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Sign Out",
 				"icon-name" => "signout-icon",
-				"href" => "#"
+				"href" => "/controllers/sign-out.php"
 			]);
 			?>
 		</div>
