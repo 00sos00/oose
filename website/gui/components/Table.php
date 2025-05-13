@@ -67,6 +67,10 @@ ob_start();
 		margin-bottom: 16px;
 	}
 
+	.table-container tr:not(:first-child):hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+
 	.table-cell {
 		flex: 1;
 		padding: 8px 16px;
