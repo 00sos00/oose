@@ -39,6 +39,8 @@ ob_start();
 		--light: rgba(255, 255, 255, 0.75);
 		--dark: #161613;
 		--lighter-dark: #1D1D1B;
+		--green: #439D61;
+		--red: #9D4343;
 	}
 
 	body {
