@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 .error {
 	color: var(--red);
 	font-family: Roboto;
@@ -5,6 +7,7 @@
 	margin: 0;
 }
 
+>>>>>>> 901977368236855927dbb952b9f4069f12046f02
 form {
 	background-color: var(--lighter-dark);
 	width: 500px;

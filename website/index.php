@@ -1,11 +1,14 @@
 <?php
+<<<<<<< HEAD
+=======
 ini_set('session.cookie_httponly', 1);
 session_start();
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["user_id"])) {
 	header("Location: /accounts");
 	exit();
 }
 
+>>>>>>> 901977368236855927dbb952b9f4069f12046f02
 require_once "Model/Database.php";
 require_once "gui/GUI.php";
 $db = DataBase::getInstance();
@@ -22,7 +25,11 @@ $gui = GUI::getInstance();
 </head>
 
 <body>
+<<<<<<< HEAD
+	<form action="#" id="signForm">
+=======
 	<form action="controllers/sign-in.php" method="post" id="signForm">
+>>>>>>> 901977368236855927dbb952b9f4069f12046f02
 		<h1 class="title">Sign In</h1>
 		<p class="error"><?= $_SESSION["error"] ?? "" ?></p>
 		<?php
