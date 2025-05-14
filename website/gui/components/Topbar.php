@@ -178,8 +178,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
             const markAllReadLink = document.querySelector('#mark-all-read');
             const viewAllLink = document.querySelector('#view-all-notifications');
 
-            // Sample notification data 
-
+            // Sample notification data (replace with API if available)
             let notifications = [
                 { id: 1, message: "You have a new request", read: false },
                 { id: 2, message: "System updated", read: true }
