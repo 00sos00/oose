@@ -1,44 +1,38 @@
 <?php
 session_start();
-require_once __DIR__ . "/../Model/Database.php";
-require_once __DIR__ . "/../Model/User.php";
-$db = DataBase::getInstance();
+
+// Check if the user has logged in
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	// Get the email and password from the form
 	$email = htmlspecialchars($_POST["email"] ?? "");
 	$password = htmlspecialchars($_POST["password"] ?? "");
+
+	// Check if the email is not a valid email address
+	// set the error message
+	// and redirect to the login page
 	if (filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
 		$_SESSION["error"] = "Please enter a valid email address";
-		header("Location: /");
+		header("Location: ../index.php");
 		exit();
 	}
-	if (strlen($password) < 8) {
-		$_SESSION["error"] = "A minimum of 8 characters is needed for a password";
-		header("Location: /");
-		exit();
-	}
+	// Load the user from the database
+	// using the email and password
+	require_once "../Model/User.php";
+	$user = Load($email, $password);
 
-	$result = $db->query("
-		select
-			U.USER_ID, U.FIRST_NAME, U.LAST_NAME, U.COUNTRY_CODE, U.PHONE_NUMBER, SU.EMAIL, SU.PASSWORD
-		from USER U
-		join SYSTEM_USER SU
-		on U.USER_ID = SU.USER_ID
-		where EMAIL = '$email';
-	");
-	if ($userResult = $result->fetch_assoc()) {
-		if ($password == $userResult["PASSWORD"]) {
-			$sysUser = new System_User($userResult);
-			$_SESSION["user"] = $sysUser;
-			unset($_SESSION["error"]);
-			header("Location: /accounts");
-		} else {
-			$_SESSION["error"] = "Invalid password";
-			header("Location: /");
-		}
-	} else {
-		$_SESSION["error"] = "Account not found";
-		header("Location: /");
+	// Check if the user is found
+	if(!isset($user)) {
+		// if the user is not found, set the error message
+		// and redirect to the login page
+		$_SESSION["error"] = "Email or password is incorrect";
+		header("Location: ../index.php");
+		exit();
+	}else{
+		// if the user is found, set the session variables
+		$_SESSION["user_id"] = $user->getUserId();
+		$_SESSION["user_first_name"] = $user->getFirstName();
+		$_SESSION["user_last_name"] = $user->getLastName();
+		$_SESSION["user_email"] = $user->getEmail();
 	}
-} else {
-	header("Location: /");
 }

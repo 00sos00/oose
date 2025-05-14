@@ -50,7 +50,7 @@ class System_User extends User
     private $email;
     private $password;
 
-    public function __construct($result)
+    protected function __construct($result)
     {
         parent::__construct($result);
         // Parse the result from the database
@@ -220,4 +220,29 @@ function LoadUser($className){
 
     // Return the array of objects
     return $object;
+}
+
+function Load($email, $password)
+{
+    require_once "Database.php";
+    $db = DataBase::getInstance();
+
+    // Query the database for the class name
+    $sql = "SELECT * FROM SYSTEM_USER, USER WHERE EMAIL =  '$email' AND PASSWORD = '$password' AND SYSTEM_USER.USER_ID = USER.USER_ID";
+    $result = $db->query($sql);
+
+    // Check if the query was successful
+    if (!isset($result)) {
+        return null;
+    }
+
+    // Parse the result and create an object of the class
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            return System_User::parseResult($row);
+        }
+    }
+
+    // Return null if no user is found
+    return null;
 }
