@@ -245,7 +245,8 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
                 window.location.href = 'all-notifications.html'; // Replace with your link
             });
 
-            // Simulate a new notification (for testing, replace with API or WebSocket)
+            // Simulate a new notification git branch Topbar
+
             setTimeout(() => {
                 notifications.push({ id: 3, message: "New notification!", read: false });
                 renderNotifications();
