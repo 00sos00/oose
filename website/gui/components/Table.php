@@ -65,6 +65,7 @@ ob_start();
 		width: 100%;
 		display: flex;
 		margin-bottom: 16px;
+		border-radius: 4px;
 	}
 
 	.table-container tr:not(:first-child):hover {
