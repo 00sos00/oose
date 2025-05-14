@@ -65,6 +65,14 @@ ob_start();
 		width: 100%;
 		display: flex;
 		margin-bottom: 16px;
+<<<<<<< HEAD
+=======
+		border-radius: 4px;
+	}
+
+	.table-container tr:not(:first-child):hover {
+		background-color: rgba(255, 255, 255, 0.1);
+>>>>>>> 901977368236855927dbb952b9f4069f12046f02
 	}
 
 	.table-cell {
