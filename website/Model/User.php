@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 class User
 {
     private $firstName;
@@ -196,6 +198,9 @@ function LoadUser($className){
 
     // Query the database for the class name
     $sql;
+    
+    // Transform the class name to uppercase
+    $className = strtoupper($className);
     if($className == "SYSTEM_USER") {
         $sql = "SELECT * FROM " . $className . ", USER WHERE " . $className . ".USER_ID = USER.USER_ID";
     }else {
@@ -218,7 +223,7 @@ function LoadUser($className){
         }
     }
 
-    // Return the array of objects
+    // Return user objects
     return $object;
 }
 

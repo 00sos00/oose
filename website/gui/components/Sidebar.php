@@ -100,7 +100,7 @@ ob_start();
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
-		width: 316px;
+		width: 20%;
 		height: 100%;
 		padding: 36px 0;
 		background-color: var(--lighter-dark);

@@ -48,8 +48,11 @@ ob_start();
 	.sidebar-item p {
 		font-family: Roboto;
 		font-weight: 600;
-		font-size: 1.25rem;
-		color: rgba(255, 255, 255, 0.5);
+		font-size: clamp(0.1rem, 2vw, 1rem);
+		color: rgba(255, 255, 255, 0.4);
+		white-space: nowrap; /* Prevents text from wrapping */
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.sidebar-item-selected {
