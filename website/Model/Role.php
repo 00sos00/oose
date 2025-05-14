@@ -1,0 +1,81 @@
+<?php
+class Role{
+    private $roleId;
+    public $canImportExportTransactions;
+    public $canViewTransactions;
+    public $canEditTransactions;
+    public $canDeleteUser;
+    public $canCreateTransactions;
+    public $canEditAuditLog;
+    public $canExportAuditLog;
+    public $canManageRoles;
+    public $canDeleteTransactions;
+    public $canCreateUser;
+    public $canEditUsers;
+    public $canViewAuditLog;
+    public $roleName;
+    private $userId;
+
+    protected function __construct($result)
+    {
+        // Constructor is private to prevent direct instantiation
+        // Parse the result from the database
+        $this->roleId = $result["ROLE_ID"];
+        $this->canImportExportTransactions = (bool)$result["CAN_IMPORT_EXPORT_TRANSACTIONS"];
+        $this->canViewTransactions = (bool)$result["CAN_VIEW_TRANSACTIONS"];
+        $this->canEditTransactions = (bool)$result["CAN_EDIT_TRANSACTIONS"];
+        $this->canDeleteUser = (bool)$result["CAN_DELETE_USER"];
+        $this->canCreateTransactions = (bool)$result["CAN_CREATE_TRANSACTIONS"];
+        $this->canEditAuditLog = (bool)$result["CAN_EDIT_AUDIT_LOG"];
+        $this->canExportAuditLog = (bool)$result["CAN_EXPORT_AUDIT_LOG"];
+        $this->canManageRoles = (bool)$result["CAN_MANAGE_ROLES"];
+        $this->canDeleteTransactions = (bool)$result["CAN_DELETE_TRANSACTIONS"];
+        $this->canCreateUser = (bool)$result["CAN_CREATE_USER"];
+        $this->canEditUsers = (bool)$result["CAN_EDIT_USERS"];
+        $this->canViewAuditLog = (bool)$result["CAN_VIEW_AUDIT_LOG"];
+        $this->roleName = $result["ROLE_NAME"];
+        $this->userId = (int)$result["USER_ID"];
+    }
+
+    public static function parseResult($result): Role
+    {
+        return new Role($result);
+    }
+
+    // Getters for Role Class
+    public function getRoleId()
+    {
+        return $this->roleId;
+    }
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+}
+
+function LoadRole(){
+    require_once "Database.php";
+
+    $object = [];
+    $db = DataBase::getInstance();
+
+    // Query the database for the class name
+    $sql = "SELECT * FROM ROLE";
+    $result = $db->query($sql);
+
+    // Check if the query was successful
+    if (!isset($result)) {
+        exit();
+    }
+
+    $i = 0;
+
+    // Parse the result and create an object of the class
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $object[$i] = Role::parseResult($row);
+            $i++;
+        }
+    }
+    return $object;
+}
