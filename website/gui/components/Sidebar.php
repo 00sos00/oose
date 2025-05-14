@@ -9,7 +9,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 
 	<div class="sidebar-container">
 		<div class="logo-container">
-			<img src="/assets/logo.png" alt="logo">
+			<img src="/Luxville/website/assets/logo.png" alt="logo">
 		</div>
 		<div class="items-container">
 			<?php
@@ -58,7 +58,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Appointments",
 				"icon-name" => "appointments-icon",
-				"href" => "..",
+				"href" => "#",
 				"selected" => $props["selected-page"] == "appointments"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
@@ -82,7 +82,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Sign Out",
 				"icon-name" => "signout-icon",
-				"href" => "/controllers/sign-out.php"
+				"href" => "../controllers/sign-out.php"
 			]);
 			?>
 		</div>
@@ -102,6 +102,8 @@ ob_start();
 		gap: 12px;
 		width: 20%;
 		height: 100%;
+		max-height: 100%;
+		overflow-y: hidden;
 		padding: 36px 0;
 		background-color: var(--lighter-dark);
 		box-shadow: 16px 0 24px rgba(0, 0, 0, 0.2);
@@ -109,9 +111,10 @@ ob_start();
 	}
 
 	.logo-container {
-		height: 20%;
+		height: 16%;
 		display: flex;
 		justify-content: center;
+		margin-bottom: 6%;
 	}
 
 	.logo-container img {
@@ -119,7 +122,7 @@ ob_start();
 	}
 
 	.items-container {
-		padding: 0 16px;
+		padding: 0 5%;
 	}
 </style>
 <?php

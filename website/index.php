@@ -3,7 +3,7 @@
 ini_set('session.cookie_httponly', 1);
 session_start();
 if (isset($_SESSION["user_id"])) {
-	header("Location: /accounts");
+	header("Location: View/Account_view.php");
 	exit();
 }
 require_once "Model/Database.php";

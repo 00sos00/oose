@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION["user_first_name"] = $user->getFirstName();
 		$_SESSION["user_last_name"] = $user->getLastName();
 		$_SESSION["user_email"] = $user->getEmail();
-		header("Location: /accounts");
+		header("Location: ../View/Account_view.php");
+		exit();
 	}
 }

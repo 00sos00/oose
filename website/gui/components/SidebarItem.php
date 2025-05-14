@@ -9,7 +9,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ?>
 
 	<a href=<?= $props["href"] ?> class="<?= "sidebar-item" . $selectedClass ?>">
-		<object type="image/svg+xml" data=<?= "/assets/" . $props["icon-name"] . ".svg" ?>></object>
+		<object type="image/svg+xml" data=<?= "/Luxville/website/assets/" . $props["icon-name"] . ".svg" ?>></object>
 		<p><?= $props["item-text"] ?></p>
 	</a>
 
@@ -24,11 +24,14 @@ ob_start();
 	.sidebar-item {
 		display: flex;
 		align-items: center;
-		gap: 24px;
+		gap: 10%;
 		padding: 0 16px;
-		height: 48px;
-		margin-bottom: 8px;
+		height: 2.3em;
+		max-height: 80%;
+		margin-bottom: 6%;
 		text-decoration: none;
+		box-sizing: border-box;
+		overflow: hidden;
 	}
 
 	.sidebar-item:hover {
@@ -42,14 +45,14 @@ ob_start();
 	}
 
 	.sidebar-item svg * {
-		fill: rgba(255, 255, 255, 0.5);
+		fill: rgba(255, 255, 255, 0.3);
 	}
 
 	.sidebar-item p {
 		font-family: Roboto;
 		font-weight: 600;
 		font-size: clamp(0.1rem, 2vw, 1rem);
-		color: rgba(255, 255, 255, 0.4);
+		color: rgba(255, 255, 255, 0.5);
 		white-space: nowrap; /* Prevents text from wrapping */
 		overflow: hidden;
 		text-overflow: ellipsis;
