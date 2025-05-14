@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . "/../Model/Database.php";
+require_once __DIR__ . "/../Model/User.php";
 $db = DataBase::getInstance();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$email = htmlspecialchars($_POST["email"] ?? "");
@@ -18,13 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$result = $db->query("
 		select
-			user_id, email, password
-		from system_user
-		where email = '$email';
+			U.USER_ID, U.FIRST_NAME, U.LAST_NAME, U.COUNTRY_CODE, U.PHONE_NUMBER, SU.EMAIL, SU.PASSWORD
+		from USER U
+		join SYSTEM_USER SU
+		on U.USER_ID = SU.USER_ID
+		where EMAIL = '$email';
 	");
-	if ($user = $result->fetch_assoc()) {
-		if ($password = $user["password"]) {
-			$_SESSION["user_id"] = $user["user_id"];
+	if ($userResult = $result->fetch_assoc()) {
+		if ($password == $userResult["PASSWORD"]) {
+			$sysUser = new System_User($userResult);
+			$_SESSION["user"] = $sysUser;
 			unset($_SESSION["error"]);
 			header("Location: /accounts");
 		} else {
