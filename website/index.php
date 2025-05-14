@@ -22,6 +22,14 @@ $gui = GUI::getInstance();
 </head>
 
 <body>
+	<?php
+	// Example usage in your page
+	echo $gui->getComponentHTML("Controller", [
+    "createText" => "Create New",
+    "currentPage" => $_GET['page'] ?? 1,
+    "totalPages" => 15,
+    "controllerTitle" => "Accounts"
+]) ?>
 	<form action="controllers/sign-in.php" method="post" id="signForm">
 		<h1 class="title">Sign In</h1>
 		<p class="error"><?= $_SESSION["error"] ?? "" ?></p>
