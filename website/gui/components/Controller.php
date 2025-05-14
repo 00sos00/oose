@@ -23,37 +23,46 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
     $currentPage = $props['currentPage'] ?? 1;
     $totalPages = $props['totalPages'] ?? 3;
     $onCreateClick = $props['onCreateClick'] ?? '';
+    $controllerTitle = $props['controllerTitle'] ?? 'Controller Name'; // New prop
     
     ob_start();
 ?>
     <div class="controller">
         <div class="left-section">
-            <!-- Create button with dynamic text -->
+            <!-- Controller title -->
+            <h2 class="controller-title"><?php echo htmlspecialchars($controllerTitle); ?></h2>
+        </div>
+        <div class="right-section">
+            <!-- Create button moved here -->
             <button class="create-btn">
                 <?php echo htmlspecialchars($createText); ?>
             </button>
-           
             
-        </div>
-        <!-- Navigation section -->
-        <div class="navigation">
-            
-            <!-- Filter and Sort buttons -->
-            <button class="sort-btn">
-                <?php echo getFilterSvg(); ?>
-            </button>
-            <button class="sort-btn">
-                <?php echo getSortSvg(); ?>
-            </button>
-            <button class="nav-btn back-btn" <?php echo $currentPage <= 1 ? 'disabled' : ''; ?>>Back</button>
-            <div class="page-numbers">
-                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                    <button class="page-btn <?php echo $i === $currentPage ? 'active' : ''; ?>">
-                        <?php echo $i; ?>
-                    </button>
-                <?php endfor; ?>
+            <!-- Navigation section -->
+            <div class="navigation">
+                <!-- Filter and Sort buttons -->
+                <button class="sort-btn">
+                    <?php echo getFilterSvg(); ?>
+                </button>
+                <button class="sort-btn">
+                    <?php echo getSortSvg(); ?>
+                </button>
+                <button class="nav-btn back-btn" attribute = <?php echo $currentPage < 1 ? 'disabled' : 'enabled' ; ?>>Back</button>
+                <div class="page-numbers">
+                    <?php 
+                    // Calculate which page numbers to show
+                    $start = max(1, min($currentPage - 1, $totalPages - 2));
+                    $end = min($start + 2, $totalPages);
+                    if ($end - $start < 2) $start = max(1, $end - 2);
+                    for ($i = $start; $i <= $end; $i++): 
+                    ?>
+                        <button class="page-btn <?php echo $i === $currentPage ? 'active' : ''; ?>" data-page="<?php echo $i; ?>">
+                            <?php echo $i; ?>
+                        </button>
+                    <?php endfor; ?>
+                </div>
+                <button class="nav-btn next-btn" attribute = <?php echo $currentPage >= $totalPages ? 'disabled' : 'enabled'; ?>>Next</button>
             </div>
-            <button class="nav-btn next-btn" <?php echo $currentPage >= $totalPages ? 'disabled' : ''; ?>>Next</button>
         </div>
     </div>
 
@@ -76,6 +85,18 @@ ob_start();
         align-items: center;
         background-color: var(--lighter-dark);
         box-sizing: border-box;
+    }
+    /* Add these styles to your existing CSS */
+    .controller-title {
+    color: var(--light);
+    margin: 0;
+    font-size: 1.5rem;
+    }
+
+    .right-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
     }
 
     /* Left section styling */
@@ -202,43 +223,35 @@ $gui->addComponentCSS($css);
 ob_start();
 ?>
 <script>
-    $(document).ready(function() {
-        // Handle page number clicks
-        $('.page-btn').click(function() {
-            if (!$(this).hasClass('active')) {
-                $('.page-btn').removeClass('active');
-                $(this).addClass('active');
-                // Trigger custom event for page change
-                $(document).trigger('pageChange', [parseInt($(this).text())]);
-            }
-        });
+$(document).ready(function() {
+  function updatePageParam(page) {
+    let url = new URL(window.location.href);
+    url.searchParams.set('page', page);
+    window.location.href = url.toString();
+  }
 
-        // Handle back button navigation
-        $('.back-btn').click(function() {
-            if (!$(this).prop('disabled')) {
-                let current = parseInt($('.page-btn.active').text());
-                if (current > 1) {
-                    $('.page-btn.active').removeClass('active');
-                    $(`.page-btn:contains('${current-1}')`).addClass('active');
-                    $(document).trigger('pageChange', [current - 1]);
-                }
-            }
-        });
+  $('.page-btn').click(function() {
+    if (!$(this).hasClass('active')) {
+      let page = $(this).data('page');
+      updatePageParam(page);
+    }
+  });
 
-        // Handle next button navigation
-        $('.next-btn').click(function() {
-            if (!$(this).prop('disabled')) {
-                let current = parseInt($('.page-btn.active').text());
-                let max = $('.page-btn').length;
-                if (current < max) {
-                    $('.page-btn.active').removeClass('active');
-                    $(`.page-btn:contains('${current+1}')`).addClass('active');
-                    $(document).trigger('pageChange', [current + 1]);
-                }
-            }
-        });
-    });
-</script>
+  $('.back-btn').click(function() {
+    let current = parseInt($('.page-btn.active').data('page')) || <?= (int)$currentPage ?>;
+    if (!$(this).prop('disabled') && !isNaN(current)) {
+      updatePageParam(current - 1);
+    }
+  });
+
+  $('.next-btn').click(function() {
+    let current = parseInt($('.page-btn.active').data('page')) || <?= (int)$currentPage ?>;
+    if (!$(this).prop('disabled') && !isNaN(current)) {
+      updatePageParam(current + 1);
+    }
+  });
+});
+
 <?php
 $js = ob_get_clean();
 $js = str_replace("<script>", "", $js);

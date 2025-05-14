@@ -11,10 +11,18 @@ $gui = GUI::getInstance();
 <head>
 	<?= $gui->getComponentHTML("Head", ["page-title" => "Sign In"]) ?>
 	<link rel="stylesheet" href="index.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="index.js"></script>
 </head>
 
 <body>
+	<?= $gui->getComponentHTML("Controller", [
+    "createText" => "Create New",
+    "currentPage" => $_GET['page'] ?? 11,
+    "totalPages" => 12,
+    "controllerTitle" => "Accounts"
+]) ?>
+	
 	<form action="#" id="signForm">
 		<h1 class="title">Sign In</h1>
 		<?php
@@ -28,6 +36,7 @@ $gui = GUI::getInstance();
 			"input-name" => "password",
 			"input-type" => "password"
 		]);
+		
 		?>
 		<a id="forgot-pass">Forgot your password?</a>
 		<button type="submit" class="btn">Sign In</button>
@@ -45,6 +54,7 @@ $gui = GUI::getInstance();
 			<button type="submit" class="btn">Continue</button>
 			<button type="button" id="cancelBtn" class="btn">Cancel</button>
 		</div>
+		
 	</form>
 </body>
 
