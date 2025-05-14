@@ -14,11 +14,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wdth,wght@62.5..100,100..900&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
-<<<<<<< HEAD
 	<script src="/jquery-3.7.1.js"></script>
-=======
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
->>>>>>> 901977368236855927dbb952b9f4069f12046f02
 	<style>
 		<?php
 		$gui->getAllCSSText();
