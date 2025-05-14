@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	");
 	if ($userResult = $result->fetch_assoc()) {
 		if ($password == $userResult["PASSWORD"]) {
-			$sysUser = new System_User($userResult);
+			$sysUser = System_User::parseResult($userResult);
 			$_SESSION["user"] = $sysUser;
 			unset($_SESSION["error"]);
 			header("Location: /accounts");

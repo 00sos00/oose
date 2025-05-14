@@ -50,7 +50,7 @@ class System_User extends User
     private $email;
     private $password;
 
-    public function __construct($result)
+    protected function __construct($result)
     {
         parent::__construct($result);
         // Parse the result from the database
