@@ -30,6 +30,10 @@ $gui = GUI::getInstance();
     "totalPages" => 15,
     "controllerTitle" => "Accounts"
 ]) ?>
+	<?= $gui->getComponentHTML("CreateAccount") ?>
+    <form action="controllers/sign-in.php" method="post" id="signForm">
+        <!-- ... -->
+    </form>
 	<form action="controllers/sign-in.php" method="post" id="signForm">
 		<h1 class="title">Sign In</h1>
 		<p class="error"><?= $_SESSION["error"] ?? "" ?></p>
