@@ -185,7 +185,7 @@ $(window).on("load", () => {
 			.then(response => response.text())
 			.then(res => {
 				if (res) {
-					row.remove()
+					row.remove();
 				}
 			});
 		}
