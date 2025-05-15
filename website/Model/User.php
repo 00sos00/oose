@@ -186,7 +186,7 @@ class Owner extends External_User
 
 }
 
-function LoadUser($className){
+function FetchUsers($className){
     require_once "Database.php";
 
     // Check if the class exists
@@ -227,7 +227,7 @@ function LoadUser($className){
     return $object;
 }
 
-function Load($email, $password)
+function FetchUser($email, $password)
 {
     require_once "Database.php";
     $db = DataBase::getInstance();

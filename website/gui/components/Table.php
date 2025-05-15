@@ -5,6 +5,29 @@ require_once __DIR__ . "/../GUI.php";
 
 $gui = GUI::getInstance();
 
+function penIconSVG() {
+	return '
+	<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none" viewBox="0 0 17 16">
+		<g clip-path="url(#a)">
+			<path fill="#E3B04B" fill-opacity=".75" d="m11.906.604-1.512 1.512 4.062 4.063 1.513-1.513a2 2 0 0 0 0-2.828L14.737.604a2 2 0 0 0-2.828 0h-.003ZM9.687 2.822 2.403 10.11a2.771 2.771 0 0 0-.694 1.168l-1.106 3.76a.75.75 0 0 0 .928.934l3.76-1.106a2.77 2.77 0 0 0 1.168-.694l7.29-7.287-4.062-4.063Z"/>
+		</g>
+		<defs>
+			<clipPath id="a">
+				<path fill="#fff" d="M.571 0h16v16h-16z"/>
+			</clipPath>
+		</defs>
+	</svg>
+	';
+}
+
+function trashIconSVG() {
+	return "
+	<svg class='trash-icon' xmlns='http://www.w3.org/2000/svg' width='17' height='16' fill='none' viewBox='0 0 17 16'>
+		<path fill='#E3B04B' fill-opacity='.75' d='M5.796.553A.996.996 0 0 1 6.69 0h3.763c.378 0 .725.212.893.553l.225.447h3a.999.999 0 1 1 0 2h-12a.999.999 0 1 1 0-2h3l.225-.447ZM2.571 4h12v10c0 1.103-.896 2-2 2h-8c-1.103 0-2-.897-2-2V4Zm3 2c-.275 0-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7c0-.275-.225-.5-.5-.5Zm3 0c-.275 0-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7c0-.275-.225-.5-.5-.5Zm3 0c-.275 0-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7c0-.275-.225-.5-.5-.5Z'/>
+	</svg>
+	";
+}
+
 // This file is a component of the GUI framework.
 // It defines a table component that can be used to display data in a tabular format.
 // The table component is designed to be flexible and customizable, allowing for different column names and data.
@@ -17,7 +40,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ?>
 <!-- This is the HTML structure for the table component. -->
 	<div class="table-container">
-		<table>
+		<table data-deleteScriptName=<?= $props["deleteScriptName"] ?>>
 			<tr>
 				<?php
 				// Loop through the column names provided in $props["columns"] and render table headers.
@@ -39,7 +62,9 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 				// Loop through each row of data and render table cells.
 				// The row is an associative array, so we can use a foreach loop to iterate through its values.
 				// The $_ variable is used to ignore the key of the associative array.
-				echo "<tr>";
+				$idGetter = $props["getterMap"]["ID"];
+				$entityID = $obj->$idGetter();
+				echo "<tr data-id='$entityID'>";
 				foreach ($props["columns"] as $columnName) {
 					// Use the getter method to get the value of the cell.
 					$getter = $props["getterMap"][$columnName];
@@ -53,8 +78,8 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 				// The "type" attribute is set to "image/svg+xml" to indicate that the object is an SVG image.
 				if (isset($props["hasActionColumn"])) {
 					echo "<td class='table-cell action-cell'>";
-					echo "<object type='image/svg+xml' data='../assets/pen-icon.svg'></object>";
-					echo "<object type='image/svg+xml' data='../assets/trash-icon.svg'></object>";
+					echo penIconSVG();
+					echo trashIconSVG();
 					echo "</td>";
 				}
 				echo "</tr>";
@@ -144,7 +169,28 @@ $gui->addComponentCSS($css);
 ob_start();
 ?>
 <script>
-
+$(window).on("load", () => {
+	$(".trash-icon").on("click", e => {
+		if (confirm("Are you sure you want to delete this?")) {
+			const row = e.currentTarget.closest("tr");
+			const table = e.currentTarget.closest("table");
+			const entityID = row.getAttribute("data-id");
+			const deleteScriptName = table.getAttribute("data-deleteScriptName");
+			
+			fetch("/controllers/" + deleteScriptName + ".php", {
+				method: "POST",
+				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				body: "id=" + entityID
+			})
+			.then(response => response.text())
+			.then(res => {
+				if (res) {
+					row.remove();
+				}
+			});
+		}
+	});
+});
 </script>
 <?php
 $js = ob_get_clean();

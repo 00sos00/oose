@@ -77,4 +77,15 @@ class DataBase
 
 		return $result;
 	}
+
+	public function delete($sql): bool
+	{
+		// If connection is not established, reconnect
+		if (!$this->conn) {
+			$this->connect();
+		}
+
+		// Query the database
+		return $this->conn->query($sql);
+	}
 }
