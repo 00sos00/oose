@@ -9,7 +9,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ?>
 
 	<a href=<?= $props["href"] ?> class="<?= "sidebar-item" . $selectedClass ?>">
-		<object type="image/svg+xml" data=<?= "/Luxville/website/assets/" . $props["icon-name"] . ".svg" ?>></object>
+		<object type="image/svg+xml" data=<?= "/assets/" . $props["icon-name"] . ".svg" ?>></object>
 		<p><?= $props["item-text"] ?></p>
 	</a>
 

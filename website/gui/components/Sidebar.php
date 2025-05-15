@@ -9,7 +9,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 
 	<div class="sidebar-container">
 		<div class="logo-container">
-			<img src="/Luxville/website/assets/logo.png" alt="logo">
+			<img src="/assets/logo.png" alt="logo">
 		</div>
 		<div class="items-container">
 			<?php
