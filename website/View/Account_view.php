@@ -20,7 +20,7 @@ $gui = GUI::getInstance();
 		<div class="right-content">
 			<?php
 			require_once "../Model/User.php";
-			$users = LoadUser("System_User");
+			$users = FetchUsers("System_User");
 			$getterMap = [
 				"ID" => "getUserId",
 				"First Name" => "getFirstName",
