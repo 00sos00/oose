@@ -18,12 +18,11 @@ $gui = GUI::getInstance();
 <head>
 	<?= $gui->getComponentHTML("Head", ["page-title" => "Sign In"]) ?>
 	<link rel="stylesheet" href="index.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="index.js"></script>
 </head>
 
 <body>
-<form action="controllers/sign-in.php" method="post" id="signForm">
+	<form action="controllers/sign-in.php" method="post" id="signForm">
 		<h1 class="title">Sign In</h1>
 		<p class="error"><?= $_SESSION["error"] ?? "" ?></p>
 		<?php
@@ -37,7 +36,6 @@ $gui = GUI::getInstance();
 			"input-name" => "password",
 			"input-type" => "password"
 		]);
-		
 		?>
 		<a id="forgot-pass">Forgot your password?</a>
 		<button type="submit" class="btn">Sign In</button>
@@ -55,7 +53,6 @@ $gui = GUI::getInstance();
 			<button type="submit" class="btn">Continue</button>
 			<button type="button" id="cancelBtn" class="btn">Cancel</button>
 		</div>
-		
 	</form>
 </body>
 

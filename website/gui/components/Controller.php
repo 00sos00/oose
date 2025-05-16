@@ -1,6 +1,4 @@
 <?php
-
-
 require_once "gui/GUI.php";
 function getFilterSvg() {
     return '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="none" viewBox="0 0 20 18">
@@ -18,6 +16,12 @@ $gui = GUI::getInstance();
 
 $strippedFileName = basename(__FILE__, ".php");
 $gui->addComponentRenderFunction($strippedFileName, function ($props) {
+    $createText = $props['createText'] ?? 'Create';
+    $currentPage = (int)($props['currentPage'] ?? 1);
+    $totalPages = (int)($props['totalPages'] ?? 3);
+    $onCreateClick = $props['onCreateClick'] ?? '';
+    $controllerTitle = $props['controllerTitle'] ?? 'Controller Name';
+
     // Get properties from props with default values
     $createText = $props['createText'] ?? 'Create';
     $currentPage = $props['currentPage'] ?? 1;
@@ -29,6 +33,23 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ?>
     <div class="controller">
         <div class="left-section">
+            <h2 class="controller-title"><?php echo htmlspecialchars($controllerTitle); ?></h2>
+        </div>
+        <div class="right-section">
+            <button class="create-btn">
+                <?php echo htmlspecialchars($createText); ?>
+            </button>
+            <div class="navigation">
+                <button class="sort-btn"><?php echo getFilterSvg(); ?></button>
+                <button class="sort-btn"><?php echo getSortSvg(); ?></button>
+                <button class="nav-btn back-btn" <?php echo $currentPage <= 1 ? 'disabled' : ''; ?>>Back</button>
+                <div class="page-numbers">
+                    <?php
+                    // Pagination logic: show max 3 pages, sliding window
+                    $start = max(1, min($currentPage - 1, $totalPages - 2));
+                    $end = min($start + 2, $totalPages);
+                    if ($end - $start < 2) $start = max(1, $end - 2);
+                    for ($i = $start; $i <= $end; $i++): ?>
             <!-- Controller title -->
             <h2 class="controller-title"><?php echo htmlspecialchars($controllerTitle); ?></h2>
         </div>
@@ -61,11 +82,10 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
                         </button>
                     <?php endfor; ?>
                 </div>
-                <button class="nav-btn next-btn" attribute = <?php echo $currentPage >= $totalPages ? 'disabled' : 'enabled'; ?>>Next</button>
+                <button class="nav-btn next-btn" <?php echo $currentPage >= $totalPages ? 'disabled' : ''; ?>>Next</button>
             </div>
         </div>
     </div>
-
 <?php
     $html = ob_get_clean();
     return $html;
@@ -75,7 +95,6 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ob_start();
 ?>
 <style>
-    /* Main container */
     .controller {
         width: 100%;
         height: 60px;
@@ -86,27 +105,21 @@ ob_start();
         background-color: var(--lighter-dark);
         box-sizing: border-box;
     }
-    /* Add these styles to your existing CSS */
     .controller-title {
-    color: var(--light);
-    margin: 0;
-    font-size: 1.5rem;
+        color: var(--light);
+        margin: 0;
+        font-size: 1.5rem;
     }
-
     .right-section {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
-
-    /* Left section styling */
     .left-section {
         display: flex;
         gap: 16px;
         align-items: center;
     }
-
-    /* Create button styling */
     .create-btn {
         background-color: var(--primary);
         color: var(--dark);
@@ -117,8 +130,10 @@ ob_start();
         cursor: pointer;
         transition: opacity 0.2s ease;
     }
-
-      .sort-btn {
+    .create-btn:hover {
+        opacity: 0.8;
+    }
+    .sort-btn {
         background: none;
         border: none;
         cursor: pointer;
@@ -128,46 +143,18 @@ ob_start();
         align-items: center;
         justify-content: center;
     }
-
     .sort-btn:hover {
         transform: scale(1.1);
     }
-
     .sort-btn svg {
         width: 20px;
         height: 20px;
     }
-
-    .create-btn:hover {
-        opacity: 0.8;
-    }
-
-    /* Sort button styling */
-    .sort-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-        transition: transform 0.2s ease;
-    }
-
-    .sort-btn:hover {
-        transform: scale(1.1);
-    }
-
-    .sort-btn img {
-        width: 20px;
-        height: 20px;
-        filter: invert(0.7);
-    }
-
-    /* Navigation section styling */
     .navigation {
         display: flex;
         align-items: center;
         gap: 16px;
     }
-
     .nav-btn {
         background: none;
         border: none;
@@ -176,21 +163,17 @@ ob_start();
         padding: 8px 16px;
         transition: color 0.2s ease;
     }
-
     .nav-btn:not([disabled]):hover {
         color: var(--primary);
     }
-
     .nav-btn[disabled] {
         opacity: 0.5;
         cursor: not-allowed;
     }
-
     .page-numbers {
         display: flex;
         gap: 8px;
     }
-
     .page-btn {
         background: none;
         border: none;
@@ -201,18 +184,15 @@ ob_start();
         border-radius: 4px;
         transition: all 0.2s ease;
     }
-
     .page-btn:hover {
         background-color: rgba(255, 255, 255, 0.1);
     }
-
     .page-btn.active {
         background-color: var(--primary);
         color: var(--dark);
         font-weight: bold;
     }
 </style>
-
 <?php
 $css = ob_get_clean();
 $css = str_replace("<style>", "", $css);
@@ -224,34 +204,35 @@ ob_start();
 ?>
 <script>
 $(document).ready(function() {
-  function updatePageParam(page) {
-    let url = new URL(window.location.href);
-    url.searchParams.set('page', page);
-    window.location.href = url.toString();
-  }
-
-  $('.page-btn').click(function() {
-    if (!$(this).hasClass('active')) {
-      let page = $(this).data('page');
-      updatePageParam(page);
+    function updatePageParam(page) {
+        let url = new URL(window.location.href);
+        url.searchParams.set('page', page);
+        // Redirect through the correct path
+        window.location.href = url.toString();
     }
-  });
 
-  $('.back-btn').click(function() {
-    let current = parseInt($('.page-btn.active').data('page')) || <?= (int)$currentPage ?>;
-    if (!$(this).prop('disabled') && !isNaN(current)) {
-      updatePageParam(current - 1);
-    }
-  });
+    $('.page-btn').click(function() {
+        if (!$(this).hasClass('active')) {
+            let page = $(this).data('page');
+            updatePageParam(page);
+        }
+    });
 
-  $('.next-btn').click(function() {
-    let current = parseInt($('.page-btn.active').data('page')) || <?= (int)$currentPage ?>;
-    if (!$(this).prop('disabled') && !isNaN(current)) {
-      updatePageParam(current + 1);
-    }
-  });
+    $('.back-btn').click(function() {
+        let current = parseInt($('.page-btn.active').data('page')) || 1;
+        if (!$(this).prop('disabled') && !isNaN(current)) {
+            updatePageParam(current - 1);
+        }
+    });
+
+    $('.next-btn').click(function() {
+        let current = parseInt($('.page-btn.active').data('page')) || 1;
+        if (!$(this).prop('disabled') && !isNaN(current)) {
+            updatePageParam(current + 1);
+        }
+    });
 });
-
+</script>
 <?php
 $js = ob_get_clean();
 $js = str_replace("<script>", "", $js);
