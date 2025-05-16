@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . "/../GUI.php";
-
 $gui = GUI::getInstance();
 
 $strippedFileName = basename(__FILE__, ".php");
