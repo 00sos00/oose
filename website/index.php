@@ -1,9 +1,18 @@
 <?php
+ 
 ini_set('session.cookie_httponly', 1);
 session_start();
 if (isset($_SESSION["user"])) {
     header("Location: /accounts");
     exit();
+}
+
+
+ini_set('session.cookie_httponly', 1);
+session_start();
+if (isset($_SESSION["user_id"])) {
+	header("Location: View/Account_view.php");
+	exit();
 }
 
 require_once "Model/Database.php";
@@ -23,6 +32,7 @@ $gui = GUI::getInstance();
 </head>
 
 <body>
+<<<<<<< HEAD
     <form action="controllers/sign-in.php" method="post" id="signForm">
         <h1 class="title">Sign In</h1>
         <p class="error"><?= $_SESSION["error"] ?? "" ?></p>
@@ -57,6 +67,40 @@ $gui = GUI::getInstance();
         </div>
     </form>
     <?php GUI::getInstance()->getAllJSText(); ?>
+=======
+	<form action="controllers/sign-in.php" method="post" id="signForm">
+		<h1 class="title">Sign In</h1>
+		<p class="error"><?= $_SESSION["error"] ?? "" ?></p>
+		<?php
+		echo $gui->getComponentHTML("InputHolder", [
+			"label" => "Email",
+			"input-name" => "email",
+			"input-type" => "email"
+		]);
+		echo $gui->getComponentHTML("InputHolder", [
+			"label" => "Password",
+			"input-name" => "password",
+			"input-type" => "password"
+		]);
+		?>
+		<a id="forgot-pass">Forgot your password?</a>
+		<button type="submit" class="btn">Sign In</button>
+	</form>
+	<form action="#" id="forgotForm" style="display: none;">
+		<h1 class="title">Forgot your password?</h1>
+		<?=
+		$gui->getComponentHTML("InputHolder", [
+			"label" => "Please enter your email address",
+			"input-name" => "email",
+			"input-type" => "email"
+		]);
+		?>
+		<div class="btns-container">
+			<button type="submit" class="btn">Continue</button>
+			<button type="button" id="cancelBtn" class="btn">Cancel</button>
+		</div>
+	</form>
+>>>>>>> e43d8e347ec6c5b86077c14e792f3f6c8de2f490
 </body>
 
 </html>

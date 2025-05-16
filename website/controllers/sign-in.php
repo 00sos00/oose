@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Load the user from the database
 	// using the email and password
 	require_once "../Model/User.php";
-	$user = Load($email, $password);
+	$user = FetchUser($email, $password);
 
 	// Check if the user is found
 	if(!isset($user)) {
@@ -34,5 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION["user_first_name"] = $user->getFirstName();
 		$_SESSION["user_last_name"] = $user->getLastName();
 		$_SESSION["user_email"] = $user->getEmail();
+		header("Location: ../View/Account_view.php");
+		exit();
 	}
 }
