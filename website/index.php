@@ -1,4 +1,11 @@
 <?php
+
+ini_set('session.cookie_httponly', 1);
+session_start();
+if (isset($_SESSION["user_id"])) {
+	header("Location: View/Account_view.php");
+	exit();
+}
 require_once "Model/Database.php";
 require_once "gui/GUI.php";
 $db = DataBase::getInstance();
@@ -16,15 +23,9 @@ $gui = GUI::getInstance();
 </head>
 
 <body>
-	<?= $gui->getComponentHTML("Controller", [
-    "createText" => "Create New",
-    "currentPage" => $_GET['page'] ?? 11,
-    "totalPages" => 12,
-    "controllerTitle" => "Accounts"
-]) ?>
-	
-	<form action="#" id="signForm">
+<form action="controllers/sign-in.php" method="post" id="signForm">
 		<h1 class="title">Sign In</h1>
+		<p class="error"><?= $_SESSION["error"] ?? "" ?></p>
 		<?php
 		echo $gui->getComponentHTML("InputHolder", [
 			"label" => "Email",
@@ -59,3 +60,5 @@ $gui = GUI::getInstance();
 </body>
 
 </html>
+
+<?php unset($_SESSION["error"]) ?>

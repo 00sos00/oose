@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 class User
 {
     private $firstName;
@@ -184,7 +186,7 @@ class Owner extends External_User
 
 }
 
-function LoadUser($className){
+function FetchUsers($className){
     require_once "Database.php";
 
     // Check if the class exists
@@ -196,6 +198,9 @@ function LoadUser($className){
 
     // Query the database for the class name
     $sql;
+    
+    // Transform the class name to uppercase
+    $className = strtoupper($className);
     if($className == "SYSTEM_USER") {
         $sql = "SELECT * FROM " . $className . ", USER WHERE " . $className . ".USER_ID = USER.USER_ID";
     }else {
@@ -218,6 +223,31 @@ function LoadUser($className){
         }
     }
 
-    // Return the array of objects
+    // Return user objects
     return $object;
+}
+
+function FetchUser($email, $password)
+{
+    require_once "Database.php";
+    $db = DataBase::getInstance();
+
+    // Query the database for the class name
+    $sql = "SELECT * FROM SYSTEM_USER, USER WHERE EMAIL =  '$email' AND PASSWORD = '$password' AND SYSTEM_USER.USER_ID = USER.USER_ID";
+    $result = $db->query($sql);
+
+    // Check if the query was successful
+    if (!isset($result)) {
+        return null;
+    }
+
+    // Parse the result and create an object of the class
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            return System_User::parseResult($row);
+        }
+    }
+
+    // Return null if no user is found
+    return null;
 }
