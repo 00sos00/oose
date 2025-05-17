@@ -61,6 +61,11 @@ class DataBase
 		return $currentInstance;
 	}
 
+	public function getInsertId(): int
+	{
+		return $this->conn->insert_id;	
+	}
+
 	public function query($sql): ?mysqli_result
 	{
 		// If connection is not established, reconnect
@@ -76,6 +81,17 @@ class DataBase
 		}
 
 		return $result;
+	}
+
+	public function insert($sql)
+	{
+		// If connection is not established, reconnect
+		if (!$this->conn) {
+			$this->connect();
+		}
+
+		// Query the database
+		return $this->conn->query($sql);
 	}
 
 	public function delete($sql): bool

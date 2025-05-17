@@ -39,7 +39,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 	ob_start();
 ?>
 <!-- This is the HTML structure for the table component. -->
-	<div class="table-container">
+	<div class="table-container widget-dropshadow">
 		<table data-deleteScriptName=<?= $props["deleteScriptName"] ?>>
 			<tr>
 				<?php
@@ -103,7 +103,6 @@ ob_start();
 		background-color: var(--lighter-dark);
 		text-align: left;
 		overflow-y: hidden;
-		box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
 	}
 
 	.table-container table {

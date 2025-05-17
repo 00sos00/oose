@@ -53,6 +53,21 @@ ob_start();
 		margin: 0;
 		background-color: var(--dark);
 	}
+
+	.overlay {
+		z-index: 1;
+		display: none;
+		pointer-events: auto;
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(2px);
+	}
+
+	.widget-dropshadow {
+		box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
+	}
 </style>
 <?php
 $css = ob_get_clean();
@@ -70,7 +85,21 @@ ob_start();
 			e1.parentElement.insertBefore(svg, e1);
 			e1.remove();
 		});
+
+		$(".overlay").on("click", () => {
+			closeOverlay();
+			closeCreateForm();
+			// TODO: Close all other types of possible popups
+		});
 	});
+
+	function openOverlay() {
+		$(".overlay").fadeIn(150, "swing");
+	}
+
+	function closeOverlay() {
+		$(".overlay").fadeOut(150, "swing");
+	}
 </script>
 <?php
 $js = ob_get_clean();

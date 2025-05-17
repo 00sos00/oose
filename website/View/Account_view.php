@@ -1,8 +1,10 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once "../controllers/check-signed.php";
-require_once "../gui/GUI.php";
+require_once __DIR__ . "/../controllers/check-signed.php";
+require_once __DIR__ . "/../gui/GUI.php";
+require_once __DIR__ . "/../Model/User.php";
+$_SESSION['previous-page'] = $_SERVER['REQUEST_URI'];
 $gui = GUI::getInstance();
 ?>
 
@@ -12,14 +14,32 @@ $gui = GUI::getInstance();
 <head>
 	<?= $gui->getComponentHTML("Head", ["page-title" => "Accounts"]) ?>
 	<link rel="stylesheet" href="/table-page.css">
+	<?php
+	if (isset($_SESSION["error"])) {
+		$err = $_SESSION["error"];
+		echo "<script>alert('$err')</script>";
+	}
+	?>
 </head>
 
 <body>
+	<div class="overlay"></div>
+	<?= $gui->getComponentHTML("CreateAccount") ?>
 	<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "accounts"]) ?>
 	<div class="right-content">
 		<?php
-		require_once "../Model/User.php";
-		$users = FetchUsers("System_User");
+		$maxRowsPerPage = 10;
+		$currentPage = $_GET["page"] ?? 1;
+		$systemUsersCount = FetchUsersCount("SYSTEM_USER");
+		$totalPages = (int)($systemUsersCount / $maxRowsPerPage);
+		echo $gui->getComponentHTML("Controller", [
+			"createText" => "Create Account",
+			"currentPage" => $currentPage,
+			"totalPages" => $totalPages,
+			"controllerTitle" => "Accounts"
+		]);
+
+		$users = FetchUsers("SYSTEM_USER", $currentPage, $maxRowsPerPage);
 		$getterMap = [
 			"ID" => "getUserId",
 			"First Name" => "getFirstName",
@@ -41,9 +61,4 @@ $gui = GUI::getInstance();
 
 </html>
 
-<style>
-	.right-content{
-		width: 100%;
-		padding: 24px;
-	}
-</style>
+<?php unset($_SESSION["error"]); ?>

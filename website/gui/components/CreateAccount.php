@@ -1,7 +1,6 @@
 <?php
-
-
-require_once __DIR__ . "/../gui/GUI.php";
+require_once __DIR__ . "/../GUI.php";
+require_once __DIR__ . "/../../Model/Role.php";
 
 $gui = GUI::getInstance();
 
@@ -9,48 +8,56 @@ $strippedFileName = basename(__FILE__, ".php");
 $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui) {
     ob_start();
 ?>
-<div class="create-account-modal">
-    <div class="create-account-header">
-        <h1 class="create-account-title">Create Account</h1>
-        <button class="close-btn" onclick="closeCreateAccount()">
-            
-        </button>
-    </div>
-    <form class="create-account-form">
-        <?= $gui->getComponentHTML("InputHolder", [
-            "label" => "First Name",
-            "input-name" => "first-name",
-            "input-type" => "text"
-        ]) ?>
-        <?= $gui->getComponentHTML("InputHolder", [
-            "label" => "Last Name",
-            "input-name" => "last-name",
-            "input-type" => "text"
-        ]) ?>
-        <?= $gui->getComponentHTML("InputHolder", [
-            "label" => "Phone Number",
-            "input-name" => "phone-number",
-            "input-type" => "text"
-        ]) ?>
-        <?= $gui->getComponentHTML("InputHolder", [
-            "label" => "Email",
-            "input-name" => "email",
-            "input-type" => "email"
-        ]) ?>
-        <?= $gui->getComponentHTML("Dropdown", [
-        "label" => "Role",
-        "dropdown-name" => "role",
-        "options" => [
-            "admin" => "Admin",
-            "user" => "User",
-        ]
-        ]) ?> 
-        <?= $gui->getComponentHTML("ToggleSwitch", [
-        "label" => "Active", 
-        "checked" => false
-    ]) ?>
-        <button type="submit" class="submit-btn">Submit</button>
-    </form>
+<div class="create-form-container">
+	<div class="create-account-modal">
+	    <div class="create-account-header">
+	        <h1 class="create-account-title">Create Account</h1>
+	        <button class="close-btn" onclick="closeCreateAccount()">
+	            
+	        </button>
+	    </div>
+	    <form action="/controllers/create-account.php" method="post" class="create-account-form">
+	        <?= $gui->getComponentHTML("InputHolder", [
+	            "label" => "First Name",
+	            "input-name" => "first-name",
+	            "input-type" => "text"
+	        ]) ?>
+	        <?= $gui->getComponentHTML("InputHolder", [
+	            "label" => "Last Name",
+	            "input-name" => "last-name",
+	            "input-type" => "text"
+	        ]) ?>
+			<?= $gui->getComponentHTML("InputHolder", [
+	            "label" => "Country Code",
+	            "input-name" => "country-code",
+	            "input-type" => "text"
+	        ]) ?>
+	        <?= $gui->getComponentHTML("InputHolder", [
+	            "label" => "Phone Number",
+	            "input-name" => "phone-number",
+	            "input-type" => "text"
+	        ]) ?>
+	        <?= $gui->getComponentHTML("InputHolder", [
+	            "label" => "Email",
+	            "input-name" => "email",
+	            "input-type" => "email"
+	        ]) ?>
+	        <?php
+			$roles = FetchRoles();
+			$convertedRoles = [];
+			foreach ($roles as $role) {
+				$convertedRoles[$role->getRoleId()] = $role->getRoleName();
+			}
+			
+			echo $gui->getComponentHTML("Dropdown", [
+		        "label" => "Role",
+		        "dropdown-name" => "role",
+		        "options" => $convertedRoles
+	        ])
+			?> 
+	        <button type="submit" class="submit-btn">Submit</button>
+	    </form>
+	</div>
 </div>
 <?php
     $html = ob_get_clean();
@@ -59,6 +66,11 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 ob_start();
 ?>
 <style>
+.create-form-container {
+	display: none;
+	z-index: 2;
+}
+
 .create-account-modal {
     background: var(--dark);
     color: var(--light);
@@ -140,10 +152,7 @@ $gui->addComponentCSS($css);
 ob_start();
 ?>
 <script>
-function closeCreateAccount() {
-    const modal = document.querySelector('.create-account-modal');
-    if (modal) modal.style.display = 'none';
-}
+
 </script>
 <?php
 $js = ob_get_clean();

@@ -10,7 +10,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 
 	<div class="input-holder">
 		<label for=<?= $props["input-name"] ?>><?= $props["label"] ?></label>
-		<input name=<?= $props["input-name"] ?> type=<?= $props["input-type"] ?>>
+		<input name=<?= $props["input-name"] ?> type=<?= $props["input-type"] ?> required>
 	</div>
 
 <?php
