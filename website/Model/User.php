@@ -186,7 +186,14 @@ class Owner extends External_User
 
 }
 
-function FetchUsers($className){
+function FetchUsersCount($className) {
+	require_once "Database.php";
+	$db = DataBase::getInstance();
+
+	return $db->query("SELECT COUNT(*) AS CNT FROM `$className`;")->fetch_assoc()["CNT"];
+}
+
+function FetchUsers($className, $pageNum, $maxRowsPerPage){
     require_once "Database.php";
 
     // Check if the class exists
@@ -202,10 +209,15 @@ function FetchUsers($className){
     // Transform the class name to uppercase
     $className = strtoupper($className);
     if($className == "SYSTEM_USER") {
-        $sql = "SELECT * FROM " . $className . ", USER WHERE " . $className . ".USER_ID = USER.USER_ID";
+        $sql = "SELECT * FROM $className, USER WHERE $className.USER_ID = USER.USER_ID";
     }else {
-        $sql = "SELECT * FROM " . $className . ", EXTERNAL_USER, USER WHERE " . $className . ".USER_ID = EXTERNAL_USER.USER_ID AND EXTERNAL_USER.USER_ID = USER.USER_ID";
+        $sql = "SELECT * FROM $className, EXTERNAL_USER, USER WHERE $className.USER_ID = EXTERNAL_USER.USER_ID AND EXTERNAL_USER.USER_ID = USER.USER_ID";
     }
+	// MySQL Skipping & Limiting syntax:
+	// LIMIT SKIP_AMOUNT, LIMIT_AMOUNT
+	$skip = ($pageNum - 1) * $maxRowsPerPage;
+	$limit = $maxRowsPerPage;
+	$sql .= " LIMIT $skip, $limit";
     $result = $db->query($sql);
 
     // Check if the query was successful

@@ -20,13 +20,13 @@ VALUES
 ('Ivy', 'Gonzalez', '+41', '5551000029');
 
 -- SYSTEM_USER
-INSERT INTO Luxville.SYSTEM_USER (USER_ID, EMAIL, PASSWORD)
+INSERT INTO Luxville.SYSTEM_USER (USER_ID, ROLE_ID, EMAIL, PASSWORD)
 VALUES
-(1, 'admin@gmail.com', 'admin123'),
-(2, 'viewer@gmail.com', 'viewer123'),
-(3, 'viewer2@gmail.com', 'viewer123'),
-(4, 'accountant@gmail.com', 'accountant123'),
-(5, 'manager@gmail.com', 'manager123');
+(1, 1, 'admin@gmail.com', 'admin123'),
+(2, 1, 'viewer@gmail.com', 'viewer123'),
+(3, 1, 'viewer2@gmail.com', 'viewer123'),
+(4, 1, 'accountant@gmail.com', 'accountant123'),
+(5, 1, 'manager@gmail.com', 'manager123');
 
 -- ROLES
 INSERT INTO Luxville.ROLE (

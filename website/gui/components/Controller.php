@@ -1,5 +1,5 @@
 <?php
-require_once "gui/GUI.php";
+require_once __DIR__ . "/../GUI.php";
 function getFilterSvg() {
     return '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="none" viewBox="0 0 20 18">
         <path fill="#E3B04B" d="M.152 1.145A1.556 1.556 0 0 1 1.562.25h16.875a1.566 1.566 0 0 1 1.207 2.555l-7.144 8.73V16.5c0 .473-.266.906-.692 1.117-.425.211-.93.168-1.308-.117L8 15.625a1.242 1.242 0 0 1-.5-1v-3.09L.35 2.801a1.558 1.558 0 0 1-.199-1.656Z"/>
@@ -19,74 +19,40 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
     $createText = $props['createText'] ?? 'Create';
     $currentPage = (int)($props['currentPage'] ?? 1);
     $totalPages = (int)($props['totalPages'] ?? 3);
-    $onCreateClick = $props['onCreateClick'] ?? '';
     $controllerTitle = $props['controllerTitle'] ?? 'Controller Name';
 
-    // Get properties from props with default values
-    $createText = $props['createText'] ?? 'Create';
-    $currentPage = $props['currentPage'] ?? 1;
-    $totalPages = $props['totalPages'] ?? 3;
-    $onCreateClick = $props['onCreateClick'] ?? '';
-    $controllerTitle = $props['controllerTitle'] ?? 'Controller Name'; // New prop
-    
     ob_start();
-?>
-    <div class="controller">
+    ?>
+    <div class="controller widget-dropshadow">
         <div class="left-section">
-            <h2 class="controller-title"><?php echo htmlspecialchars($controllerTitle); ?></h2>
+            <h2 class="controller-title"><?= $controllerTitle; ?></h2>
         </div>
         <div class="right-section">
-            <button class="create-btn">
-                <?php echo htmlspecialchars($createText); ?>
+            <button class="create-btn" onclick="openCreateForm()">
+                <?= $createText; ?>
             </button>
             <div class="navigation">
-                <button class="sort-btn"><?php echo getFilterSvg(); ?></button>
-                <button class="sort-btn"><?php echo getSortSvg(); ?></button>
-                <button class="nav-btn back-btn" <?php echo $currentPage <= 1 ? 'disabled' : ''; ?>>Back</button>
+                <button class="sort-btn"><?= getFilterSvg(); ?></button>
+                <button class="sort-btn"><?= getSortSvg(); ?></button>
+                <button class="nav-btn back-btn" <?= $currentPage <= 1 ? 'disabled' : ''; ?>>Back</button>
                 <div class="page-numbers">
                     <?php
                     // Pagination logic: show max 3 pages, sliding window
                     $start = max(1, min($currentPage - 1, $totalPages - 2));
                     $end = min($start + 2, $totalPages);
                     if ($end - $start < 2) $start = max(1, $end - 2);
+
                     for ($i = $start; $i <= $end; $i++): ?>
-            <!-- Controller title -->
-            <h2 class="controller-title"><?php echo htmlspecialchars($controllerTitle); ?></h2>
-        </div>
-        <div class="right-section">
-            <!-- Create button moved here -->
-            <button class="create-btn">
-                <?php echo htmlspecialchars($createText); ?>
-            </button>
-            
-            <!-- Navigation section -->
-            <div class="navigation">
-                <!-- Filter and Sort buttons -->
-                <button class="sort-btn">
-                    <?php echo getFilterSvg(); ?>
-                </button>
-                <button class="sort-btn">
-                    <?php echo getSortSvg(); ?>
-                </button>
-                <button class="nav-btn back-btn" attribute = <?php echo $currentPage < 1 ? 'disabled' : 'enabled' ; ?>>Back</button>
-                <div class="page-numbers">
-                    <?php 
-                    // Calculate which page numbers to show
-                    $start = max(1, min($currentPage - 1, $totalPages - 2));
-                    $end = min($start + 2, $totalPages);
-                    if ($end - $start < 2) $start = max(1, $end - 2);
-                    for ($i = $start; $i <= $end; $i++): 
-                    ?>
-                        <button class="page-btn <?php echo $i === $currentPage ? 'active' : ''; ?>" data-page="<?php echo $i; ?>">
-                            <?php echo $i; ?>
+                        <button class="page-btn <?= $i === $currentPage ? 'active' : ''; ?>" data-page="<?= $i; ?>">
+                            <?= $i; ?>
                         </button>
                     <?php endfor; ?>
                 </div>
-                <button class="nav-btn next-btn" <?php echo $currentPage >= $totalPages ? 'disabled' : ''; ?>>Next</button>
+                <button class="nav-btn next-btn" <?= $currentPage >= $totalPages ? 'disabled' : ''; ?>>Next</button>
             </div>
         </div>
     </div>
-<?php
+    <?php
     $html = ob_get_clean();
     return $html;
 });
@@ -104,11 +70,15 @@ ob_start();
         align-items: center;
         background-color: var(--lighter-dark);
         box-sizing: border-box;
+		border-radius: 16px;
+		margin-bottom: 28px;
     }
     .controller-title {
-        color: var(--light);
+        color: var(--primary);
+		font-family: Roboto;
+		font-weight: 500;
+        font-size: 2rem;
         margin: 0;
-        font-size: 1.5rem;
     }
     .right-section {
         display: flex;
@@ -123,10 +93,12 @@ ob_start();
     .create-btn {
         background-color: var(--primary);
         color: var(--dark);
-        padding: 8px 16px;
+        padding: 8px;
         border: none;
         border-radius: 4px;
+		font-family: Roboto;
         font-weight: bold;
+		font-size: 1rem;
         cursor: pointer;
         transition: opacity 0.2s ease;
     }
@@ -203,6 +175,16 @@ $gui->addComponentCSS($css);
 ob_start();
 ?>
 <script>
+function openCreateForm() {
+	$(`.create-form-container`).fadeIn(150, "swing");
+	openOverlay();
+}
+
+function closeCreateForm() {
+	$(`.create-form-container`).fadeOut(150, "swing");
+	closeOverlay();
+}
+
 $(document).ready(function() {
     function updatePageParam(page) {
         let url = new URL(window.location.href);
