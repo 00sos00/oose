@@ -46,10 +46,11 @@ $gui = GUI::getInstance();
 			"Last Name" => "getLastName",
 			"Email Address" => "getEmail",
 			"Country Code" => "getCountryCode",
-			"Phone Number" => "getPhoneNumber"
+			"Phone Number" => "getPhoneNumber",
+			"Role" => "getRole"
 		];
 		echo $gui->getComponentHTML("Table", [
-			"columns" => ["ID", "First Name", "Last Name", "Email Address", "Country Code", "Phone Number"],
+			"columns" => ["ID", "First Name", "Last Name", "Email Address", "Country Code", "Phone Number", "Role"],
 			"object" => $users,
 			"getterMap" => $getterMap,
 			"hasActionColumn" => true,

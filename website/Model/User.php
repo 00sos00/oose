@@ -51,6 +51,7 @@ class System_User extends User
 {
     private $email;
     private $password;
+	private $roleName;
 
     protected function __construct($result)
     {
@@ -58,6 +59,7 @@ class System_User extends User
         // Parse the result from the database
         $this->email = $result["EMAIL"];
         $this->password = $result["PASSWORD"];
+		$this->roleName = $result["ROLE_NAME"];
     }
 
     public static function parseResult($result): System_User
@@ -70,9 +72,15 @@ class System_User extends User
     {
         return $this->email;
     }
+
     public function getPassword()
     {
         return $this->password;
+    }
+
+	public function getRole()
+    {
+        return $this->roleName;
     }
 }
 
@@ -209,7 +217,13 @@ function FetchUsers($className, $pageNum, $maxRowsPerPage){
     // Transform the class name to uppercase
     $className = strtoupper($className);
     if($className == "SYSTEM_USER") {
-        $sql = "SELECT * FROM $className, USER WHERE $className.USER_ID = USER.USER_ID";
+        $sql = "
+			SELECT *
+			FROM $className, USER, ROLE
+			WHERE
+				$className.USER_ID = USER.USER_ID AND
+				$className.ROLE_ID = ROLE.ROLE_ID
+		";
     }else {
         $sql = "SELECT * FROM $className, EXTERNAL_USER, USER WHERE $className.USER_ID = EXTERNAL_USER.USER_ID AND EXTERNAL_USER.USER_ID = USER.USER_ID";
     }
