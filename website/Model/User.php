@@ -219,12 +219,12 @@ function FetchUsers($className, $pageNum, $maxRowsPerPage){
     if($className == "SYSTEM_USER") {
         $sql = "
 			SELECT *
-			FROM $className, USER, ROLE
+			FROM SYSTEM_USER, USER, ROLE
 			WHERE
-				$className.USER_ID = USER.USER_ID AND
-				$className.ROLE_ID = ROLE.ROLE_ID
+				SYSTEM_USER.USER_ID = USER.USER_ID AND
+				SYSTEM_USER.ROLE_ID = ROLE.ROLE_ID
 		";
-    }else {
+    } else {
         $sql = "SELECT * FROM $className, EXTERNAL_USER, USER WHERE $className.USER_ID = EXTERNAL_USER.USER_ID AND EXTERNAL_USER.USER_ID = USER.USER_ID";
     }
 	// MySQL Skipping & Limiting syntax:

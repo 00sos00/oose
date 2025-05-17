@@ -43,7 +43,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ?>
 <!-- This is the HTML structure for the table component. -->
 	<div class="table-container widget-dropshadow">
-		<table data-deleteScriptName=<?= $props["deleteScriptName"] ?>>
+		<table data-deleteScriptName=<?= $props["deleteScriptName"] ?> style="border-collapse: collapse;">
 			<tr>
 				<?php
 				// Loop through the column names provided in $props["columns"] and render table headers.
@@ -113,9 +113,6 @@ ob_start();
 	}
 
 	.table-container tr {
-		width: 100%;
-		display: flex;
-		margin-bottom: 16px;
 		border-radius: 4px;
 	}
 
@@ -124,19 +121,16 @@ ob_start();
 	}
 
 	.table-cell {
-		flex: 1;
-		padding: 8px 16px;
+		padding: 16px 16px;
 		vertical-align: middle;
-	}
-
-	.action-cell {
-		display: flex;
-		gap: 12px;
-		flex: 0;
 	}
 
 	.action-cell svg {
 		cursor: pointer;
+	}
+	
+	.action-cell svg:first-child {
+		margin-right: 12px;
 	}
 
 	.action-cell svg:hover {

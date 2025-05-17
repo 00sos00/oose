@@ -31,7 +31,7 @@ $gui = GUI::getInstance();
 		$maxRowsPerPage = 10;
 		$currentPage = $_GET["page"] ?? 1;
 		$systemUsersCount = FetchUsersCount("SYSTEM_USER");
-		$totalPages = (int)($systemUsersCount / $maxRowsPerPage);
+		$totalPages = (int)(ceil($systemUsersCount / $maxRowsPerPage));
 		echo $gui->getComponentHTML("Controller", [
 			"createText" => "Create Account",
 			"currentPage" => $currentPage,
