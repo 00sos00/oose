@@ -14,7 +14,6 @@ class Role{
     public $canEditUsers;
     public $canViewAuditLog;
     public $roleName;
-    private $userId;
 
     protected function __construct($result)
     {
@@ -34,7 +33,6 @@ class Role{
         $this->canEditUsers = (bool)$result["CAN_EDIT_USERS"];
         $this->canViewAuditLog = (bool)$result["CAN_VIEW_AUDIT_LOG"];
         $this->roleName = $result["ROLE_NAME"];
-        $this->userId = (int)$result["USER_ID"];
     }
 
     public static function parseResult($result): Role
@@ -46,11 +44,6 @@ class Role{
     public function getRoleId()
     {
         return $this->roleId;
-    }
-
-    public function getUserId()
-    {
-        return $this->userId;
     }
 
 	public function getRoleName()
