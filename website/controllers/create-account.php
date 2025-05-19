@@ -24,14 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		exit();
 	}
 
-	$db->insert("
+	$db->query("
 		INSERT INTO Luxville.USER
 			(FIRST_NAME, LAST_NAME, COUNTRY_CODE, PHONE_NUMBER)
 		VALUES
 			('$firstName', '$lastName', '$countryCode', '$phoneNumber')"
 	);
 	$newId = $db->getInsertId();
-	$db->insert("
+	$db->query("
 		INSERT INTO Luxville.SYSTEM_USER
 			(USER_ID, ROLE_ID, EMAIL, PASSWORD)
 		VALUES

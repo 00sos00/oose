@@ -6,6 +6,17 @@ require_once __DIR__ . "/../gui/GUI.php";
 require_once __DIR__ . "/../Model/User.php";
 $_SESSION['previous-page'] = $_SERVER['REQUEST_URI'];
 $gui = GUI::getInstance();
+$gui->loadComponents([
+	"Head",
+	"InputHolder",
+	"Dropdown",
+	"CreateAccount",
+	"ModifyAccount",
+	"Sidebar",
+	"SidebarItem",
+	"Controller",
+	"Table"
+]);
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +36,7 @@ $gui = GUI::getInstance();
 <body>
 	<div class="overlay"></div>
 	<?= $gui->getComponentHTML("CreateAccount") ?>
+	<?= $gui->getComponentHTML("ModifyAccount") ?>
 	<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "accounts"]) ?>
 	<div class="right-content">
 		<?php

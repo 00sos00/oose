@@ -66,35 +66,7 @@ class DataBase
 		return $this->conn->insert_id;	
 	}
 
-	public function query($sql): ?mysqli_result
-	{
-		// If connection is not established, reconnect
-		if (!$this->conn) {
-			$this->connect();
-		}
-
-		// Query the database
-		$result = $this->conn->query($sql);
-
-		if ($result === false) {
-			return null;
-		}
-
-		return $result;
-	}
-
-	public function insert($sql)
-	{
-		// If connection is not established, reconnect
-		if (!$this->conn) {
-			$this->connect();
-		}
-
-		// Query the database
-		return $this->conn->query($sql);
-	}
-
-	public function delete($sql): bool
+	public function query($sql)
 	{
 		// If connection is not established, reconnect
 		if (!$this->conn) {
