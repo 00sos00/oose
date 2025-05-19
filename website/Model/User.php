@@ -225,12 +225,19 @@ function FetchUsers($className, $pageNum, $maxRowsPerPage){
 				SYSTEM_USER.ROLE_ID = ROLE.ROLE_ID
 		";
     } else {
-        $sql = "SELECT * FROM $className, EXTERNAL_USER, USER WHERE $className.USER_ID = EXTERNAL_USER.USER_ID AND EXTERNAL_USER.USER_ID = USER.USER_ID";
+        $sql = "
+			SELECT *
+			FROM $className, EXTERNAL_USER, USER
+			WHERE
+				$className.USER_ID = EXTERNAL_USER.USER_ID AND
+				EXTERNAL_USER.USER_ID = USER.USER_ID
+		";
     }
 	// MySQL Skipping & Limiting syntax:
 	// LIMIT SKIP_AMOUNT, LIMIT_AMOUNT
 	$skip = ($pageNum - 1) * $maxRowsPerPage;
 	$limit = $maxRowsPerPage;
+	$sql .= " ORDER BY USER.USER_ID";
 	$sql .= " LIMIT $skip, $limit";
     $result = $db->query($sql);
 
