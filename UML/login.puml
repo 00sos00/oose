@@ -1,0 +1,19 @@
+@startuml login
+title "Login Sequence Diagram"
+actor SystemUser
+participant LoginController
+participant Database
+
+SystemUser -> LoginController: Send Credentials
+
+LoginController -> LoginController: Validate input format
+LoginController -> Database: Query user by email
+Database --> LoginController: User data or null
+LoginController -> LoginController: Check password validity
+
+alt Valid credentials and correct password
+  SystemUser <-- LoginController: Redirect to some page
+else
+  SystemUser <-- LoginController: Redirect to login page with error
+end
+@enduml
