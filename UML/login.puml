@@ -12,8 +12,8 @@ Database --> LoginController: User data or null
 LoginController -> LoginController: Check password validity
 
 alt Valid credentials and correct password
-  SystemUser <-- LoginController: Redirect to some page
+ 	SystemUser <-- LoginController: Redirect to some page
 else
-  SystemUser <-- LoginController: Redirect to login page with error
+ 	SystemUser <-- LoginController: Redirect to login page with error
 end
 @enduml

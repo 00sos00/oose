@@ -1,0 +1,16 @@
+@startuml Create
+title "Create Entity"
+actor SystemUser
+participant CreateComponent
+participant Database
+
+SystemUser -> CreateComponent: Open & Fill info
+CreateComponent -> CreateComponent: Validate Info
+alt If Info is valid
+	CreateComponent -> Database: Send Insert Query
+	CreateComponent <-- Database: Return query status
+	SystemUser <-- CreateComponent: Refresh page
+else
+	SystemUser <-- CreateComponent: Return to previous page with error
+end
+@enduml

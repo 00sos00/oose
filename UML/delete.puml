@@ -1,0 +1,16 @@
+@startuml Delete
+title "Delete Entity"
+actor SystemUser
+participant TableComponent
+participant Database
+
+SystemUser -> TableComponent: Click on trash icon
+TableComponent -> TableComponent: Confirm user action
+alt Action confirmed
+	TableComponent -> Database: Send Delete Query
+	TableComponent <-- Database: Return query status
+	SystemUser <-- TableComponent: Refresh page
+else
+	SystemUser <-- TableComponent: Do nothing
+end
+@enduml

@@ -1,0 +1,19 @@
+@startuml Table
+title "Loading Table Page"
+actor SystemUser
+participant PageScript
+participant GUI
+participant Database
+
+SystemUser -> PageScript: Send GET Request
+PageScript -> PageScript: Check Logged In
+alt If Logged In
+	PageScript -> GUI: Load Components
+	GUI -> Database: Query Table By Page Type
+	GUI <-- Database: Table Data
+	PageScript <-- GUI: Render HTML
+	SystemUser <-- PageScript: Return Rendered Page
+else
+	SystemUser <-- PageScript: Redirect to login page
+end
+@enduml

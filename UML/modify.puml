@@ -1,0 +1,16 @@
+@startuml Modify
+title "Modify Entity"
+actor SystemUser
+participant ModifyComponent
+participant Database
+
+SystemUser -> ModifyComponent: Open & Change info
+ModifyComponent -> ModifyComponent: Validate Info
+alt If Info is valid
+	ModifyComponent -> Database: Send Update Query
+	ModifyComponent <-- Database: Return query status
+	SystemUser <-- ModifyComponent: Refresh page
+else
+	SystemUser <-- ModifyComponent: Return to previous page with error
+end
+@enduml
