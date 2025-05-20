@@ -45,14 +45,9 @@ class Role{
     {
         return $this->roleId;
     }
-
-	public function getRoleName()
-    {
-        return $this->roleName;
-    }
 }
 
-function FetchRoles(){
+function LoadRole(){
     require_once "Database.php";
 
     $object = [];

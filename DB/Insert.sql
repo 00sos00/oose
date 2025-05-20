@@ -19,15 +19,6 @@ VALUES
 ('Hank', 'Lopez', '+31', '5551000027'),
 ('Ivy', 'Gonzalez', '+41', '5551000029');
 
--- SYSTEM_USER
-INSERT INTO Luxville.SYSTEM_USER (USER_ID, ROLE_ID, EMAIL, PASSWORD)
-VALUES
-(1, 1, 'admin@gmail.com', 'admin123'),
-(2, 1, 'viewer@gmail.com', 'viewer123'),
-(3, 1, 'viewer2@gmail.com', 'viewer123'),
-(4, 1, 'accountant@gmail.com', 'accountant123'),
-(5, 1, 'manager@gmail.com', 'manager123');
-
 -- ROLES
 INSERT INTO Luxville.ROLE (
     ROLE_NAME,
@@ -46,15 +37,25 @@ INSERT INTO Luxville.ROLE (
 )
 VALUES
 -- Admin
-('Admin', 1, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE),
+('Admin', TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE),
 -- Viewer
-('Viewer', 2, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE),
+('Viewer', FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE),
 -- Accountant
-('Accountant', 4, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+('Accountant', TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
 -- Manager
-('Manager', 5, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE),
+('Manager', TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE),
 -- Operator
-('Operator', 3, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE);
+('Operator', TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE);
+
+-- SYSTEM_USER
+INSERT INTO Luxville.SYSTEM_USER (USER_ID, EMAIL, PASSWORD, ROLE_ID)
+VALUES
+(1, 'admin@gmail.com', 'admin123', 1),
+(2, 'viewer@gmail.com', 'viewer123', 2),
+(3, 'viewer2@gmail.com', 'viewer123', 2),
+(4, 'accountant@gmail.com', 'accountant123', 4),
+(5, 'manager@gmail.com', 'manager123', 5);
+
 
 -- EXTERNAL_USER
 INSERT INTO Luxville.EXTERNAL_USER (USER_ID, RATING)

@@ -51,7 +51,7 @@ class System_User extends User
 {
     private $email;
     private $password;
-	private $roleName;
+    private $role_id;
 
     protected function __construct($result)
     {
@@ -59,7 +59,7 @@ class System_User extends User
         // Parse the result from the database
         $this->email = $result["EMAIL"];
         $this->password = $result["PASSWORD"];
-		$this->roleName = $result["ROLE_NAME"];
+        $this->role_id = $result["ROLE_ID"];
     }
 
     public static function parseResult($result): System_User
@@ -72,15 +72,13 @@ class System_User extends User
     {
         return $this->email;
     }
-
     public function getPassword()
     {
         return $this->password;
     }
 
-	public function getRole()
-    {
-        return $this->roleName;
+    public function getRole(){
+        return $this->role_id;
     }
 }
 
@@ -194,14 +192,7 @@ class Owner extends External_User
 
 }
 
-function FetchUsersCount($className) {
-	require_once "Database.php";
-	$db = DataBase::getInstance();
-
-	return $db->query("SELECT COUNT(*) AS CNT FROM `$className`;")->fetch_assoc()["CNT"];
-}
-
-function FetchUsers($className, $pageNum, $maxRowsPerPage){
+function LoadUser($className){
     require_once "Database.php";
 
     // Check if the class exists
@@ -217,28 +208,10 @@ function FetchUsers($className, $pageNum, $maxRowsPerPage){
     // Transform the class name to uppercase
     $className = strtoupper($className);
     if($className == "SYSTEM_USER") {
-        $sql = "
-			SELECT *
-			FROM SYSTEM_USER, USER, ROLE
-			WHERE
-				SYSTEM_USER.USER_ID = USER.USER_ID AND
-				SYSTEM_USER.ROLE_ID = ROLE.ROLE_ID
-		";
-    } else {
-        $sql = "
-			SELECT *
-			FROM $className, EXTERNAL_USER, USER
-			WHERE
-				$className.USER_ID = EXTERNAL_USER.USER_ID AND
-				EXTERNAL_USER.USER_ID = USER.USER_ID
-		";
+        $sql = "SELECT * FROM " . $className . ", USER, ROLE WHERE " . $className . ".USER_ID = USER.USER_ID AND ROLE.ROLE_ID = SYSTEM_USER.ROLE_ID";
+    }else {
+        $sql = "SELECT * FROM " . $className . ", EXTERNAL_USER, USER WHERE " . $className . ".USER_ID = EXTERNAL_USER.USER_ID AND EXTERNAL_USER.USER_ID = USER.USER_ID";
     }
-	// MySQL Skipping & Limiting syntax:
-	// LIMIT SKIP_AMOUNT, LIMIT_AMOUNT
-	$skip = ($pageNum - 1) * $maxRowsPerPage;
-	$limit = $maxRowsPerPage;
-	$sql .= " ORDER BY USER.USER_ID";
-	$sql .= " LIMIT $skip, $limit";
     $result = $db->query($sql);
 
     // Check if the query was successful
@@ -260,13 +233,13 @@ function FetchUsers($className, $pageNum, $maxRowsPerPage){
     return $object;
 }
 
-function FetchUser($email, $password)
+function Load($email, $password)
 {
     require_once "Database.php";
     $db = DataBase::getInstance();
 
     // Query the database for the class name
-    $sql = "SELECT * FROM SYSTEM_USER, USER WHERE EMAIL =  '$email' AND PASSWORD = '$password' AND SYSTEM_USER.USER_ID = USER.USER_ID";
+    $sql = "SELECT * FROM SYSTEM_USER, USER, ROLE WHERE EMAIL =  '$email' AND PASSWORD = '$password' AND SYSTEM_USER.USER_ID = USER.USER_ID AND ROLE.ROLE_ID = SYSTEM_USER.ROLE_ID";
     $result = $db->query($sql);
 
     // Check if the query was successful

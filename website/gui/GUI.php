@@ -52,12 +52,4 @@ class GUI
 			echo $jsText . "\n";
 		}
 	}
-
-	public function loadComponents($componentNames = []) {
-		foreach ($componentNames as $componentName) {
-			require_once __DIR__ . "/components/$componentName.php";
-			$loadComponent($this);
-			unset($loadComponent);
-		}
-	}
 }

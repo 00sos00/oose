@@ -1,6 +1,8 @@
 <?php
-$loadComponent = function ($gui) {
-	$strippedFileName = basename(__FILE__, ".php");
+require_once __DIR__ . "/../GUI.php";
+$gui = GUI::getInstance();
+
+$strippedFileName = basename(__FILE__, ".php");
 	$gui->addComponentRenderFunction($strippedFileName, function ($props) {
 		$name = str_replace(" ", "-", strtolower($props["label"]));
 		ob_start();
@@ -57,4 +59,3 @@ $loadComponent = function ($gui) {
 	$js = str_replace("<script>", "", $js);
 	$js = str_replace("</script>", "", $js);
 	$gui->addComponentJS($js);
-};

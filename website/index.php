@@ -1,16 +1,19 @@
 <?php
 ini_set('session.cookie_httponly', 1);
 session_start();
-if (isset($_SESSION["user_id"])) {
-	header("Location: View/Account_view.php");
-	exit();
-}
+// if (isset($_SESSION["user_id"])) {
+// 	header("Location: View/Account_view.php");
+// 	exit();
+// }
 
 require_once "Model/Database.php";
 require_once "gui/GUI.php";
+require_once "Head.php";
+require_once "gui/components/InputHolder.php";
+require_once "controllers/sign-in.php";
+
 $db = DataBase::getInstance();
 $gui = GUI::getInstance();
-$gui->loadComponents(["Head", "InputHolder"]);
 ?>
 
 <!DOCTYPE html>

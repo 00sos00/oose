@@ -1,7 +1,6 @@
 <?php
 class DataBase
 {
-
 	private static $instance = null; //data type: DataBase
 	private $servername;
 	private $user;
@@ -61,12 +60,7 @@ class DataBase
 		return $currentInstance;
 	}
 
-	public function getInsertId(): int
-	{
-		return $this->conn->insert_id;	
-	}
-
-	public function query($sql)
+	public function query($sql): ?mysqli_result
 	{
 		// If connection is not established, reconnect
 		if (!$this->conn) {
@@ -74,6 +68,12 @@ class DataBase
 		}
 
 		// Query the database
-		return $this->conn->query($sql);
+		$result = $this->conn->query($sql);
+
+		if ($result === false) {
+			return null;
+		}
+
+		return $result;
 	}
 }
