@@ -34,7 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION["user_first_name"] = $user->getFirstName();
 		$_SESSION["user_last_name"] = $user->getLastName();
 		$_SESSION["user_email"] = $user->getEmail();
-		$_SESSION["user_role"] = $user->getRole();
+		require_once "../Model/Role.php";
+		$_SESSION["user_role"] = getRoleName($user->getRole());
 		header("Location: ../View/Account_view.php");
 		exit();
 	}

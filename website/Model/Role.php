@@ -73,3 +73,14 @@ function LoadRole(){
     }
     return $object;
 }
+
+function getRoleName($roleId)
+{
+    $roles = LoadRole();
+    foreach ($roles as $role) {
+        if ($role->getRoleId() == $roleId) {
+            return $role->roleName;
+        }
+    }
+    return null;
+}

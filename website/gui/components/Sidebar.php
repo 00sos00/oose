@@ -34,13 +34,13 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Properties",
 				"icon-name" => "properties-icon",
-				"href" => "#",
+				"href" => "Property_view.php",
 				"selected" => $props["selected-page"] == "properties"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Accounts",
 				"icon-name" => "accounts-icon",
-				"href" => "#",
+				"href" => "Account_view.php",
 				"selected" => $props["selected-page"] == "accounts"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [

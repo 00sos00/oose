@@ -14,15 +14,21 @@ $strippedFileName = basename(__FILE__, ".php");
 $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 	if (!isset($props["object"])) return;
 	ob_start();
-?>
+?>)
+<?php if(isset($props["Header"]))echo "<div class='header'>" . $props["Header"] . "</div>"; ?>
 <!-- This is the HTML structure for the table component. -->
 	<div class="table-container">
 		<table>
 			<tr>
 				<?php
-				// Loop through the column names provided in $props["columns"] and render table headers.
+				// Render the table header with the provided header name.
 				foreach ($props["columns"] as $columnName) {
 					echo "<th class='table-cell'>$columnName</th>";
+				}
+
+				// If the "statusMap" property is set, add a "Status" column header.
+				if (isset($props["statusMap"])) {
+					echo "<th class='table-cell'>Status</th>";
 				}
 
                 // If the "hasActionColumn" property is set, add an "Action" column header.
@@ -43,9 +49,44 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 				foreach ($props["columns"] as $columnName) {
 					// Use the getter method to get the value of the cell.
 					$getter = $props["getterMap"][$columnName];
-					echo "<td class='table-cell'>" . htmlspecialchars($obj->$getter()) . "</td>";
+					if (isset($props["addUnits"]))
+					{
+						if ($columnName == "Price" || $columnName == "My Cut")
+						{
+							require_once __DIR__ . "/../../Model/ManipulationFunctions.php";
+							// Use the humanize_number function to format the price.
+							$humanizedPrice = humanize_number($obj->$getter());
+							// If the "addUnits" property is set, add "/month" to the price.
+							if($obj->getFor() == "Rent")
+							{
+								if($columnName == "Price")
+									echo "<td class='table-cell'>" . htmlspecialchars($humanizedPrice) . " EGP/month" . "</td>";
+								else
+									echo "<td class='table-cell'>" . htmlspecialchars($humanizedPrice) . " EGP" . "</td>";
+							}
+							else
+							{
+								echo "<td class='table-cell'>" . htmlspecialchars($humanizedPrice) . " EGP</td>";
+							}
+						}else if($columnName == "Backyard Area"){
+							echo "<td class='table-cell'>" . htmlspecialchars($obj->$getter()) . " m<sup>2</sup></td>";
+						}else{
+							echo "<td class='table-cell'>" . htmlspecialchars($obj->$getter()) . "</td>";
+						}
+					}else{
+						echo "<td class='table-cell'>" . htmlspecialchars($obj->$getter()) . "</td>";
+					}
 				}
 					
+				// If the "statusMap" property is set, add a status cell.
+				// The status is obtained from the object using the "getStatus" method.
+				// The status color is obtained from the "statusMap" property using the status as the key.
+				if(isset($props["statusMap"])) {
+					// If the "statusMap" property is set, add a status cell.
+					$status = $obj->getStatus();
+					$statusColor = $props["statusMap"][$status];
+					echo "<td class='table-cell' style='color: $statusColor;'>$status</td>";
+				}
 
 				// If the "hasActionColumn" property is set, add action icons for each row.
 				// The action icons are represented as SVG objects.
@@ -71,7 +112,18 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 ob_start();
 ?>
 <style>
+	.header {
+		font-size: clamp(0.4rem, 2vw, 1.2rem);
+		font-family: Roboto;
+		font-weight: 600;
+		color: var(--primary);
+		text-align: left;
+		margin-left: 1%;
+	}
+
 	.table-container {
+		display: flex;
+		justify-content: center;
 		box-sizing: border-box;
 		padding: 16px;
 		border-radius: 16px;
@@ -83,11 +135,13 @@ ob_start();
 
 	.table-container table {
 		width: 100%;
+		border-spacing: 0 12px; /* vertical gap between rows */
+		border-collapse: separate;
 	}
 
 	.table-container tr {
 		width: 100%;
-		display: flex;
+		
 		margin-bottom: 16px;
 		border-radius: 4px;
 	}
@@ -97,7 +151,7 @@ ob_start();
 	}
 
 	.table-cell {
-		flex: 1;
+		
 		padding: 8px 16px;
 		vertical-align: middle;
 	}
@@ -105,7 +159,7 @@ ob_start();
 	.action-cell {
 		display: flex;
 		gap: 12px;
-		flex: 0;
+		
 	}
 
 	.action-cell svg {
@@ -124,6 +178,7 @@ ob_start();
 		border-bottom: 2px solid var(--primary);
 		white-space: nowrap; /* Prevents text from wrapping */
 		text-overflow: ellipsis;
+		text-align: left;
 	}
 
 	.table-container td {
@@ -132,6 +187,7 @@ ob_start();
 		color: rgba(255, 255, 255, 0.75);
 		white-space: nowrap; /* Prevents text from wrapping */
 		text-overflow: ellipsis;
+		text-align: left;
 	}
 
 </style>

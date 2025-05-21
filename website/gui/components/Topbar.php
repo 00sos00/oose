@@ -31,7 +31,7 @@ GUI::getInstance()->addComponentRenderFunction('TopBar', function($props = []) {
 
 <style>
 .top-bar {
-  background: #181818;
+  background:rgba(223, 0, 0, 0);
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -55,18 +55,20 @@ GUI::getInstance()->addComponentRenderFunction('TopBar', function($props = []) {
   position: relative;
 }
 .bell-img {
-  width: 38px;
-  height: 38px;
+  width: 75%;
+  height: 75%;
+  margin: auto 0;
   display: block;
 }
 .notification-dot {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid #fff;
+  top: -1; /* or your desired value */
+  left: 56%;
+  transform: translateX(-50%);
+  width: 38%;
+  height: 48%;
+  border-radius: 100%;
+  border: 2px solid #1D1D1B;
   background: #3ec46d;
   transition: background 0.2s;
   box-sizing: border-box;
@@ -77,14 +79,18 @@ GUI::getInstance()->addComponentRenderFunction('TopBar', function($props = []) {
 .user-info {
   display: flex;
   align-items: center;
+  font-size: 0.8em;
+  font-family: Roboto;
   gap: 10px;
 }
 .avatar {
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  overflow: hidden;
+  display: block;
   object-fit: cover;
-  border: 2px solid #fff;
+  border: 3px solid #E3B04B;
 }
 .name {
   font-weight: bold;
@@ -92,7 +98,7 @@ GUI::getInstance()->addComponentRenderFunction('TopBar', function($props = []) {
 }
 .role {
   font-size: 0.85em;
-  color: #ccc;
+  color: #E3B04B;
   display: block;
 }
 </style>

@@ -58,13 +58,17 @@ class Property
     {
         return $this->propertyId;
     }
-    public function getForRent()
+    public function getFor()
     {
-        return $this->forRent;
-    }
-    public function getForSale()
-    {
-        return $this->forSale;
+        if($this->forRent == 1 && $this->forSale == 1){
+            return "Rent and Sale";
+        }else if($this->forRent == 1){
+            return "Rent";
+        }else if($this->forSale == 1){
+            return "Sale";
+        }else{ 
+            return "Not Available";
+        }
     }
     public function getPrice()
     {
@@ -80,6 +84,21 @@ class Property
     }
     public function getStatus()
     {
+        if($this->status == 1){
+            return "Available";
+        }else if($this->status == 2){
+            return "Sold";
+        }else if($this->status == 3){
+            return "Rented";
+        }else if($this->status == 4){
+            return "Reserved";
+        }else if($this->status == 5){
+            return "Pending";
+        }else if($this->status == 6){
+            return "Under Construction";
+        }else{
+            return "Not Available";
+        }
         return $this->status;
     }
     public function getArea()
@@ -207,10 +226,18 @@ class House extends Property
     }
     public function getIsFurnished()
     {
-        return $this->isFurnished;
+        if($this->isFurnished == 1){
+            return "Furnished";
+        }else if($this->isFurnished == 2){
+            return "Semi-furnished";
+        }else{
+            return "Unfurnished";
+        }
     }
     public function getBackyardArea()
     {
+        if(!isset($this->backyardArea))
+            return 0;
         return $this->backyardArea;
     }
     public function getFlooringType()
@@ -263,6 +290,53 @@ class Apartment extends Property
     {
         return new Apartment($result);
     }
+    // Getters for Apartment Class
+    public function getFloorNumber()
+    {
+        return $this->floorNumber;
+    }
+    public function getUnitNumber()
+    {
+        return $this->unitNumber;
+    }
+    public function getBuildingName()
+    {
+        return $this->buildingName;
+    }
+    public function getHasElevator()
+    {
+        return $this->hasElevator;
+    }
+    public function getMonthlyMaintenanceFee()
+    {
+        return $this->monthlyMaintenanceFee;
+    }
+    public function getIsFurnished()
+    {
+        if($this->isFurnished == 1){
+            return "Furnished";
+        }else if($this->isFurnished == 2){
+            return "Semi-furnished";
+        }else{
+            return "Unfurnished";
+        }
+    }
+    public function getHasBalcony()
+    {
+        return $this->hasBalcony;
+    }
+    public function getViewType()
+    {
+        return $this->viewType;
+    }
+    public function getNetworkInfrastructure()
+    {
+        return $this->networkInfrastructure;
+    }
+    public function getHasLandline()
+    {
+        return $this->hasLandline;
+    }
 }
 
 class Studio extends Property
@@ -303,7 +377,13 @@ class Studio extends Property
     }
     public function getIsFurnished()
     {
-        return $this->isFurnished;
+        if($this->isFurnished == 1){
+            return "Furnished";
+        }else if($this->isFurnished == 2){
+            return "Semi-furnished";
+        }else{
+            return "Unfurnished";
+        }
     }
     public function getHasKitchenette()
     {
@@ -375,7 +455,13 @@ class Office extends Property
     }
     public function getIsFurnished()
     {
-        return $this->isFurnished;
+        if($this->isFurnished == 1){
+            return "Furnished";
+        }else if($this->isFurnished == 2){
+            return "Semi-furnished";
+        }else{
+            return "Unfurnished";
+        }
     }
     public function getHasReceptionArea()
     {
