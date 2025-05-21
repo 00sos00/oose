@@ -32,15 +32,15 @@ $gui = GUI::getInstance();
 			'role' => $_SESSION["user_role"],
 			'bell' => '../assets/bell.svg'
 			]);
+
+			// View Selling Deals Table
 			require_once "../Model/Deal.php";
 			$deal = LoadDeal("Selling_Deal");
 			$getterMap = [
 				"Deal ID" => "getDealId",
 				"Date" => "getDealDate",
 				"Seller ID" => "getSellerId",
-				//"Seller Name" => "getSellerName",
-				"Buyer ID" => "getBuyerId",
-				//"Buyer Name" => "getBuyerName"
+				"Buyer ID" => "getBuyerId"
 			];
 			
 			echo $gui->getComponentHTML("Table", [
@@ -49,14 +49,14 @@ $gui = GUI::getInstance();
 				"getterMap" => $getterMap,
 				"hasActionColumn" => true
 			]);
+
+			// View Renting Deals Table
 			$deal = LoadDeal("Renting_Deal");
 			$getterMap = [
 				"Deal ID" => "getDealId",
 				"Date" => "getDealDate",
 				"Seller ID" => "getSellerId",
-				//"Seller Name" => "getSellerName",
-				"Buyer ID" => "getBuyerId",
-				//"Buyer Name" => "getBuyerName"
+				"Buyer ID" => "getBuyerId"
 			];
 			echo $gui->getComponentHTML("Table", [
 				"columns" => ["Deal ID", "Date", "Seller ID",  "Buyer ID"],

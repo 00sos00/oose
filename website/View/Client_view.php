@@ -32,7 +32,7 @@ $gui = GUI::getInstance();
         ]);
 
         require_once "../Model/User.php";
-        $client = LoadUser("Clients");
+        $client = LoadUser("Client");
 
         $getterMap = [
             "Client ID" => "getUserId",

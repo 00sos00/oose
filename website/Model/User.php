@@ -126,11 +126,17 @@ class Client extends External_User
     // Getters for Client Class
     public function getNeedPropertyFeatures()
     {
-        return $this->needPropertyFeatures;
+        if(isset($this->needPropertyFeatures)){
+            return $this->needPropertyFeatures;
+        }
+        return "None";
     }
     public function getProvidePropertyFeatures()
     {
-        return $this->providePropertyFeatures;
+        if(isset($this->providePropertyFeatures)){
+            return $this->providePropertyFeatures;
+        }
+        return "None";
     }
 }
 class Buyer extends External_User

@@ -28,7 +28,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Deals",
 				"icon-name" => "deals-icon",
-				"href" => "#",
+				"href" => "Deals_view.php",
 				"selected" => $props["selected-page"] == "deals"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
