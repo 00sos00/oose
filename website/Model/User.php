@@ -263,3 +263,36 @@ function Load($email, $password)
     // Return null if no user is found
     return null;
 }
+
+function insert($pnn, $className){
+    require_once "Database.php";
+    $db = DataBase::getInstance();
+
+    // Check if the class exists
+    if (!class_exists($className)) {
+        return null;
+    }
+
+    // Transform the class name to uppercase
+    $className = strtoupper($className);
+
+    // Insert the user into the database
+    $sql = "INSERT INTO USER (FIRST_NAME, LAST_NAME, COUNTRY_CODE, PHONE_NUMBER) VALUES ('" . $pnn->getFirstName() . "', '" . $pnn->getLastName() . "', '" . $pnn->getCountryCode() . "', '" . $pnn->getPhoneNumber() . "')";
+
+    if ($db->query($sql) === TRUE) {
+        // Get the last inserted ID
+        $last_id = $db->insert_id;
+
+        // Insert the user into the specific table
+        if ($className == "SYSTEM_USER") {
+            $sql = "INSERT INTO SYSTEM_USER (USER_ID, EMAIL, PASSWORD, ROLE_ID) VALUES ('$last_id', '" . $pnn->getEmail() . "', '" . $pnn->getPassword() . "', '" . $pnn->getRole() . "')";
+        } else {
+            $sql = "INSERT INTO " . $className . " (USER_ID) VALUES ('$last_id')";
+        }
+
+        if ($db->query($sql) === TRUE) {
+            return true;
+        }
+    }
+    return false;
+}
