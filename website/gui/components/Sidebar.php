@@ -41,7 +41,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 				"item-text" => "Accounts",
 				"icon-name" => "accounts-icon",
 				"href" => "Account_view.php",
-				"selected" => $props["selected-page"] == "accounts"
+				"selected" => $props["selected-page"] == "account"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Roles",
@@ -52,7 +52,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Clients",
 				"icon-name" => "clients-icon",
-				"href" => "#",
+				"href" => "Client_view.php",
 				"selected" => $props["selected-page"] == "clients"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [

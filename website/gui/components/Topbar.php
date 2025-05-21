@@ -36,10 +36,11 @@ GUI::getInstance()->addComponentRenderFunction('TopBar', function($props = []) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: auto;
   padding: 0 32px;
   width: 100%;
   box-sizing: border-box;
+  top: 0px
 }
 .notification {
   position: relative;

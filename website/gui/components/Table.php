@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 require_once __DIR__ . "/../GUI.php";
 
 $gui = GUI::getInstance();
@@ -14,8 +14,18 @@ $strippedFileName = basename(__FILE__, ".php");
 $gui->addComponentRenderFunction($strippedFileName, function ($props) {
 	if (!isset($props["object"])) return;
 	ob_start();
-?>)
-<?php if(isset($props["Header"]))echo "<div class='header'>" . $props["Header"] . "</div>"; ?>
+?>
+<?php if(isset($props["Header"]))
+{
+	require_once "Controller.php";
+	echo GUI::getInstance()->getComponentHTML("Controller", [
+		"createText" => "Create",
+		"currentPage" => 1,
+		"totalPages" => 1,
+		"controllerTitle" => $props["Header"]
+	]);
+}
+?>
 <!-- This is the HTML structure for the table component. -->
 	<div class="table-container">
 		<table>
@@ -131,6 +141,7 @@ ob_start();
 		text-align: left;
 		overflow-y: hidden;
 		box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
+		margin-top: 1%;
 	}
 
 	.table-container table {
@@ -143,7 +154,7 @@ ob_start();
 		width: 100%;
 		
 		margin-bottom: 16px;
-		border-radius: 4px;
+		border-radius: 4rem;
 	}
 
 	.table-container tr:not(:first-child):hover {

@@ -190,7 +190,7 @@ function LoadDeal($className){
 
     // Check if the query was successful
     if (!isset($result)) {
-        exit();
+        return null;
     }
 
     $i = 0;
@@ -201,6 +201,8 @@ function LoadDeal($className){
             $object[$i] = $className::parseResult($row);
             $i++;
         }
+    }else{
+        return null;
     }
 
     // Return the array of objects

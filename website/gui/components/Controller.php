@@ -11,7 +11,7 @@ function getSortSvg() {
     </svg>';
 }
 
-$loadComponent = function ($gui) {
+	// This function is used to create a controller component with a title, create button, and pagination.
 	$strippedFileName = basename(__FILE__, ".php");
 	$gui->addComponentRenderFunction($strippedFileName, function ($props) {
 	    $createText = $props['createText'] ?? 'Create';
@@ -62,26 +62,27 @@ $loadComponent = function ($gui) {
 	    .controller {
 	        width: 100%;
 	        height: 60px;
-	        padding: 0 24px;
+	        padding: 0 50px;
 	        display: flex;
 	        justify-content: space-between;
 	        align-items: center;
 	        background-color: var(--lighter-dark);
 	        box-sizing: border-box;
 			border-radius: 16px;
-			margin-bottom: 28px;
+			margin-top: 3%;
+			margin-bottom: -0.2%;
 	    }
 	    .controller-title {
 	        color: var(--primary);
 			font-family: Roboto;
 			font-weight: 500;
-	        font-size: 2rem;
+	        font-size: 1.4rem;
 	        margin: 0;
 	    }
 	    .right-section {
 	        display: flex;
 	        align-items: center;
-	        gap: 16px;
+	        gap: 3%;
 	    }
 	    .left-section {
 	        display: flex;
@@ -91,12 +92,12 @@ $loadComponent = function ($gui) {
 	    .create-btn {
 	        background-color: var(--primary);
 	        color: var(--dark);
-	        padding: 8px;
+	        padding: 3% 5%;
 	        border: none;
 	        border-radius: 4px;
 			font-family: Roboto;
 	        font-weight: bold;
-			font-size: 1rem;
+			font-size: 0.8rem;
 	        cursor: pointer;
 	        transition: opacity 0.2s ease;
 	    }
@@ -217,4 +218,3 @@ $loadComponent = function ($gui) {
 	$js = str_replace("<script>", "", $js);
 	$js = str_replace("</script>", "", $js);
 	$gui->addComponentJS($js);
-};

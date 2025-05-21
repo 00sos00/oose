@@ -33,9 +33,9 @@ $gui = GUI::getInstance();
 				'role' => $_SESSION["user_role"],
 				'bell' => '../assets/bell.svg'
 				]);
-				require_once "../Model/Property.php";
 
 				// View Apartments Table
+				require_once "../Model/Property.php";
 				$properties = LoadClass("Apartment");
 				$getterMap = [
 					"ID" => "getPropertyId",
@@ -57,7 +57,7 @@ $gui = GUI::getInstance();
 					"Reserved" => "purple",
 				];
 				echo $gui->getComponentHTML("Table", [
-					"Header" => "Apartments",
+					"Header" => "Apartment",
 					"columns" => ["ID", "Unit Number", "Building Name", "Listing Type", "Area", "Price", "My Cut"],
 					"object" => $properties,
 					"getterMap" => $getterMap,
@@ -90,7 +90,7 @@ $gui = GUI::getInstance();
 					"Reserved" => "purple",
 				];
 				echo $gui->getComponentHTML("Table", [
-					"Header" => "Studios",
+					"Header" => "Studio",
 					"columns" => ["ID", "Floor Number", "Apartment Name", "Furnishment", "Listing Type", "Area", "Price", "My Cut"],
 					"object" => $properties,
 					"getterMap" => $getterMap,
@@ -122,7 +122,7 @@ $gui = GUI::getInstance();
 					"Reserved" => "purple",
 				];
 				echo $gui->getComponentHTML("Table", [
-					"Header" => "Houses",
+					"Header" => "House",
 					"columns" => ["ID", "Area", "Backyard Area", "Furnishment", "Listing Type", "Price", "My Cut"],
 					"object" => $properties,
 					"getterMap" => $getterMap,
@@ -140,25 +140,31 @@ $gui = GUI::getInstance();
 </html>
 
 <style>
-	.horizontal-stack{
-		display: flex;
-		width: 100%;
-		height: 100vh;
-		flex-direction: row;
-	}
-	.right-content{
-		flex: 0 0 1;
-		width: 100%;
-		overflow-x: auto;
-		padding: 1%;
-	}
+.horizontal-stack {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: row;
+}
+.right-content {
+	height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    padding: 1%;
+}
+.vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3%;
+    width: 100%;
+	top: 6px;
+	height: 100%;
+}
 
-	.vertical-stack {
-		display: flex;
-		flex-direction: column;
-		gap: 24px;
-		width: 79%;
-		position: absolute;
-    	top: 0;
-	}
+/* For WebKit browsers (Chrome, Safari, Edge) */
+.right-content::-webkit-scrollbar,
+.vertical-stack::-webkit-scrollbar {
+    width: 0px;
+    background: var(--lighter-dark); /* Track color */
+}
 </style>

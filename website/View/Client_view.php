@@ -45,6 +45,7 @@ $gui = GUI::getInstance();
         ];
 
         echo $gui->getComponentHTML("Table", [
+            "Header" => "Clients",
             "columns" => array_keys($getterMap),
             "object" => $client,
             "getterMap" => $getterMap,
@@ -65,17 +66,24 @@ $gui = GUI::getInstance();
     flex-direction: row;
 }
 .right-content {
-    flex: 0 0 1;
+	height: 100%;
     width: 100%;
-    overflow-x: auto;
+    overflow-y: auto;
     padding: 1%;
 }
 .vertical-stack {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    width: 79%;
-    position: absolute;
-    top: 0;
+    gap: 0.3%;
+    width: 100%;
+	top: 6px;
+	height: 100%;
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+.right-content::-webkit-scrollbar,
+.vertical-stack::-webkit-scrollbar {
+    width: 0px;
+    background: var(--lighter-dark); /* Track color */
 }
 </style>
