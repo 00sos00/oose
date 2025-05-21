@@ -42,6 +42,7 @@ class Deal{
     {
         return $this->agentId;
     }
+    
 }
 
 class Selling_Deal extends Deal

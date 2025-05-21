@@ -14,13 +14,13 @@ $gui = GUI::getInstance();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?= $gui->getComponentHTML("Head", ["page-title" => "Deals"]) ?>
+	<?= $gui->getComponentHTML("Head", ["page-title" => "account"]) ?>
 	<link rel="stylesheet" href="../table-page.css">
 </head>
 
 <body>
 	<div class="horizontal-stack">
-		<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "deals"]) ?>
+		<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "account"]) ?>
 		<div class="right-content">
 			<div class="vertical-stack">
 			<?php
