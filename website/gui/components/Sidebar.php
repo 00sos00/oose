@@ -64,7 +64,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Owners",
 				"icon-name" => "owners-icon",
-				"href" => "#",
+				"href" => "Owner_view.php",
 				"selected" => $props["selected-page"] == "owners"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [

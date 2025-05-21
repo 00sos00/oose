@@ -21,7 +21,7 @@ $gui = GUI::getInstance();
 </head>
 <body>
 	<div class="horizontal-stack">
-		<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "owner"]); ?>
+		<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "owners"]); ?>
 		<div class="right-content">
 			<div class="vertical-stack">
 				<?php
@@ -42,6 +42,7 @@ $gui = GUI::getInstance();
 				];
 
 				echo $gui->getComponentHTML("Table", [
+					"Header" => "Owners",
 					"columns" => ["Owner ID", "First Name", "Last Name", "Phone Number", "Rating"],
 					"object" => $owner,
 					"getterMap" => $getterMap,
@@ -55,24 +56,31 @@ $gui = GUI::getInstance();
 </html>
 
 <style>
-	.horizontal-stack {
-		display: flex;
-		width: 100%;
-		height: 100vh;
-		flex-direction: row;
-	}
-	.right-content {
-		flex: 0 0 1;
-		width: 100%;
-		overflow-x: auto;
-		padding: 1%;
-	}
-	.vertical-stack {
-		display: flex;
-		flex-direction: column;
-		gap: 24px;
-		width: 79%;
-		position: absolute;
-		top: 0;
-	}
+.horizontal-stack {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: row;
+}
+.right-content {
+	height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    padding: 1%;
+}
+.vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3%;
+    width: 100%;
+	top: 6px;
+	height: 100%;
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+.right-content::-webkit-scrollbar,
+.vertical-stack::-webkit-scrollbar {
+    width: 0px;
+    background: var(--lighter-dark); /* Track color */
+}
 </style>
