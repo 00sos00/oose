@@ -41,11 +41,13 @@ $gui = GUI::getInstance();
 				
 			];
 			echo $gui->getComponentHTML("Table", [
-    "columns" => ["Transaction ID", "Type", "Amount", "Description", "Recorded At"],
-    "object" => $transactions,
-    "getterMap" => $getterMap,
-    "hasActionColumn" => true
-]);
+				"columns" => ["Transaction ID", "Amount", "Description", "Recorded At"],
+				"object" => $transaction,
+				"getterMap" => $getterMap,
+				"hasActionColumn" => true
+			]);
+			
+
 
 			?>
 			</div>
