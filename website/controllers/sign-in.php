@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Check if the user has logged in
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
