@@ -46,7 +46,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "Roles",
 				"icon-name" => "roles-icon",
-				"href" => "#",
+				"href" => "Roles_view.php",
 				"selected" => $props["selected-page"] == "roles"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [

@@ -45,6 +45,88 @@ class Role{
     {
         return $this->roleId;
     }
+    
+    public function getCanImportExportTransactions()
+    {
+        return $this->canImportExportTransactions;
+    }
+    public function getCanViewTransactions()
+    {
+        return $this->canViewTransactions;
+    }
+    public function getCanEditTransactions()
+    {
+        return $this->canEditTransactions;
+    }
+    public function getCanDeleteUser()
+    {
+        return $this->canDeleteUser;
+    }
+    public function getCanCreateTransactions()
+    {
+        return $this->canCreateTransactions;
+    }
+    public function getCanEditAuditLog()
+    {
+        return $this->canEditAuditLog;
+    }
+    public function getCanExportAuditLog()
+    {
+        return $this->canExportAuditLog;
+    }
+    public function getCanManageRoles()
+    {
+        return $this->canManageRoles;
+    }
+    public function getCanDeleteTransactions()
+    {
+        return $this->canDeleteTransactions;
+    }
+    public function getCanCreateUser()
+    {
+        return $this->canCreateUser;
+    }
+    public function getCanEditUsers()
+    {
+        return $this->canEditUsers;
+    }
+    public function getCanViewAuditLog()
+    {
+        return $this->canViewAuditLog;
+    }
+    public function getRoleName()
+    {
+        return $this->roleName;
+    }
+    public function setRoleId($roleId)
+    {
+        $this->roleId = $roleId;
+    }
+    public function setCanImportExportTransactions($canImportExportTransactions)
+    {
+        $this->canImportExportTransactions = $canImportExportTransactions;
+    }
+    public function setCanViewTransactions($canViewTransactions)
+    {
+        $this->canViewTransactions = $canViewTransactions;
+    }
+    public function setCanEditTransactions($canEditTransactions)
+    {
+        $this->canEditTransactions = $canEditTransactions;
+    }
+    public function setCanDeleteUser($canDeleteUser)
+    {
+        $this->canDeleteUser = $canDeleteUser;
+    }
+    public function setCanCreateTransactions($canCreateTransactions)
+    {
+        $this->canCreateTransactions = $canCreateTransactions;
+    }
+    public function setCanEditAuditLog($canEditAuditLog)
+    {
+        $this->canEditAuditLog = $canEditAuditLog;
+    }
+    
 }
 
 function LoadRole(){
