@@ -12,6 +12,9 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
         <div class="overlay-header">
             <!-- Optional title and close button -->
             <h2 class="overlay-title"><?= $props["title"] ?? "Add item"; ?></h2>
+            if($props["title"] == "Sort By") {
+                
+            }
             <!-- Close button to hide the overlay -->
             <!-- closeOverlay() is a JavaScript function that should be defined to hide the overlay -->
             

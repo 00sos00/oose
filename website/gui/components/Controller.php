@@ -1,4 +1,5 @@
 <?php
+
 function getFilterSvg() {
     return '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="none" viewBox="0 0 20 18">
         <path fill="#E3B04B" d="M.152 1.145A1.556 1.556 0 0 1 1.562.25h16.875a1.566 1.566 0 0 1 1.207 2.555l-7.144 8.73V16.5c0 .473-.266.906-.692 1.117-.425.211-.93.168-1.308-.117L8 15.625a1.242 1.242 0 0 1-.5-1v-3.09L.35 2.801a1.558 1.558 0 0 1-.199-1.656Z"/>
@@ -30,8 +31,8 @@ function getSortSvg() {
 	                <?= $createText; ?>
 	            </button>
 	            <div class="navigation">
-	                <button class="sort-btn"><?= getFilterSvg(); ?></button>
-	                <button class="sort-btn"><?= getSortSvg(); ?></button>
+	                <button class="filter-btn"><?= getFilterSvg(); ?></button>
+	                <button class="sort-btn" onclick="showSort(this)"><?= getSortSvg(); ?></button>
 	                <button class="nav-btn back-btn" <?= $currentPage <= 1 ? 'disabled' : ''; ?>>Back</button>
 	                <div class="page-numbers">
 	                    <?php
@@ -174,6 +175,9 @@ function getSortSvg() {
 	ob_start();
 	?>
 	<script>
+	function showSort(buttonElement) {
+		showSortModal(buttonElement);
+	}
 	function openCreateForm() {
 		// show creat window from overlaywindow.php
 		showOverlay();
@@ -212,6 +216,7 @@ function getSortSvg() {
 	            updatePageParam(current + 1);
 	        }
 	    });
+		
 	});
 	</script>
 	<?php

@@ -11,6 +11,7 @@ require_once __DIR__ . "/../gui/components/Topbar.php";
 require_once __DIR__ . "/../gui/components/Controller.php";
 require_once __DIR__ . "/../gui/components/OverlayWindow.php";
 require_once __DIR__ . "/../gui/components/InputHolder.php";
+require_once __DIR__ . "/../gui/components/sort.php";
 
 $gui = GUI::getInstance();
 ?>
@@ -45,6 +46,7 @@ $gui = GUI::getInstance();
 			"action-text" => "Confirm",
 			"cancel-text" => "Cancel"
 		]); ?>
+		
 	<div class="horizontal-stack">
 		<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "properties"]) ?>
 		<div class="right-content">
@@ -56,7 +58,11 @@ $gui = GUI::getInstance();
 				'role' => $_SESSION["user_role"],
 				'bell' => '../assets/bell.svg'
 				]);
-
+				echo $gui->getComponentHTML("sort", [
+					'labels' => ['ID', 'Unit Number', 'Building Name', 'Listing Type', 'Area', 'Price', 'My Cut'],
+					'orders' => ['Low to High', 'Low to High', 'Low to High', 'Low to High', 'Low to High', 'Low to High', 'Low to High'],
+					'inputName' => 'sort_orders'
+				]);
 				// View Apartments Table
 				require_once "../Model/Property.php";
 				$properties = LoadClass("Apartment");
@@ -89,7 +95,7 @@ $gui = GUI::getInstance();
 					"statusMap" => $statusMap,
 					"addUnits" => true
 				]);
-
+				
 				// View Studio Table
 				$properties = LoadClass("Studio");
 				$getterMap = [
