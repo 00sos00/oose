@@ -175,12 +175,13 @@ function getSortSvg() {
 	?>
 	<script>
 	function openCreateForm() {
-		$(".create-form-container").fadeIn(150, "swing");
-		openOverlay();
+		// show creat window from overlaywindow.php
+		showOverlay();
 	}
 
 	function closeCreateForm() {
-		$(".create-form-container").fadeOut(150, "swing");
+		// show creat window from overlaywindow.php
+		hideOverlay();
 	}
 
 	$(document).ready(function() {

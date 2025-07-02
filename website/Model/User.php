@@ -264,6 +264,30 @@ function Load($email, $password)
     return null;
 }
 
+function LoadUserFromUserID($uID){
+    require_once "Database.php";
+    $db = DataBase::getInstance();
+
+    // Query the database for the class name
+    $sql = "SELECT * FROM USER WHERE USER_ID = '$uID'";
+    $result = $db->query($sql);
+
+    // Check if the query was successful
+    if (!isset($result)) {
+        return null;
+    }
+
+    // Parse the result and create an object of the class
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            return User::parseResult($row);
+        }
+    }
+
+    // Return null if no user is found
+    return null;
+}
+
 function insert($pnn, $className){
     require_once "Database.php";
     $db = DataBase::getInstance();

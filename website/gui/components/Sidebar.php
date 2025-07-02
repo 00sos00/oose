@@ -76,7 +76,7 @@ $gui->addComponentRenderFunction($strippedFileName, function ($props) use ($gui)
 			echo $gui->getComponentHTML("SidebarItem", [
 				"item-text" => "System Logs",
 				"icon-name" => "Logs-icon",
-				"href" => "#",
+				"href" => "Auditlog_view.php",
 				"selected" => $props["selected-page"] == "logs"
 			]);
 			echo $gui->getComponentHTML("SidebarItem", [

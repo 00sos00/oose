@@ -9,6 +9,8 @@ require_once __DIR__ . "/../gui/components/Table.php";
 require_once __DIR__ . "/../gui/components/SidebarItem.php";
 require_once __DIR__ . "/../gui/components/Topbar.php";
 require_once __DIR__ . "/../gui/components/Controller.php";
+require_once __DIR__ . "/../gui/components/OverlayWindow.php";
+require_once __DIR__ . "/../gui/components/InputHolder.php";
 
 $gui = GUI::getInstance();
 ?>
@@ -22,6 +24,27 @@ $gui = GUI::getInstance();
 </head>
 
 <body>
+	<?= $gui->getComponentHTML("OverlayWindow", [
+			"title" => "Create Item",
+			"content" => [
+				"".
+				$gui->getComponentHTML('InputHolder', [
+					'label' => 'First Name',
+					'input-type' => 'text',
+					'name' => 'first-name'
+				]) .
+				
+				"",
+				"<div>
+					<label><input type='radio' name='property-type' value='Apartment'> Apartment</label>
+					<label><input type='radio' name='property-type' value='Studio'> Studio</label>
+					<label><input type='radio' name='property-type' value='House'> House</label>
+				</div>"
+			],
+			"content-title" => ["Name", "Property Type"],
+			"action-text" => "Confirm",
+			"cancel-text" => "Cancel"
+		]); ?>
 	<div class="horizontal-stack">
 		<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "properties"]) ?>
 		<div class="right-content">
@@ -166,5 +189,9 @@ $gui = GUI::getInstance();
 .vertical-stack::-webkit-scrollbar {
     width: 0px;
     background: var(--lighter-dark); /* Track color */
+}
+
+.overlay-window{
+	display: none; /* Initially hidden */
 }
 </style>

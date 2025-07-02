@@ -4,12 +4,16 @@ class Auditlog
     private $action;
     private $auditLogId;
     private $userId;
+    private $firstName;
+    private $lastName;
 
     private function __construct($result)
     {
         $this->action = $result["ACTION"];
         $this->auditLogId = $result["AUDITLOG_ID"];
         $this->userId = $result["USER_ID"];
+        $this->firstName = $result["FIRST_NAME"];
+        $this->lastName = $result["LAST_NAME"];
     }
 
     public static function parseResult($result): AuditLog
@@ -30,21 +34,29 @@ class Auditlog
     {
         return $this->userId;
     }
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
 }
 
 function LoadAuditlog(){
     require_once "Database.php";
 
-    $object = [];
+    $objects = [];
     $db = DataBase::getInstance();
 
-    // Query the database for the class name
-    $sql = "SELECT * FROM AUDITLOG";
+    // Query the database for audit logs
+    $sql = "SELECT * FROM AUDITLOG, USER WHERE AUDITLOG.USER_ID = USER.USER_ID";
     $result = $db->query($sql);
 
     // Check if the query was successful
     if (!isset($result)) {
-        exit();
+        return null;
     }
 
     $i = 0;
@@ -52,11 +64,9 @@ function LoadAuditlog(){
     // Parse the result and create an object of the class
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $object[$i] = Auditlog::parseResult($row);
+            $objects[$i] = AuditLog::parseResult($row);
             $i++;
         }
     }
-
-    // Return the array of objects
-    return $object;
+    return $objects;
 }
