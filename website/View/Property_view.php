@@ -46,7 +46,15 @@ $gui = GUI::getInstance();
 			"action-text" => "Confirm",
 			"cancel-text" => "Cancel"
 		]); ?>
-		
+		<?php
+		 $labelMap = [
+			'ID' => 'PROPERTY_ID',
+			'Listing Type' => 'FOR_RENT',
+			'Area' => 'AREA',
+			'Price' => 'PRICE',
+			'My Cut' => 'MY_CUT'
+			];
+		?>
 	<div class="horizontal-stack">
 		<?= $gui->getComponentHTML("Sidebar", ["selected-page" => "properties"]) ?>
 		<div class="right-content">
@@ -59,9 +67,10 @@ $gui = GUI::getInstance();
 				'bell' => '../assets/bell.svg'
 				]);
 				echo $gui->getComponentHTML("sort", [
-					'labels' => ['ID', 'Unit Number', 'Building Name', 'Listing Type', 'Area', 'Price', 'My Cut'],
+					'labels' => ['ID', 'Listing Type', 'Area', 'Price', 'My Cut'],
 					'orders' => ['Low to High', 'Low to High', 'Low to High', 'Low to High', 'Low to High', 'Low to High', 'Low to High'],
-					'inputName' => 'sort_orders'
+					'inputName' => 'sort_orders' ,
+					'attributes' => $labelMap,
 				]);
 				// View Apartments Table
 				require_once "../Model/Property.php";

@@ -125,22 +125,19 @@ ob_start();
 
 <script>
 function onSortApply() {
-    // Example: collect selected sort options and orders
-    const rows = document.querySelectorAll('.sort-row');
-    const result = [];
-    rows.forEach(row => {
-        const select = row.querySelector('.sort-label-select');
-        const order = row.querySelector('.sort-order').textContent.trim();
-        if (select) {
-            result.push({
-                label: select.value,
-                order: order
-            });
-        }
+    // Get selected label and order
+    const label = $props['attributes'][document.querySelector('.sort-label-select').value];
+    const orderText = document.querySelector('.sort-order').textContent.trim();
+    const order = orderText.startsWith('Low to High') ? 'ASC' : 'DESC';
+    $_SESSION_['sort_by'] = label;
+    $_SESSION_['sort_order'] = order;
+    alert(`Sorting by: ${label} in ${order} order`);
+    // Send to PHP via AJAX
+    $.post('/OOSE/website/gui/components/sort.php', { sort_by: label, sort_order: order }, function(response) {
+        location.reload();
     });
-    // Do something with result, e.g., send via AJAX or log
-    console.log(result);
-    // Optionally, close modal
+
+    // Hide modal
     document.querySelector('.sort-modal').style.display = 'none';
 }
     function showSortModal(buttonElement) {
@@ -171,6 +168,7 @@ $(document).on('click', '.sort-order-toggle', function () {
     if (current.startsWith('Low to High')) {
         $order.text('High to Low ⇅');
         $input.val('High to Low');
+     
     } else {
         $order.text('Low to High ⇅');
         $input.val('Low to High');

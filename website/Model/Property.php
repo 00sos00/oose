@@ -27,6 +27,7 @@ class Property
     {
       // Constructor is private to prevent direct instantiation
       // Parse the result from the database
+
         $this->propertyId = $result["PROPERTY_ID"];
         $this->forRent = $result["FOR_RENT"];
         $this->forSale = $result["FOR_SALE"];
@@ -549,7 +550,8 @@ function LoadClass($className)
   $db = DataBase::getInstance();
 
   // Query the database for the class name
-  $sql = "SELECT * FROM " . $className . ", PROPERTY WHERE " . $className . ".PROPERTY_ID = PROPERTY.PROPERTY_ID";
+  $sql = "SELECT * FROM " . $className . ", PROPERTY WHERE " . $className . ".PROPERTY_ID = PROPERTY.PROPERTY_ID"; 
+
   $result = $db->query($sql);
 
   // Check if the query was successful

@@ -35,6 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION["user_email"] = $user->getEmail();
 		require_once "../Model/Role.php";
 		$_SESSION["user_role"] = getRoleName($user->getRole());
+	
+		$_SESSION['sort_by'] = 'PROPERTY_ID';
+		$_SESSION['sort_order'] = 'desc';
 		header("Location: ../View/Account_view.php");
 		exit();
 	}
